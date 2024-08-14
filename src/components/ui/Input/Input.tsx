@@ -1,20 +1,22 @@
-import cn from "classnames";
-import React, { FC } from 'react';
+import cn from 'classnames';
+import React, { ComponentPropsWithoutRef, forwardRef } from 'react';
 
-import styles from './Input.module.scss'
+import styles from './Input.module.scss';
 
-interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
-}
+interface InputProps extends ComponentPropsWithoutRef<'input'> {}
 
-const Input: FC<Props> = ({className, ...props}) => {
-    return (
-        <>
-            <input
-                className={cn(styles.input, className)}
-                {...props}
-            />
-        </>
-    );
-};
+export const Input = forwardRef<HTMLInputElement, InputProps>(
+	({ className, ...props }, ref) => {
+		return (
+			<>
+				<input
+					ref={ref}
+					className={cn(styles.input, className)}
+					{...props}
+				/>
+			</>
+		);
+	},
+);
 
-export default Input;
+Input.displayName = 'Input';

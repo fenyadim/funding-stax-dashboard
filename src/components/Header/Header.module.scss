@@ -1,6 +1,6 @@
 .headerWrapper {
   display: flex;
-  gap: 20px;
+  gap: 16px;
   align-items: center;
   margin-bottom: 25px;
 }
@@ -9,13 +9,6 @@
   display: flex;
   justify-content: center;
   min-width: var(--sidebar-width);
-}
-
-.rightSide {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
 }
 
 .welcomeTitle {

@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { ComponentPropsWithoutRef, FC, forwardRef } from 'react';
+import { ComponentPropsWithoutRef, forwardRef } from 'react';
 
 import styles from './Button.module.scss';
 
@@ -9,7 +9,7 @@ interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
 	isRound?: boolean;
 }
 
-const Button: FC<ButtonProps> = forwardRef<HTMLButtonElement, ButtonProps>(
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	(
 		{
 			children,
@@ -45,5 +45,3 @@ const Button: FC<ButtonProps> = forwardRef<HTMLButtonElement, ButtonProps>(
 );
 
 Button.displayName = 'Button';
-
-export default Button;

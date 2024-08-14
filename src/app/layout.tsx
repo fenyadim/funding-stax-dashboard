@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { Manrope, Roboto } from 'next/font/google';
 
 import { Header, Sidebar } from '@/components';
+import { Flex } from '@/components/ui';
 
 const manrope = Manrope({
 	weight: ['400', '500', '600', '700'],
@@ -29,10 +30,10 @@ export default function RootLayout({
 		<html lang='en'>
 			<body className={`${manrope.variable} ${roboto.variable}`}>
 				<Header />
-				<main>
+				<Flex align='start' gap='16'>
 					<Sidebar />
 					{children}
-				</main>
+				</Flex>
 			</body>
 		</html>
 	);

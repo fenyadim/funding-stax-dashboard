@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { FC } from 'react';
 
 import { Profile } from '@/components';
-import { Button, Input } from '@/components/ui';
+import { Button, Flex, Input } from '@/components/ui';
 import { useNowDate } from '@/hooks/useNowDate';
 
 import styles from './Header.module.scss';
@@ -26,7 +26,7 @@ const Header: FC = () => {
 					/>
 				</Link>
 			</div>
-			<div className={styles.rightSide}>
+			<Flex max justify='between'>
 				<div className={styles.welcomeWrapper}>
 					<h2 className={styles.welcomeTitle}>Good morning, John!</h2>
 					<p className={styles.welcomeDate}>{`${time} • ${date}`}</p>
@@ -57,7 +57,7 @@ const Header: FC = () => {
 						<LogOut />
 					</Button>
 				</div>
-			</div>
+			</Flex>
 		</header>
 	);
 };
