@@ -1,0 +1,36 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: var(--font-color);
+  border-radius: 50px;
+}
+
+.primary {
+  background-color: var(--button-color);
+}
+
+.transparent {
+  background-color: transparent;
+}
+
+.accent {
+  background-color: var(--accent-color);
+  color: var(--font-black-color);
+}
+
+.small {
+  height: 44px;
+}
+
+.medium {
+  height: 51px;
+}
+
+.round {
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+}

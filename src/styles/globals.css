@@ -1,0 +1,35 @@
+@import url(variables.css);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 23px 16px;
+    overflow-x: hidden;
+    font-family: var(--font-manrope), sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    background-color: var(--bg-color);
+    color: var(--font-color);
+}
+
+button {
+    font-family: var(--font-manrope), sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--font-color);
+}
+
+ul, li {
+    list-style: none;
+}
