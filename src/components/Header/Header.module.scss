@@ -1,0 +1,51 @@
+.headerWrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.logoWrapper {
+  display: flex;
+  justify-content: center;
+  min-width: var(--sidebar-width);
+}
+
+.rightSide {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.welcomeTitle {
+  font-weight: 600;
+  font-size: 26px;
+}
+
+.welcomeDate {
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--font-second-color);
+}
+
+.searchWrapper {
+  position: relative;
+  flex: 1;
+  max-width: 450px;
+
+  button {
+    position: absolute;
+    top: 0;
+    right: 10px;
+  }
+}
+
+.searchInput {
+  width: 100%;
+  padding-right: 51px;
+}
+
+.navigation {
+  display: flex;
+  gap: 10px;
+}
