@@ -1,13 +1,13 @@
 import Link from 'next/link';
 import React from 'react';
 
-import { Button } from '@/components/ui';
+import { Button, Card } from '@/components/ui';
 
 import styles from './Sidebar.module.scss';
 
 const Sidebar = () => {
 	return (
-		<aside className={styles.sidebar}>
+		<Card direction='column' gap='16' className={styles.sidebar}>
 			<h1 className={styles.sidebarTitle}>
 				5 665.69 <span>$</span>
 			</h1>
@@ -33,7 +33,7 @@ const Sidebar = () => {
 					</li>
 				</ul>
 			</nav>
-		</aside>
+		</Card>
 	);
 };
 

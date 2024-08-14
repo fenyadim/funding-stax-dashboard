@@ -1,7 +1,5 @@
-export default function HomePage() {
-	return (
-		<main>
-			<h1>Test</h1>
-		</main>
-	);
+import { PlatformPage } from '@/(pages)';
+
+export default function HomeRoute() {
+	return <PlatformPage />;
 }
