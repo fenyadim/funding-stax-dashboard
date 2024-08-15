@@ -1,0 +1,16 @@
+.title {
+  font-size: 16px;
+  color: var(--font-second-color);
+}
+
+.value {
+  font-family: var(--font-roboto), sans-serif;
+  font-size: 34px;
+  line-height: 34px;
+  font-weight: 500;
+  color: var(--accent-color);
+
+  span {
+    color: var(--font-color);
+  }
+}

@@ -1,31 +1,99 @@
 'use client';
 
+import { useLocale, useTranslations } from 'next-intl';
 import { useState } from 'react';
 
-import { PlatformOption } from '@/components';
-import { Card } from '@/components/ui';
+import {
+	PlatformItemType,
+	PlatformOption,
+	PlatformStatistic,
+} from '@/components/Platform';
+import { Card, Flex } from '@/components/ui';
 
 import styles from './PlatformPage.module.scss';
 
-const challengeTypes = [
+const challengeTypes: PlatformItemType<string>[] = [
 	{ id: 'one-phase', name: 'One Phase' },
 	{ id: 'two-phase', name: 'Two Phase' },
 	{ id: 'swing', name: 'Swing' },
 ];
 
+const challengeValues: PlatformItemType<number>[] = [
+	{ id: 6000, name: 6000 },
+	{ id: 15000, name: 15000 },
+	{ id: 25000, name: 25000 },
+	{ id: 50000, name: 50000 },
+	{ id: 100000, name: 100000 },
+	{ id: 200000, name: 200000 },
+];
+
 export const PlatformPage = () => {
 	const [type, setType] = useState('one-phase');
+	const [value, setValue] = useState(6000);
 
-	console.log(type);
+	const t = useTranslations('PlatformPage');
+	const locale = useLocale();
 
 	return (
-		<Card direction='column' align='start' max className={styles.wrapper}>
+		<Card
+			gap='32'
+			direction='column'
+			align='start'
+			max
+			className={styles.wrapper}
+		>
 			<PlatformOption
-				title='Challenge Type'
+				title={t('Challenge Type')}
 				items={challengeTypes}
 				idActive={type}
 				setIdActive={setType}
 			/>
+			<Flex>
+				<PlatformOption
+					title={t('Challenge Value')}
+					items={challengeValues}
+					idActive={value}
+					setIdActive={setValue}
+					icon='$'
+					locale={locale}
+				/>
+			</Flex>
+			<div className={styles.statisticsWrapper}>
+				<PlatformStatistic
+					title={t('Platform')}
+					value={t('Trade Locker')}
+				/>
+				<PlatformStatistic
+					title={t('Refundable Registration Fee')}
+					value={56}
+					before='$'
+					locale={locale}
+				/>
+				<PlatformStatistic
+					title={t('Max Daily Loss')}
+					value={3}
+					after='%'
+				/>
+				<PlatformStatistic
+					title={t('Profit Target')}
+					value={10}
+					after='%'
+				/>
+				<PlatformStatistic
+					title={t('Minimum Trading Days')}
+					value={4}
+				/>
+				<PlatformStatistic
+					title={t('Duration')}
+					value={t('Unlimited')}
+				/>
+				<PlatformStatistic title={t('Leverage')} value='1:30' />
+				<PlatformStatistic
+					title={t('Max Overall Loss')}
+					value={6}
+					after='%'
+				/>
+			</div>
 		</Card>
 	);
 };
