@@ -1,7 +1,8 @@
 import React from 'react';
 
 import { Button, Flex } from '@/components/ui';
-import { formatLocaleNumber } from '@/utils/formatLocaleNumber';
+import { Locale } from '@/config';
+import { formatLocaleNumber, localeCurrencyIcon } from '@/utils/formatLocale';
 
 import styles from './PlatformOption.module.scss';
 
@@ -15,9 +16,8 @@ interface PlatformOptionType<T> {
 	items: Array<PlatformItemType<T>>;
 	idActive: T;
 	setIdActive: (id: T) => void;
-	icon?: string;
 	className?: string;
-	locale?: string;
+	locale?: Locale;
 }
 
 export function PlatformOption<T extends string | number>({
@@ -25,7 +25,6 @@ export function PlatformOption<T extends string | number>({
 	items,
 	idActive,
 	setIdActive,
-	icon,
 	className,
 	locale,
 }: PlatformOptionType<T>) {
@@ -46,10 +45,14 @@ export function PlatformOption<T extends string | number>({
 						onClick={() => setIdActive(item.id)}
 						theme={item.id === idActive ? 'accent' : 'primary'}
 					>
-						<span>{icon && icon}</span>
-						{typeof item.name === 'string' || !locale
-							? item.name
-							: formatLocaleNumber(locale, item.name)}
+						{typeof item.name === 'string' || !locale ? (
+							item.name
+						) : (
+							<>
+								<span>{localeCurrencyIcon(locale)}</span>
+								{formatLocaleNumber(locale, item.name)}
+							</>
+						)}
 					</Button>
 				))}
 			</Flex>

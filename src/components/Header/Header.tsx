@@ -1,18 +1,22 @@
 'use client';
 
-import { Bell, Bolt, LogOut, Search } from 'lucide-react';
+import { Bell, LogOut, Search } from 'lucide-react';
+import { useLocale } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
 
 import { Profile } from '@/components';
+import { LocaleSelect } from '@/components/features';
 import { Button, Flex, Input } from '@/components/ui';
+import { Locale } from '@/config';
 import { useNowDate } from '@/hooks/useNowDate';
 
 import styles from './Header.module.scss';
 
 const Header: FC = () => {
-	const [time, date] = useNowDate('ru');
+	const locale = useLocale() as Locale;
+	const [time, date] = useNowDate(locale);
 
 	return (
 		<header className={styles.headerWrapper}>
@@ -49,14 +53,12 @@ const Header: FC = () => {
 					name='John Doe'
 					email='johndoe@ex.com'
 				/>
-				<div className={styles.navigation}>
-					<Button isRound size='small'>
-						<Bolt />
-					</Button>
+				<Flex gap='16'>
+					<LocaleSelect locale={locale} />
 					<Button isRound size='small'>
 						<LogOut />
 					</Button>
-				</div>
+				</Flex>
 			</Flex>
 		</header>
 	);

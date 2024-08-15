@@ -3,23 +3,22 @@
 import React, { FC } from 'react';
 
 import { Flex } from '@/components/ui';
-import { formatLocaleNumber } from '@/utils/formatLocaleNumber';
+import { Locale } from '@/config';
+import { formatLocaleNumber, localeCurrencyIcon } from '@/utils/formatLocale';
 
 import styles from './PlatformStatistic.module.scss';
 
 interface PlatformStatisticProps {
 	title: string;
 	value: string | number;
-	before?: string;
 	after?: string;
-	locale?: string;
+	locale?: Locale;
 }
 
 export const PlatformStatistic: FC<PlatformStatisticProps> = ({
 	title,
 	value,
 	after,
-	before,
 	locale,
 }) => {
 	return (
@@ -31,7 +30,7 @@ export const PlatformStatistic: FC<PlatformStatisticProps> = ({
 		>
 			<p className={styles.title}>{title}</p>
 			<h3 className={styles.value}>
-				{before}{' '}
+				{locale && localeCurrencyIcon(locale)}{' '}
 				<span>
 					{typeof value === 'string' || !locale
 						? value

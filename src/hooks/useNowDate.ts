@@ -1,27 +1,35 @@
-import moment from "moment";
-import { useEffect, useState } from "react";
+import { useFormatter } from 'next-intl';
+import { useEffect, useState } from 'react';
 
-export const useNowDate = (locale: 'en' | 'ru'): [time: string, date: string] => {
-    if (locale === 'ru') {
-        require('moment/locale/ru')
-    }
+import { Locale } from '@/config';
 
-    const [date, setDate] = useState<string>('')
-    const [time, setTime] = useState<string>('')
+export const useNowDate = (locale: Locale): [time: string, date: string] => {
+	const format = useFormatter();
+	const [date, setDate] = useState<string>('');
+	const [time, setTime] = useState<string>('');
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setDate(moment().format('LL'))
-            setTime(moment().format('LT'))
-        }, 1000)
+	useEffect(() => {
+		const interval = setInterval(() => {
+			const fullDate = new Date();
+			setDate(
+				format.dateTime(fullDate, {
+					day: 'numeric',
+					month: 'long',
+					year: 'numeric',
+				}),
+			);
+			setTime(
+				format.dateTime(fullDate, {
+					hour: 'numeric',
+					minute: 'numeric',
+				}),
+			);
+		}, 1000);
 
-        return () => {
-            clearInterval(interval)
-        }
-    }, [])
+		return () => {
+			clearInterval(interval);
+		};
+	}, [locale]);
 
-    return [
-        time,
-        date
-    ]
-}
+	return [time, date];
+};

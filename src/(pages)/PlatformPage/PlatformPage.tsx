@@ -9,14 +9,9 @@ import {
 	PlatformStatistic,
 } from '@/components/Platform';
 import { Card, Flex } from '@/components/ui';
+import { Locale } from '@/config';
 
 import styles from './PlatformPage.module.scss';
-
-const challengeTypes: PlatformItemType<string>[] = [
-	{ id: 'one-phase', name: 'One Phase' },
-	{ id: 'two-phase', name: 'Two Phase' },
-	{ id: 'swing', name: 'Swing' },
-];
 
 const challengeValues: PlatformItemType<number>[] = [
 	{ id: 6000, name: 6000 },
@@ -32,7 +27,13 @@ export const PlatformPage = () => {
 	const [value, setValue] = useState(6000);
 
 	const t = useTranslations('PlatformPage');
-	const locale = useLocale();
+	const locale = useLocale() as Locale;
+
+	const challengeTypes: PlatformItemType<string>[] = [
+		{ id: 'one-phase', name: t('One Phase') },
+		{ id: 'two-phase', name: t('Two Phase') },
+		{ id: 'swing', name: t('Swing') },
+	];
 
 	return (
 		<Card
@@ -54,7 +55,6 @@ export const PlatformPage = () => {
 					items={challengeValues}
 					idActive={value}
 					setIdActive={setValue}
-					icon='$'
 					locale={locale}
 				/>
 			</Flex>
@@ -66,7 +66,6 @@ export const PlatformPage = () => {
 				<PlatformStatistic
 					title={t('Refundable Registration Fee')}
 					value={56}
-					before='$'
 					locale={locale}
 				/>
 				<PlatformStatistic

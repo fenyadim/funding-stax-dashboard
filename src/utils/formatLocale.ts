@@ -1,4 +1,6 @@
-export const formatLocaleNumber = (locale: string, value: number) => {
+import { Locale } from '@/config';
+
+export const formatLocaleNumber = (locale: Locale, value: number) => {
 	const currencyLocale: Record<string, string> = {
 		en: 'USD',
 		ru: 'RUB',
@@ -10,5 +12,9 @@ export const formatLocaleNumber = (locale: string, value: number) => {
 		currencyDisplay: 'code',
 	})
 		.format(value)
-		.match(/\d.+/gm);
+		.match(/\d.+\d/gm);
+};
+
+export const localeCurrencyIcon = (locale: Locale) => {
+	return locale === 'en' ? '$' : '₽';
 };
