@@ -6,6 +6,7 @@ import { useState } from 'react';
 import {
 	PlatformItemType,
 	PlatformOption,
+	PlatformPastBlock,
 	PlatformStatistic,
 } from '@/components/Platform';
 import { Card, Flex } from '@/components/ui';
@@ -36,63 +37,69 @@ export const PlatformPage = () => {
 	];
 
 	return (
-		<Card
-			gap='32'
-			direction='column'
-			align='start'
-			max
-			className={styles.wrapper}
-		>
-			<PlatformOption
-				title={t('Challenge Type')}
-				items={challengeTypes}
-				idActive={type}
-				setIdActive={setType}
-			/>
-			<Flex>
+		<Flex max direction='column' gap='32' align='start'>
+			<Card
+				gap='32'
+				direction='column'
+				align='start'
+				max
+				className={styles.wrapper}
+			>
 				<PlatformOption
-					title={t('Challenge Value')}
-					items={challengeValues}
-					idActive={value}
-					setIdActive={setValue}
-					locale={locale}
+					title={t('Challenge Type')}
+					items={challengeTypes}
+					idActive={type}
+					setIdActive={setType}
 				/>
-			</Flex>
-			<div className={styles.statisticsWrapper}>
-				<PlatformStatistic
-					title={t('Platform')}
-					value={t('Trade Locker')}
-				/>
-				<PlatformStatistic
-					title={t('Refundable Registration Fee')}
-					value={56}
-					locale={locale}
-				/>
-				<PlatformStatistic
-					title={t('Max Daily Loss')}
-					value={3}
-					after='%'
-				/>
-				<PlatformStatistic
-					title={t('Profit Target')}
-					value={10}
-					after='%'
-				/>
-				<PlatformStatistic
-					title={t('Minimum Trading Days')}
-					value={4}
-				/>
-				<PlatformStatistic
-					title={t('Duration')}
-					value={t('Unlimited')}
-				/>
-				<PlatformStatistic title={t('Leverage')} value='1:30' />
-				<PlatformStatistic
-					title={t('Max Overall Loss')}
-					value={6}
-					after='%'
-				/>
-			</div>
-		</Card>
+				<Flex>
+					<PlatformOption
+						title={t('Challenge Value')}
+						items={challengeValues}
+						idActive={value}
+						setIdActive={setValue}
+						locale={locale}
+					/>
+				</Flex>
+				<div className={styles.statisticsWrapper}>
+					<PlatformStatistic
+						title={t('Platform')}
+						value={t('Trade Locker')}
+					/>
+					<PlatformStatistic
+						mode='currency'
+						title={t('Refundable Registration Fee')}
+						value={56}
+						locale={locale}
+					/>
+					<PlatformStatistic
+						title={t('Max Daily Loss')}
+						value='3'
+						after='%'
+					/>
+					<PlatformStatistic
+						title={t('Profit Target')}
+						value='10'
+						after='%'
+					/>
+					<PlatformStatistic
+						title={t('Minimum Trading Days')}
+						value='4'
+					/>
+					<PlatformStatistic
+						title={t('Duration')}
+						value={t('Unlimited')}
+					/>
+					<PlatformStatistic title={t('Leverage')} value='1:30' />
+					<PlatformStatistic
+						title={t('Max Overall Loss')}
+						value='6'
+						after='%'
+					/>
+				</div>
+			</Card>
+			<PlatformPastBlock locale={locale} />
+			<PlatformPastBlock locale={locale} />
+			<PlatformPastBlock locale={locale} />
+		</Flex>
 	);
 };

@@ -1,5 +1,4 @@
-'use client';
-
+import cn from 'classnames';
 import React, { FC } from 'react';
 
 import { Flex } from '@/components/ui';
@@ -7,34 +6,42 @@ import { Locale } from '@/config';
 import { formatLocaleNumber, localeCurrencyIcon } from '@/utils/formatLocale';
 
 import styles from './PlatformStatistic.module.scss';
-
-interface PlatformStatisticProps {
-	title: string;
-	value: string | number;
-	after?: string;
-	locale?: Locale;
-}
+import { PlatformStatisticProps } from './types';
 
 export const PlatformStatistic: FC<PlatformStatisticProps> = ({
 	title,
 	value,
+	before,
 	after,
 	locale,
+	size = 'large',
+	mode = 'text',
 }) => {
+	const isMinusSign = mode === 'pnl' && (value as number) < 0;
+	const isPlusSign = mode === 'pnl' && (value as number) > 0;
+
 	return (
 		<Flex
-			className={styles.wrapper}
+			className={cn(styles.wrapper, styles[size])}
 			direction='column'
 			gap='8'
 			align='start'
 		>
 			<p className={styles.title}>{title}</p>
-			<h3 className={styles.value}>
-				{locale && localeCurrencyIcon(locale)}{' '}
+			<h3
+				className={cn(styles.value, {
+					[styles.minus]: isMinusSign,
+				})}
+			>
+				{before}
+				{isMinusSign ? '-' : isPlusSign ? '+' : ''}
+				{mode === 'currency' || (mode === 'pnl' && locale)
+					? localeCurrencyIcon(locale as Locale)
+					: ''}{' '}
 				<span>
-					{typeof value === 'string' || !locale
+					{mode === 'text' || !locale
 						? value
-						: formatLocaleNumber(locale, value)}
+						: formatLocaleNumber(locale, value as number)}
 				</span>{' '}
 				{after}
 			</h3>

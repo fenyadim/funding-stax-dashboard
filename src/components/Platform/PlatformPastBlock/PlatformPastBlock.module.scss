@@ -1,0 +1,28 @@
+.button {
+  width: 138px;
+}
+
+.title {
+  font-size: 26px;
+  margin-left: 60px;
+}
+
+.cardWrapper {
+  position: relative;
+  padding-right: 60px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    display: block;
+    height: 18px;
+    width: 11px;
+    mask: url("/arrow.svg") no-repeat 50% 50%;
+    background-color: var(--font-color);
+    mask-size: cover;
+    top: 50%;
+    right: 30px;
+    transform: translateY(-50%) rotate(90deg);
+  }
+
+}

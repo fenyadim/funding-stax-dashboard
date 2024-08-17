@@ -1,5 +1,12 @@
 .cardWrapper {
   background-color: var(--card-color);
-  padding: 50px 30px;
   border-radius: 50px;
+}
+
+.medium {
+  padding: 50px 30px;
+}
+
+.small {
+  padding: 30px 30px;
 }

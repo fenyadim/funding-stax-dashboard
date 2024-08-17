@@ -14,6 +14,13 @@
     "Leverage": "Leverage",
     "Unlimited": "Unlimited",
     "Max Overall Loss": "Max Overall Loss",
-    "Trade Locker": "Trade Locker"
+    "Trade Locker": "Trade Locker",
+    "Account": "Account",
+    "Challenge": "Challenge",
+    "Today's P/L": "Today's P/L",
+    "Stage": "Stage",
+    "Result": "Result",
+    "Details": "Details",
+    "Failed": "Failed"
   }
 }

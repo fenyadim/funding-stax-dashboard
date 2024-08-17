@@ -5,13 +5,31 @@
 
 .value {
   font-family: var(--font-roboto), sans-serif;
-  font-size: 26px;
-  line-height: 34px;
-  font-weight: 500;
   color: var(--accent-color);
 
   span {
-    font-size: 34px;
     color: var(--font-color);
   }
+}
+
+.small {
+  .value {
+    font-size: 20px;
+    font-weight: 600;
+  }
+}
+
+.large {
+  .value {
+    font-size: 26px;
+    font-weight: 500;
+
+    span {
+      font-size: 34px;
+    }
+  }
+}
+
+.minus {
+  color: var(--losing-color);
 }

@@ -7,6 +7,8 @@ import { Manrope, Roboto } from 'next/font/google';
 import { Header, Sidebar } from '@/components';
 import { Flex } from '@/components/ui';
 
+import styles from './layout.module.scss';
+
 const manrope = Manrope({
 	weight: ['400', '500', '600', '700'],
 	variable: '--font-manrope',
@@ -38,7 +40,7 @@ export default async function RootLayout({
 					<Header />
 					<Flex align='start' gap='16'>
 						<Sidebar />
-						{children}
+						<main className={styles.mainWrapper}>{children}</main>
 					</Flex>
 				</NextIntlClientProvider>
 			</body>

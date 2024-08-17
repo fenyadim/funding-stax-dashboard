@@ -1,0 +1,6 @@
+.mainWrapper {
+  width: 100%;
+  overflow-y: scroll;
+  //(header-height + padding-global-top-and-bottom + margin-bottom-header)
+  max-height: calc(100vh - (69px + 46px + 25px));
+}

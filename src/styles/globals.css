@@ -11,7 +11,7 @@ body {
     max-width: 1920px;
     margin: 0 auto;
     padding: 23px 16px;
-    overflow-x: hidden;
+    overflow: hidden;
     font-family: var(--font-manrope), sans-serif;
     font-size: 20px;
     font-weight: 500;
