@@ -6,11 +6,13 @@ interface PlatformStatisticPropsBase {
 	after?: string;
 	size?: 'small' | 'large';
 	className?: string;
+	/* Сумма челледжа, от которого посчитается процент */
+	percentOf?: number;
 }
 
 interface PlatformStatisticPropsWithoutLocale
 	extends PlatformStatisticPropsBase {
-	mode?: 'text';
+	mode: 'text';
 	value: string;
 	locale?: Locale;
 }

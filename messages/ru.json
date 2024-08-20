@@ -21,6 +21,8 @@
     "Stage": "Stage",
     "Result": "Result",
     "Details": "Details",
-    "Failed": "Failed"
+    "Failed": "Failed",
+    "Target Amount Left to Earn": "Target Amount Left to Earn",
+    "Total P/L": "Total P/L"
   }
 }

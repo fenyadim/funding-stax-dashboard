@@ -27,6 +27,7 @@ export interface FlexProps extends DivProps {
 	gap?: FlexGap;
 	wrap?: FlexWrap;
 	max?: boolean;
+	heightMax?: boolean;
 }
 
 const justifyClasses: Record<FlexJustify, string> = {
@@ -68,6 +69,7 @@ export const Flex = (props: FlexProps) => {
 		direction = 'row',
 		gap,
 		max,
+		heightMax,
 		wrap = 'nowrap',
 		...otherProps
 	} = props;
@@ -83,6 +85,7 @@ export const Flex = (props: FlexProps) => {
 
 	const mods = {
 		[styles.max]: max,
+		[styles.heightMax]: heightMax,
 	};
 
 	return (

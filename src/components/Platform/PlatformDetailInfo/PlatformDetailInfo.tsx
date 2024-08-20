@@ -7,6 +7,7 @@ import {
 	PointElement,
 } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { useTranslations } from 'next-intl';
 import { FC } from 'react';
 import { Line } from 'react-chartjs-2';
 
@@ -31,6 +32,8 @@ ChartJS.register(
 );
 
 export const PlatformDetailInfo: FC<PlatformDetailInfoProps> = ({ locale }) => {
+	const t = useTranslations('PlatformPage');
+
 	return (
 		<Flex gap='16' justify='between'>
 			<Card
@@ -48,35 +51,20 @@ export const PlatformDetailInfo: FC<PlatformDetailInfoProps> = ({ locale }) => {
 				/>
 				<Line data={linearData} options={linearOptions(locale)} />
 			</Card>
-			<Card
-				className={styles.wrapper}
-				size='small'
-				direction='column'
-				align='start'
-			>
+			<Card heightMax direction='column' align='start' gap='16'>
 				<PlatformStatistic
-					className={styles.textWrapper}
-					value={5665.69}
-					title='Account Balance'
-					mode='currency'
+					value={814.31}
+					title={t('Target Amount Left to Earn')}
 					locale={locale}
+					mode='currency'
 				/>
-				<Line data={linearData} options={linearOptions(locale)} />
-			</Card>
-			<Card
-				className={styles.wrapper}
-				size='small'
-				direction='column'
-				align='start'
-			>
 				<PlatformStatistic
-					className={styles.textWrapper}
-					value={5665.69}
-					title='Account Balance'
-					mode='currency'
+					value={-334.31}
+					title={t('Total P/L')}
 					locale={locale}
+					mode='pnl'
+					percentOf={6000}
 				/>
-				<Line data={linearData} options={linearOptions(locale)} />
 			</Card>
 		</Flex>
 	);
