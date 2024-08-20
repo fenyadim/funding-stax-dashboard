@@ -1,8 +1,8 @@
 import React from 'react';
 
 import { Button, Flex } from '@/components/ui';
-import { Locale } from '@/config';
-import { formatLocaleNumber, localeCurrencyIcon } from '@/utils/formatLocale';
+import { Locale } from '@/config/localeConfig';
+import { formatLocaleNumber } from '@/utils/formatLocale';
 
 import styles from './PlatformOption.module.scss';
 
@@ -49,7 +49,7 @@ export function PlatformOption<T extends string | number>({
 							item.name
 						) : (
 							<>
-								<span>{localeCurrencyIcon(locale)}</span>
+								<span>$</span>
 								{formatLocaleNumber(locale, item.name)}
 							</>
 						)}

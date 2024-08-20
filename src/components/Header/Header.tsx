@@ -9,7 +9,7 @@ import { FC } from 'react';
 import { Profile } from '@/components';
 import { LocaleSelect } from '@/components/features';
 import { Button, Flex, Input } from '@/components/ui';
-import { Locale } from '@/config';
+import { Locale } from '@/config/localeConfig';
 import { useNowDate } from '@/hooks/useNowDate';
 
 import styles from './Header.module.scss';

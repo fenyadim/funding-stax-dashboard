@@ -1,4 +1,4 @@
-import { Locale } from '@/config';
+import { Locale } from '@/config/localeConfig';
 
 export const formatLocaleNumber = (locale: Locale, value: number) => {
 	const currencyLocale: Record<string, string> = {
@@ -13,8 +13,4 @@ export const formatLocaleNumber = (locale: Locale, value: number) => {
 	})
 		.format(value)
 		.match(/\d.+\d/gm);
-};
-
-export const localeCurrencyIcon = (locale: Locale) => {
-	return locale === 'en' ? '$' : '₽';
 };

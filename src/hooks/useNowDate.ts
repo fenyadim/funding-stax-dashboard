@@ -1,7 +1,7 @@
 import { useFormatter } from 'next-intl';
 import { useEffect, useState } from 'react';
 
-import { Locale } from '@/config';
+import { Locale } from '@/config/localeConfig';
 
 export const useNowDate = (locale: Locale): [time: string, date: string] => {
 	const format = useFormatter();

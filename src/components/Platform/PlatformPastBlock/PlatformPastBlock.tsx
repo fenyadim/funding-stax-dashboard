@@ -1,9 +1,11 @@
-import { useTranslations } from 'next-intl';
-import { FC } from 'react';
+'use client';
 
-import { PlatformStatistic } from '@/components/Platform';
+import { useTranslations } from 'next-intl';
+import { FC, useState } from 'react';
+
+import { PlatformDetailInfo, PlatformStatistic } from '@/components/Platform';
 import { Button, Card, Flex } from '@/components/ui';
-import { Locale } from '@/config';
+import { Locale } from '@/config/localeConfig';
 
 import styles from './PlatformPastBlock.module.scss';
 
@@ -13,6 +15,9 @@ interface PlatformPastBlockProps {
 
 export const PlatformPastBlock: FC<PlatformPastBlockProps> = ({ locale }) => {
 	const t = useTranslations('PlatformPage');
+	const [open, setOpen] = useState(false);
+
+	const handleOpen = () => setOpen(!open);
 
 	return (
 		<Flex
@@ -60,10 +65,15 @@ export const PlatformPastBlock: FC<PlatformPastBlockProps> = ({ locale }) => {
 					title={t('Result')}
 					value={t('Failed')}
 				/>
-				<Button className={styles.button} theme='accent'>
+				<Button
+					className={styles.button}
+					theme='accent'
+					onClick={handleOpen}
+				>
 					{t('Details')}
 				</Button>
 			</Card>
+			{open && <PlatformDetailInfo locale={locale} />}
 		</Flex>
 	);
 };

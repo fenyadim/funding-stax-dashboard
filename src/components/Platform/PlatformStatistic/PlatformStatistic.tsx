@@ -2,8 +2,7 @@ import cn from 'classnames';
 import React, { FC } from 'react';
 
 import { Flex } from '@/components/ui';
-import { Locale } from '@/config';
-import { formatLocaleNumber, localeCurrencyIcon } from '@/utils/formatLocale';
+import { formatLocaleNumber } from '@/utils/formatLocale';
 
 import styles from './PlatformStatistic.module.scss';
 import { PlatformStatisticProps } from './types';
@@ -16,13 +15,14 @@ export const PlatformStatistic: FC<PlatformStatisticProps> = ({
 	locale,
 	size = 'large',
 	mode = 'text',
+	className,
 }) => {
 	const isMinusSign = mode === 'pnl' && (value as number) < 0;
 	const isPlusSign = mode === 'pnl' && (value as number) > 0;
 
 	return (
 		<Flex
-			className={cn(styles.wrapper, styles[size])}
+			className={cn(styles.wrapper, styles[size], className)}
 			direction='column'
 			gap='8'
 			align='start'
@@ -36,7 +36,7 @@ export const PlatformStatistic: FC<PlatformStatisticProps> = ({
 				{before}
 				{isMinusSign ? '-' : isPlusSign ? '+' : ''}
 				{mode === 'currency' || (mode === 'pnl' && locale)
-					? localeCurrencyIcon(locale as Locale)
+					? '$'
 					: ''}{' '}
 				<span>
 					{mode === 'text' || !locale

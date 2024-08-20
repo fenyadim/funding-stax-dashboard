@@ -2,23 +2,12 @@ import '../styles/globals.css';
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
-import { Manrope, Roboto } from 'next/font/google';
 
+import { manrope, roboto } from '@/app/fonts';
 import { Header, Sidebar } from '@/components';
 import { Flex } from '@/components/ui';
 
 import styles from './layout.module.scss';
-
-const manrope = Manrope({
-	weight: ['400', '500', '600', '700'],
-	variable: '--font-manrope',
-	subsets: ['latin'],
-});
-const roboto = Roboto({
-	weight: ['500', '700'],
-	variable: '--font-roboto',
-	subsets: ['latin'],
-});
 
 export const metadata: Metadata = {
 	title: 'Funding Stax',

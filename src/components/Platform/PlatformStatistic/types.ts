@@ -1,10 +1,11 @@
-import { Locale } from '@/config';
+import { Locale } from '@/config/localeConfig';
 
 interface PlatformStatisticPropsBase {
 	title: string;
 	before?: string;
 	after?: string;
 	size?: 'small' | 'large';
+	className?: string;
 }
 
 interface PlatformStatisticPropsWithoutLocale

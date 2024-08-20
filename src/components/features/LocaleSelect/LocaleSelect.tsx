@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 
 import { Select, SelectItemProps } from '@/components/ui';
-import { Locale } from '@/config';
+import { Locale } from '@/config/localeConfig';
 import { setUserLocale } from '@/service/locale';
 
 interface LocaleSelectProps {
