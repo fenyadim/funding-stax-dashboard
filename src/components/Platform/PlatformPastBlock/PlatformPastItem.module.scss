@@ -1,3 +1,5 @@
+$buttonWidth: 138px;
+
 .wrapperInfo {
   transition: max-height 0.45s ease-in-out;
   overflow: hidden;
@@ -9,7 +11,7 @@
 }
 
 .button {
-  width: 138px;
+  width: $buttonWidth;
 }
 
 
@@ -30,6 +32,10 @@
     top: calc(50% + (11px / 2));
     right: 30px;
     transform: translateY(-50%) rotate(90deg);
+  }
+
+  div {
+    flex-basis: calc((100% - $buttonWidth) / 6);
   }
 
 }
