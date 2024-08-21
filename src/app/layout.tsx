@@ -4,7 +4,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 
 import { manrope, roboto } from '@/app/fonts';
-import { Header, Sidebar } from '@/components';
+import { Footer, Header, Sidebar } from '@/components';
 import { Flex } from '@/components/ui';
 
 import styles from './layout.module.scss';
@@ -29,7 +29,10 @@ export default async function RootLayout({
 					<Header />
 					<Flex align='start' gap='16'>
 						<Sidebar />
-						<main className={styles.mainWrapper}>{children}</main>
+						<main className={styles.mainWrapper}>
+							{children}
+							<Footer />
+						</main>
 					</Flex>
 				</NextIntlClientProvider>
 			</body>

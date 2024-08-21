@@ -45,7 +45,7 @@ const Header: FC = () => {
 						<Search />
 					</Button>
 				</div>
-				<Button isRound size='small'>
+				<Button isRound size='medium'>
 					<Bell />
 				</Button>
 				<Profile
@@ -55,7 +55,7 @@ const Header: FC = () => {
 				/>
 				<Flex gap='16'>
 					<LocaleSelect locale={locale} />
-					<Button isRound size='small'>
+					<Button isRound size='medium'>
 						<LogOut />
 					</Button>
 				</Flex>

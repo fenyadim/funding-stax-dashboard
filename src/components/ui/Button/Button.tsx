@@ -3,7 +3,7 @@ import { ComponentPropsWithoutRef, forwardRef } from 'react';
 
 import styles from './Button.module.scss';
 
-interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
+export interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
 	theme?: 'primary' | 'transparent' | 'accent';
 	size?: 'small' | 'medium' | 'large';
 	isRound?: boolean;
@@ -15,7 +15,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 			children,
 			className,
 			theme = 'primary',
-			size = 'medium',
+			size = 'large',
 			isRound,
 			...props
 		},
