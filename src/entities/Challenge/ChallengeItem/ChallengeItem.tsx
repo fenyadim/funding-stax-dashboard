@@ -5,22 +5,12 @@ import { useTranslations } from 'next-intl';
 import { FC, useState } from 'react';
 
 import { PlatformDetailInfo, PlatformStatistic } from '@/components/Platform';
-import { Button, Card, CardProps } from '@/components/ui';
-import { Locale } from '@/config/localeConfig';
+import { Button, Card } from '@/components/ui';
+import { ChallengeItemProps } from '@/entities/Challenge/type';
 
-import styles from './PlatformPastItem.module.scss';
+import styles from './ChallengeItem.module.scss';
 
-interface PlatformPastItemProps {
-	locale: Locale;
-	accountId: string;
-	challengeCount: number;
-	todayPnl: number;
-	stageCount: string;
-	result: string;
-	theme: CardProps['theme'];
-}
-
-export const PlatformPastItem: FC<PlatformPastItemProps> = ({
+export const ChallengeItem: FC<ChallengeItemProps> = ({
 	locale,
 	result,
 	challengeCount,

@@ -1,14 +1,13 @@
 import { getLocale, getTranslations } from 'next-intl/server';
 
-import { PlatformCreateChallenge } from '@/components/Platform';
 import { Flex } from '@/components/ui';
 import { Locale } from '@/config/localeConfig';
 import { ChallengeItemList } from '@/entities/Challenge';
 import { ChallengeItemProps } from '@/entities/Challenge/type';
 
-export const PlatformPage = async () => {
+export const ChallengeHistoryPage = async () => {
 	const locale = (await getLocale()) as Locale;
-	const t = await getTranslations('PlatformPage');
+	const t = await getTranslations('ChallengeHistoryPage');
 
 	const items: Omit<ChallengeItemProps, 'locale' | 'theme'>[] = [
 		{
@@ -25,13 +24,33 @@ export const PlatformPage = async () => {
 			stageCount: '2',
 			todayPnl: 34.64,
 		},
+		{
+			accountId: '826464',
+			challengeCount: 6000,
+			result: 'Failed',
+			stageCount: '1',
+			todayPnl: -347.64,
+		},
+		{
+			accountId: '826462',
+			challengeCount: 6000,
+			result: 'Success',
+			stageCount: '2',
+			todayPnl: 34.64,
+		},
+		{
+			accountId: '826464',
+			challengeCount: 6000,
+			result: 'Failed',
+			stageCount: '1',
+			todayPnl: -347.64,
+		},
 	];
 
 	return (
-		<Flex max direction='column' gap='32' align='start'>
-			<PlatformCreateChallenge locale={locale} />
+		<Flex>
 			<ChallengeItemList
-				title={t('Past Challenges')}
+				title={t('Challenge History')}
 				locale={locale}
 				challengeItems={items}
 			/>
