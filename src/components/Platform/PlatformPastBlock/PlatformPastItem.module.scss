@@ -1,0 +1,41 @@
+.wrapperInfo {
+  transition: max-height 0.45s ease-in-out;
+  overflow: hidden;
+  max-height: 0;
+}
+
+.open + .wrapperInfo {
+  max-height: 100vh;
+}
+
+.button {
+  width: 138px;
+}
+
+
+.cardWrapper {
+  position: relative;
+  padding-right: 60px;
+  cursor: pointer;
+
+  &::before {
+    content: '';
+    position: absolute;
+    display: block;
+    height: 18px;
+    width: 11px;
+    mask: url("/arrow.svg") no-repeat 50% 50%;
+    background-color: var(--font-color);
+    mask-size: cover;
+    top: calc(50% + (11px / 2));
+    right: 30px;
+    transform: translateY(-50%) rotate(90deg);
+  }
+
+}
+
+.open {
+  &::before {
+    transform: translateY(-50%) rotate(270deg);
+  }
+}

@@ -1,12 +1,14 @@
 'use client';
 
+import cn from 'classnames';
 import { useTranslations } from 'next-intl';
 import { FC, useState } from 'react';
 
 import { PlatformDetailInfo, PlatformStatistic } from '@/components/Platform';
-import styles from '@/components/Platform/PlatformPastBlock/PlatformPastBlock.module.scss';
 import { Button, Card, CardProps } from '@/components/ui';
 import { Locale } from '@/config/localeConfig';
+
+import styles from './PlatformPastItem.module.scss';
 
 interface PlatformPastItemProps {
 	locale: Locale;
@@ -36,7 +38,7 @@ export const PlatformPastItem: FC<PlatformPastItemProps> = ({
 	return (
 		<>
 			<Card
-				className={styles.cardWrapper}
+				className={cn(styles.cardWrapper, { [styles.open]: open })}
 				size='small'
 				justify='between'
 				max
@@ -82,7 +84,10 @@ export const PlatformPastItem: FC<PlatformPastItemProps> = ({
 					{t('Details')}
 				</Button>
 			</Card>
-			{open && <PlatformDetailInfo locale={locale} />}
+			<PlatformDetailInfo
+				className={styles.wrapperInfo}
+				locale={locale}
+			/>
 		</>
 	);
 };

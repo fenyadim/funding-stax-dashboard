@@ -10,13 +10,17 @@ import styles from './PlatformDetailInfo.module.scss';
 
 interface PlatformDetailInfoProps {
 	locale: Locale;
+	className?: string;
 }
 
-export const PlatformDetailInfo: FC<PlatformDetailInfoProps> = ({ locale }) => {
+export const PlatformDetailInfo: FC<PlatformDetailInfoProps> = ({
+	locale,
+	className,
+}) => {
 	const t = useTranslations('PlatformPage');
 
 	return (
-		<Flex wrap='wrap' align='stretch' gap='16'>
+		<Flex className={className} wrap='wrap' align='stretch' gap='16'>
 			<Card
 				className={styles.balanceWrapper}
 				size='small'
