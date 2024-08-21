@@ -1,7 +1,9 @@
 :root {
     --bg-color: #121B2C;
     --accent-color: #BAFF66;
+    --positive-bg-color: #BAFF6619;
     --losing-color: #FF3737;
+    --losing-bg-color: #FF373719;
     --button-color: #262E3E;
     --card-color: #182132;
 

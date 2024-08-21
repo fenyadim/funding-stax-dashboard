@@ -8,7 +8,7 @@ import { linearGradientChart } from '@/utils/linearGradientChart';
 export const linearOptions = (locale: Locale): ChartOptions<'line'> => ({
 	responsive: true,
 	borderColor: '#BAFF66',
-	aspectRatio: 3 / 2,
+	aspectRatio: 2,
 	backgroundColor: (context) =>
 		linearGradientChart(context, '#BAFF66', 'rgba(255,255,255,0)'),
 	font: {

@@ -7,8 +7,8 @@ import {
 
 import styles from './Flex.module.scss';
 
-type FlexJustify = 'start' | 'center' | 'end' | 'between';
-type FlexAlign = 'start' | 'center' | 'end';
+type FlexJustify = 'start' | 'center' | 'end' | 'between' | 'stretch';
+type FlexAlign = 'start' | 'center' | 'end' | 'stretch';
 type FlexDirection = 'row' | 'column';
 type FlexGap = '4' | '8' | '16' | '32';
 type FlexWrap = 'wrap' | 'nowrap';
@@ -27,7 +27,6 @@ export interface FlexProps extends DivProps {
 	gap?: FlexGap;
 	wrap?: FlexWrap;
 	max?: boolean;
-	heightMax?: boolean;
 }
 
 const justifyClasses: Record<FlexJustify, string> = {
@@ -35,12 +34,14 @@ const justifyClasses: Record<FlexJustify, string> = {
 	end: styles.justifyEnd,
 	between: styles.justifyBetween,
 	start: styles.justifyStart,
+	stretch: styles.justifyStretch,
 };
 
 const alignClasses: Record<FlexAlign, string> = {
 	center: styles.alignCenter,
 	end: styles.alignEnd,
 	start: styles.alignStart,
+	stretch: styles.alignStretch,
 };
 
 const directionClasses: Record<FlexDirection, string> = {
@@ -69,7 +70,6 @@ export const Flex = (props: FlexProps) => {
 		direction = 'row',
 		gap,
 		max,
-		heightMax,
 		wrap = 'nowrap',
 		...otherProps
 	} = props;
@@ -85,7 +85,6 @@ export const Flex = (props: FlexProps) => {
 
 	const mods = {
 		[styles.max]: max,
-		[styles.heightMax]: heightMax,
 	};
 
 	return (

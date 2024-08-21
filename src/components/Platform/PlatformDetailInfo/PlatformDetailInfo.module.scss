@@ -1,5 +1,11 @@
-.wrapper {
+.balanceWrapper {
   position: relative;
+  // 32px = gap (16px)
+  flex-basis: calc((100% - 32px) / 3);
+}
+
+.totalPnlWrapper {
+  flex-basis: calc((100% - 32px) / 3);
 }
 
 .textWrapper {
@@ -10,5 +16,10 @@
 }
 
 .pnlPercentWrapper {
-  max-height: 260px;
+  flex-basis: calc((100% - 32px) / 3);
+  max-height: 265px;
+}
+
+.limitWrapper {
+  justify-content: center;
 }

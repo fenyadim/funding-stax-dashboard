@@ -1,5 +1,4 @@
 .cardWrapper {
-  background-color: var(--card-color);
   border-radius: 50px;
 }
 
@@ -9,4 +8,18 @@
 
 .small {
   padding: 30px 30px;
+}
+
+.negative {
+  background-color: var(--losing-bg-color);
+  border: 1px solid var(--losing-color);
+}
+
+.positive {
+  background-color: var(--positive-bg-color);
+  border: 1px solid var(--accent-color);
+}
+
+.neutral {
+  background-color: var(--card-color);
 }

@@ -42,7 +42,6 @@ export const PlatformCreateChallenge: FC<PlatformCreateChallengeProps> = ({
 
 	return (
 		<Card
-			heightMax
 			gap='32'
 			direction='column'
 			align='start'

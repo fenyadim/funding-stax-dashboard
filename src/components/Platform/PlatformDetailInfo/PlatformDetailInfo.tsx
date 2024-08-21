@@ -16,9 +16,9 @@ export const PlatformDetailInfo: FC<PlatformDetailInfoProps> = ({ locale }) => {
 	const t = useTranslations('PlatformPage');
 
 	return (
-		<Flex gap='16' justify='between'>
+		<Flex wrap='wrap' align='stretch' gap='16'>
 			<Card
-				className={styles.wrapper}
+				className={styles.balanceWrapper}
 				size='small'
 				direction='column'
 				align='start'
@@ -32,7 +32,12 @@ export const PlatformDetailInfo: FC<PlatformDetailInfoProps> = ({ locale }) => {
 				/>
 				<LinearChart />
 			</Card>
-			<Card heightMax direction='column' align='start' gap='16'>
+			<Card
+				className={styles.totalPnlWrapper}
+				direction='column'
+				gap='16'
+				align='start'
+			>
 				<PlatformStatistic
 					value={814.31}
 					title={t('Target Amount Left to Earn')}
@@ -47,7 +52,11 @@ export const PlatformDetailInfo: FC<PlatformDetailInfoProps> = ({ locale }) => {
 					percentOf={6000}
 				/>
 			</Card>
-			<Card gap='32' className={styles.pnlPercentWrapper}>
+			<Card
+				justify='center'
+				gap='32'
+				className={styles.pnlPercentWrapper}
+			>
 				<Flex direction='column' gap='16'>
 					<PlatformStatistic
 						value={20}
@@ -65,6 +74,35 @@ export const PlatformDetailInfo: FC<PlatformDetailInfoProps> = ({ locale }) => {
 					/>
 				</Flex>
 				<DoughnutChart winValue={20} loseValue={80} />
+			</Card>
+			<Card size='small'>
+				<PlatformStatistic
+					className={styles.limitWrapper}
+					value='07/29/2024'
+					title={t('No limit')}
+				/>
+			</Card>
+			<Card theme='negative' size='small'>
+				<PlatformStatistic
+					value={300.67}
+					mode='currency'
+					locale={locale}
+					title={t('Today’s Permitted Loss')}
+				/>
+			</Card>
+			<Card theme='negative' size='small'>
+				<PlatformStatistic
+					value='19'
+					title={t('Active Trading Days')}
+				/>
+			</Card>
+			<Card theme='positive' size='small'>
+				<PlatformStatistic
+					value={600}
+					mode='currency'
+					locale={locale}
+					title={t('Max Permitted Loss')}
+				/>
 			</Card>
 		</Flex>
 	);

@@ -18,10 +18,11 @@ export const DoughnutChart: FC<DoughnutChartProps> = ({
 	className,
 }) => {
 	return (
-		<Doughnut
-			className={className}
-			data={doughnutData(winValue, loseValue)}
-			options={doughnutOptions}
-		/>
+		<div className={className} style={{ height: '100%' }}>
+			<Doughnut
+				data={doughnutData(winValue, loseValue)}
+				options={doughnutOptions}
+			/>
+		</div>
 	);
 };

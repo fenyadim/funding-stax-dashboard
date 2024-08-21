@@ -7,17 +7,24 @@ import styles from './Card.module.scss';
 
 interface CardProps extends FlexProps {
 	size?: 'small' | 'medium';
+	theme?: 'negative' | 'positive' | 'neutral';
 }
 
 export const Card: FC<CardProps> = ({
 	children,
 	size = 'medium',
+	theme = 'neutral',
 	className,
 	...props
 }) => {
 	return (
 		<Flex
-			className={cn(styles.cardWrapper, className, styles[size])}
+			className={cn(
+				styles.cardWrapper,
+				className,
+				styles[size],
+				styles[theme],
+			)}
 			{...props}
 		>
 			{children}
