@@ -1,6 +1,6 @@
 {
   "PlatformPage": {
-    "Max Permitted Loss": "Max Permitted Loss",
+    "Past Challenges": "Past Challenges",
     "Account": "Account",
     "Active Trading Days": "Active Trading Days",
     "Challenge": "Challenge",
@@ -13,6 +13,7 @@
     "Losing Trades": "Losing Trades",
     "Max Daily Loss": "Max Daily Loss",
     "Max Overall Loss": "Max Overall Loss",
+    "Max Permitted Loss": "Max Permitted Loss",
     "Minimum Trading Days": "Minimum Trading Days",
     "No limit": "No limit",
     "One Phase": "Одна фаза",
@@ -29,6 +30,7 @@
     "Trade Locker": "Trade Locker",
     "Two Phase": "Two Phase",
     "Unlimited": "Unlimited",
-    "Winning Trades": "Winning Trades"
+    "Winning Trades": "Winning Trades",
+    "Success": "Success"
   }
 }

@@ -10,6 +10,7 @@
 .cardWrapper {
   position: relative;
   padding-right: 60px;
+  cursor: pointer;
 
   &::before {
     content: '';

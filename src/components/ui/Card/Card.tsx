@@ -5,7 +5,7 @@ import { Flex, FlexProps } from '@/components/ui';
 
 import styles from './Card.module.scss';
 
-interface CardProps extends FlexProps {
+export interface CardProps extends FlexProps {
 	size?: 'small' | 'medium';
 	theme?: 'negative' | 'positive' | 'neutral';
 }
