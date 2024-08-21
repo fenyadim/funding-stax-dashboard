@@ -8,7 +8,7 @@ import {
 	PlatformOption,
 	PlatformStatistic,
 } from '@/components/Platform';
-import { Card, Flex } from '@/components/ui';
+import { Card, Checkbox, Flex } from '@/components/ui';
 import { Locale } from '@/config/localeConfig';
 
 import styles from './PlatformCreateChallenge.module.scss';
@@ -54,7 +54,7 @@ export const PlatformCreateChallenge: FC<PlatformCreateChallengeProps> = ({
 				idActive={type}
 				setIdActive={setType}
 			/>
-			<Flex>
+			<Flex align='end' gap='32'>
 				<PlatformOption
 					title={t('Challenge Value')}
 					items={challengeValues}
@@ -62,6 +62,13 @@ export const PlatformCreateChallenge: FC<PlatformCreateChallengeProps> = ({
 					setIdActive={setValue}
 					locale={locale}
 				/>
+				<Flex gap='8' direction='column' align='start'>
+					<Checkbox label={`${t('News Trading')} (+15%)`} />
+					<p className={styles.textCheckbox}>
+						Select to upgrade your challenge experience & unlock
+						exclusive features
+					</p>
+				</Flex>
 			</Flex>
 			<div className={styles.statisticsWrapper}>
 				<PlatformStatistic

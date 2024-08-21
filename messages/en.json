@@ -1,6 +1,6 @@
 {
   "PlatformPage": {
-    "Past Challenges": "Past Challenges",
+    "News Trading": "News Trading",
     "Account": "Account",
     "Active Trading Days": "Active Trading Days",
     "Challenge": "Challenge",
@@ -17,11 +17,13 @@
     "Minimum Trading Days": "Minimum Trading Days",
     "No limit": "No limit",
     "One Phase": "One Phase",
+    "Past Challenges": "Past Challenges",
     "Platform": "Platform",
     "Profit Target": "Profit Target",
     "Refundable Registration Fee": "Refundable Registration Fee",
     "Result": "Result",
     "Stage": "Stage",
+    "Success": "Success",
     "Swing": "Swing",
     "Target Amount Left to Earn": "Target Amount Left to Earn",
     "Today's P/L": "Today's P/L",
@@ -30,7 +32,6 @@
     "Trade Locker": "Trade Locker",
     "Two Phase": "Two Phase",
     "Unlimited": "Unlimited",
-    "Winning Trades": "Winning Trades",
-    "Success": "Success"
+    "Winning Trades": "Winning Trades"
   }
 }
