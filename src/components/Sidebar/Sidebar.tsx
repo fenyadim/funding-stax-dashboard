@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 
+import { Banner } from '@/components/Banner/Banner';
 import { SocialButtons } from '@/components/features';
 import { Button, Card } from '@/components/ui';
 
@@ -35,6 +36,7 @@ const Sidebar = () => {
 				</ul>
 			</nav>
 			<SocialButtons gap='32' />
+			<Banner />
 		</Card>
 	);
 };
