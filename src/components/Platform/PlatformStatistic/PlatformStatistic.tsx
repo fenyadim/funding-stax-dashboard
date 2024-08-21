@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import React, { FC } from 'react';
 
-import { Flex } from '@/components/ui';
+import { Flex, Popover } from '@/components/ui';
 import { calcPercentOf } from '@/utils/calcPercentOf';
 import { formatLocaleNumber } from '@/utils/formatLocale';
 import { minusOrPlusSign } from '@/utils/minusOrPlusSign';
@@ -17,6 +17,7 @@ export const PlatformStatistic: FC<PlatformStatisticProps> = ({
 	locale,
 	size = 'large',
 	mode = 'text',
+	info,
 	percentOf,
 	className,
 }) => {
@@ -27,7 +28,10 @@ export const PlatformStatistic: FC<PlatformStatisticProps> = ({
 			gap='8'
 			align='start'
 		>
-			<p className={styles.title}>{title}</p>
+			<Flex gap='8'>
+				<p className={styles.title}>{title}</p>
+				{info && <Popover size='extraSmall' content={info} />}
+			</Flex>
 			<div className={styles.valueWrapper}>
 				<h3
 					className={cn(styles.value, {

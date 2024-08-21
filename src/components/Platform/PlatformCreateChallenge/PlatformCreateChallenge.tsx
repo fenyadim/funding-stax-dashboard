@@ -53,6 +53,9 @@ export const PlatformCreateChallenge: FC<PlatformCreateChallengeProps> = ({
 				items={challengeTypes}
 				idActive={type}
 				setIdActive={setType}
+				info={
+					'Пробная информация, чтоб что-то попробовать.Пробная информация, чтоб что-то попробовать.Пробная информация, чтоб что-то попробовать.'
+				}
 			/>
 			<Flex align='end' gap='32'>
 				<PlatformOption
@@ -61,6 +64,9 @@ export const PlatformCreateChallenge: FC<PlatformCreateChallengeProps> = ({
 					idActive={value}
 					setIdActive={setValue}
 					locale={locale}
+					info={
+						'Пробная информация, чтоб что-то попробовать.Пробная информация, чтоб что-то попробовать.Пробная информация, чтоб что-то попробовать.'
+					}
 				/>
 				<Flex gap='8' direction='column' align='start'>
 					<Checkbox label={`${t('News Trading')} (+15%)`} />

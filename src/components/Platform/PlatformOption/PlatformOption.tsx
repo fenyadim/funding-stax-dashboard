@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button, Flex } from '@/components/ui';
+import { Button, Flex, Popover } from '@/components/ui';
 import { Locale } from '@/config/localeConfig';
 import { formatLocaleNumber } from '@/utils/formatLocale';
 
@@ -18,6 +18,7 @@ interface PlatformOptionType<T> {
 	setIdActive: (id: T) => void;
 	className?: string;
 	locale?: Locale;
+	info?: string;
 }
 
 export function PlatformOption<T extends string | number>({
@@ -27,6 +28,7 @@ export function PlatformOption<T extends string | number>({
 	setIdActive,
 	className,
 	locale,
+	info,
 }: PlatformOptionType<T>) {
 	return (
 		<Flex
@@ -35,7 +37,10 @@ export function PlatformOption<T extends string | number>({
 			direction='column'
 			className={styles.wrapper}
 		>
-			<h3 className={styles.title}>{title}</h3>
+			<Flex gap='8'>
+				<h3 className={styles.title}>{title}</h3>
+				{info && <Popover content={info} />}
+			</Flex>
 			<Flex wrap='wrap' gap='8'>
 				{items.map((item) => (
 					<Button

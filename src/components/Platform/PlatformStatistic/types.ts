@@ -8,6 +8,8 @@ interface PlatformStatisticPropsBase {
 	className?: string;
 	/* Сумма челледжа, от которого посчитается процент */
 	percentOf?: number;
+	/* Текст для подсказки */
+	info?: string;
 }
 
 interface PlatformStatisticPropsWithoutLocale

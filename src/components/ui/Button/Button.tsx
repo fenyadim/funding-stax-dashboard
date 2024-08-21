@@ -5,7 +5,7 @@ import styles from './Button.module.scss';
 
 export interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
 	theme?: 'primary' | 'transparent' | 'accent';
-	size?: 'small' | 'medium' | 'large';
+	size?: 'extraSmall' | 'small' | 'medium' | 'large';
 	isRound?: boolean;
 }
 

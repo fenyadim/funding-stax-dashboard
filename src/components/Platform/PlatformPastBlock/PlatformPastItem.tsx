@@ -67,6 +67,9 @@ export const PlatformPastItem: FC<PlatformPastItemProps> = ({
 					mode='pnl'
 					size='small'
 					title={t("Today's P/L")}
+					info={
+						'Пробная информация, чтоб что-то попробовать.Пробная информация, чтоб что-то попробовать.Пробная информация, чтоб что-то попробовать.'
+					}
 					value={todayPnl}
 					locale={locale}
 				/>

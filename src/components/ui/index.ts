@@ -9,3 +9,4 @@ export { Select } from './Select/Select';
 export type { SelectItemProps } from './Select/Select';
 export { ALink } from './ALink/ALink';
 export { Checkbox } from './Checkbox/Checkbox';
+export { Popover } from './Popover/Popover';
