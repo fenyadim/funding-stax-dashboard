@@ -14,6 +14,7 @@ export const SocialButtons: FC<SocialButtonsProps> = ({
 	gap,
 }) => {
 	const sizeIcon: Record<Required<ButtonProps>['size'], number> = {
+		extraSmall: 16,
 		small: 20,
 		medium: 24,
 		large: 32,
