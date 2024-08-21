@@ -1,19 +1,9 @@
-import {
-	CategoryScale,
-	Chart as ChartJS,
-	Filler,
-	LineElement,
-	LinearScale,
-	PointElement,
-} from 'chart.js';
-import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { useTranslations } from 'next-intl';
 import { FC } from 'react';
-import { Line } from 'react-chartjs-2';
 
 import { PlatformStatistic } from '@/components/Platform';
+import { DoughnutChart, LinearChart } from '@/components/features';
 import { Card, Flex } from '@/components/ui';
-import { linearData, linearOptions } from '@/config/linearChartConfig';
 import { Locale } from '@/config/localeConfig';
 
 import styles from './PlatformDetailInfo.module.scss';
@@ -21,15 +11,6 @@ import styles from './PlatformDetailInfo.module.scss';
 interface PlatformDetailInfoProps {
 	locale: Locale;
 }
-
-ChartJS.register(
-	CategoryScale,
-	LinearScale,
-	PointElement,
-	LineElement,
-	ChartDataLabels,
-	Filler,
-);
 
 export const PlatformDetailInfo: FC<PlatformDetailInfoProps> = ({ locale }) => {
 	const t = useTranslations('PlatformPage');
@@ -49,7 +30,7 @@ export const PlatformDetailInfo: FC<PlatformDetailInfoProps> = ({ locale }) => {
 					mode='currency'
 					locale={locale}
 				/>
-				<Line data={linearData} options={linearOptions(locale)} />
+				<LinearChart />
 			</Card>
 			<Card heightMax direction='column' align='start' gap='16'>
 				<PlatformStatistic
@@ -65,6 +46,25 @@ export const PlatformDetailInfo: FC<PlatformDetailInfoProps> = ({ locale }) => {
 					mode='pnl'
 					percentOf={6000}
 				/>
+			</Card>
+			<Card gap='32' className={styles.pnlPercentWrapper}>
+				<Flex direction='column' gap='16'>
+					<PlatformStatistic
+						value={20}
+						title={t('Winning Trades')}
+						locale={locale}
+						mode='percent'
+						after='%'
+					/>
+					<PlatformStatistic
+						value={-80}
+						title={t('Losing Trades')}
+						locale={locale}
+						mode='percent'
+						after='%'
+					/>
+				</Flex>
+				<DoughnutChart winValue={20} loseValue={80} />
 			</Card>
 		</Flex>
 	);

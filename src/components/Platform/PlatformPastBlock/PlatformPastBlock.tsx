@@ -15,7 +15,7 @@ interface PlatformPastBlockProps {
 
 export const PlatformPastBlock: FC<PlatformPastBlockProps> = ({ locale }) => {
 	const t = useTranslations('PlatformPage');
-	const [open, setOpen] = useState(false);
+	const [open, setOpen] = useState(true);
 
 	const handleOpen = () => setOpen(!open);
 

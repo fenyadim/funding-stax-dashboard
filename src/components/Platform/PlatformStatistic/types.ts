@@ -12,7 +12,7 @@ interface PlatformStatisticPropsBase {
 
 interface PlatformStatisticPropsWithoutLocale
 	extends PlatformStatisticPropsBase {
-	mode: 'text';
+	mode?: 'text';
 	value: string;
 	locale?: Locale;
 }
