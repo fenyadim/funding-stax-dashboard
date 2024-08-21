@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 
+import { SocialButtons } from '@/components/features';
 import { Button, Card } from '@/components/ui';
 
 import styles from './Sidebar.module.scss';
@@ -33,6 +34,7 @@ const Sidebar = () => {
 					</li>
 				</ul>
 			</nav>
+			<SocialButtons gap='32' />
 		</Card>
 	);
 };
