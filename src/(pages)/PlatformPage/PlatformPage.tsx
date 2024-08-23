@@ -2,9 +2,9 @@ import { getLocale, getTranslations } from 'next-intl/server';
 
 import { PlatformCreateChallenge } from '@/components/Platform';
 import { Flex } from '@/components/ui';
-import { Locale } from '@/config/localeConfig';
 import { ChallengeItemList } from '@/entities/Challenge';
 import { ChallengeItemProps } from '@/entities/Challenge/type';
+import { Locale } from '@/shared/config/localeConfig';
 
 export const PlatformPage = async () => {
 	const locale = (await getLocale()) as Locale;

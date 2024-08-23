@@ -1,8 +1,9 @@
 import { FC } from 'react';
 
 import { Flex } from '@/components/ui';
-import { ChallengeItem } from '@/entities/Challenge';
-import { ChallengeItemListProps } from '@/entities/Challenge/type';
+
+import { ChallengeItem } from '../ChallengeItem/ChallengeItem';
+import { ChallengeItemListProps } from '../type';
 
 import styles from './ChallengeItemList.module.scss';
 

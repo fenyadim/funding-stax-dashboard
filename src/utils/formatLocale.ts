@@ -1,4 +1,4 @@
-import { Locale } from '@/config/localeConfig';
+import { Locale } from '@/shared/config/localeConfig';
 
 export const formatLocaleNumber = (locale: Locale, value: number) => {
 	const currencyLocale: Record<string, string> = {

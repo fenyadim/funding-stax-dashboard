@@ -1,4 +1,4 @@
-import { Locale } from '@/config/localeConfig';
+import { Locale } from '@/shared/config/localeConfig';
 
 interface PlatformStatisticPropsBase {
 	title: string;

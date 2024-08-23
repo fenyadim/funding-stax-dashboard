@@ -1,9 +1,10 @@
 import type { ChartData, ChartOptions } from 'chart.js';
 
-import { manrope, roboto } from '@/app/fonts';
-import { Locale } from '@/config/localeConfig';
+import { Locale } from '@/shared/config/localeConfig';
 import { formatLocaleNumber } from '@/utils/formatLocale';
 import { linearGradientChart } from '@/utils/linearGradientChart';
+
+import { manrope, roboto } from '../fonts/fonts';
 
 export const linearOptions = (locale: Locale): ChartOptions<'line'> => ({
 	responsive: true,

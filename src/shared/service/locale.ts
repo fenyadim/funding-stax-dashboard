@@ -2,7 +2,7 @@
 
 import { cookies } from 'next/headers';
 
-import { Locale, defaultLocale } from '@/config/localeConfig';
+import { Locale, defaultLocale } from '@/shared/config/localeConfig';
 
 const COOKIE_NAME = 'NEXT_LOCAlE';
 

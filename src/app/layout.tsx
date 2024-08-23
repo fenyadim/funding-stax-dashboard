@@ -1,13 +1,9 @@
-import '../styles/globals.css';
 import type { Metadata } from 'next';
-import { NextIntlClientProvider } from 'next-intl';
-import { getLocale, getMessages } from 'next-intl/server';
+import { getLocale } from 'next-intl/server';
 
-import { manrope, roboto } from '@/app/fonts';
-import { Footer, Header, Sidebar } from '@/components';
-import { Flex } from '@/components/ui';
-
-import styles from './layout.module.scss';
+import { manrope, roboto } from '@/shared/fonts/fonts';
+import { RootProviders } from '@/shared/providers/RootProviders/RootProviders';
+import '@/shared/styles/globals.css';
 
 export const metadata: Metadata = {
 	title: 'Funding Stax',
@@ -20,21 +16,10 @@ export default async function RootLayout({
 	children: React.ReactNode;
 }>) {
 	const locale = await getLocale();
-	const messages = await getMessages();
-
 	return (
 		<html lang={locale}>
 			<body className={`${manrope.variable} ${roboto.variable}`}>
-				<NextIntlClientProvider messages={messages}>
-					<Header />
-					<Flex align='start' gap='16'>
-						<Sidebar />
-						<main className={styles.mainWrapper}>
-							{children}
-							<Footer />
-						</main>
-					</Flex>
-				</NextIntlClientProvider>
+				<RootProviders>{children}</RootProviders>
 			</body>
 		</html>
 	);

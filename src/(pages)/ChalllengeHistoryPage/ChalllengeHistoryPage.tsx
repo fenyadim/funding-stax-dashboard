@@ -1,9 +1,9 @@
 import { getLocale, getTranslations } from 'next-intl/server';
 
+import { AuthForm } from '@/components/features/AuthForm/AuthForm';
 import { Flex } from '@/components/ui';
-import { Locale } from '@/config/localeConfig';
-import { ChallengeItemList } from '@/entities/Challenge';
-import { ChallengeItemProps } from '@/entities/Challenge/type';
+import { ChallengeItemList, ChallengeItemProps } from '@/entities/Challenge';
+import { Locale } from '@/shared/config/localeConfig';
 
 export const ChallengeHistoryPage = async () => {
 	const locale = (await getLocale()) as Locale;
@@ -17,34 +17,34 @@ export const ChallengeHistoryPage = async () => {
 			stageCount: '1',
 			todayPnl: -347.64,
 		},
-		{
-			accountId: '826462',
-			challengeCount: 6000,
-			result: 'Success',
-			stageCount: '2',
-			todayPnl: 34.64,
-		},
-		{
-			accountId: '826464',
-			challengeCount: 6000,
-			result: 'Failed',
-			stageCount: '1',
-			todayPnl: -347.64,
-		},
-		{
-			accountId: '826462',
-			challengeCount: 6000,
-			result: 'Success',
-			stageCount: '2',
-			todayPnl: 34.64,
-		},
-		{
-			accountId: '826464',
-			challengeCount: 6000,
-			result: 'Failed',
-			stageCount: '1',
-			todayPnl: -347.64,
-		},
+		// {
+		// 	accountId: '826462',
+		// 	challengeCount: 6000,
+		// 	result: 'Success',
+		// 	stageCount: '2',
+		// 	todayPnl: 34.64,
+		// },
+		// {
+		// 	accountId: '826464',
+		// 	challengeCount: 6000,
+		// 	result: 'Failed',
+		// 	stageCount: '1',
+		// 	todayPnl: -347.64,
+		// },
+		// {
+		// 	accountId: '826462',
+		// 	challengeCount: 6000,
+		// 	result: 'Success',
+		// 	stageCount: '2',
+		// 	todayPnl: 34.64,
+		// },
+		// {
+		// 	accountId: '826464',
+		// 	challengeCount: 6000,
+		// 	result: 'Failed',
+		// 	stageCount: '1',
+		// 	todayPnl: -347.64,
+		// },
 	];
 
 	return (
@@ -54,6 +54,7 @@ export const ChallengeHistoryPage = async () => {
 				locale={locale}
 				challengeItems={items}
 			/>
+			<AuthForm />
 		</Flex>
 	);
 };

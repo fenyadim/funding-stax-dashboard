@@ -4,7 +4,7 @@ import { FC } from 'react';
 import { PlatformStatistic } from '@/components/Platform';
 import { DoughnutChart, LinearChart } from '@/components/features';
 import { Card, Flex } from '@/components/ui';
-import { Locale } from '@/config/localeConfig';
+import { Locale } from '@/shared/config/localeConfig';
 
 import styles from './PlatformDetailInfo.module.scss';
 

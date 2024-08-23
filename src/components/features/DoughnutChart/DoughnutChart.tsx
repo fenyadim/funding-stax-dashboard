@@ -2,7 +2,10 @@ import { ArcElement, Chart as ChartJS } from 'chart.js';
 import { FC } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 
-import { doughnutData, doughnutOptions } from '@/config/doughnutChartConfig';
+import {
+	doughnutData,
+	doughnutOptions,
+} from '@/shared/config/doughnutChartConfig';
 
 ChartJS.register(ArcElement);
 

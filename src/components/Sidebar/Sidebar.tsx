@@ -7,7 +7,7 @@ import React from 'react';
 import { Banner } from '@/components/Banner/Banner';
 import { SocialButtons } from '@/components/features';
 import { Button, Card } from '@/components/ui';
-import { routeConfig } from '@/config/routeConfig';
+import { routeConfig } from '@/shared/config/routeConfig';
 
 import styles from './Sidebar.module.scss';
 

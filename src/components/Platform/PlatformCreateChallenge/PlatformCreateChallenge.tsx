@@ -9,7 +9,7 @@ import {
 	PlatformStatistic,
 } from '@/components/Platform';
 import { Card, Checkbox, Flex } from '@/components/ui';
-import { Locale } from '@/config/localeConfig';
+import { Locale } from '@/shared/config/localeConfig';
 
 import styles from './PlatformCreateChallenge.module.scss';
 

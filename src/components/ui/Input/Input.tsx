@@ -3,15 +3,17 @@ import React, { ComponentPropsWithoutRef, forwardRef } from 'react';
 
 import styles from './Input.module.scss';
 
-interface InputProps extends ComponentPropsWithoutRef<'input'> {}
+export interface InputProps extends ComponentPropsWithoutRef<'input'> {
+	theme?: 'grey' | 'dark';
+}
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-	({ className, ...props }, ref) => {
+	({ className, theme = 'grey', ...props }, ref) => {
 		return (
 			<>
 				<input
 					ref={ref}
-					className={cn(styles.input, className)}
+					className={cn(styles.input, className, styles[theme])}
 					{...props}
 				/>
 			</>

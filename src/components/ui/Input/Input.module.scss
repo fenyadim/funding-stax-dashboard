@@ -5,6 +5,13 @@
   padding: 13px 0 14px 30px;
   border: none;
   outline: none;
-  background-color: var(--card-color);
   border-radius: 50px;
+}
+
+.grey {
+  background-color: var(--card-color);
+}
+
+.dark {
+  background-color: var(--bg-color);
 }

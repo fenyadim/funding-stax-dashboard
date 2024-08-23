@@ -11,8 +11,8 @@ import { useLocale } from 'next-intl';
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 
-import { linearData, linearOptions } from '@/config/linearChartConfig';
-import { Locale } from '@/config/localeConfig';
+import { linearData, linearOptions } from '@/shared/config/linearChartConfig';
+import { Locale } from '@/shared/config/localeConfig';
 
 ChartJS.register(
 	CategoryScale,

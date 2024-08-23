@@ -1,6 +1,7 @@
 'use client';
 
 import { Bell, LogOut, Search } from 'lucide-react';
+import { signIn } from 'next-auth/react';
 import { useLocale } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -9,8 +10,8 @@ import { FC } from 'react';
 import { Profile } from '@/components';
 import { LocaleSelect } from '@/components/features';
 import { Button, Flex, Input } from '@/components/ui';
-import { Locale } from '@/config/localeConfig';
-import { useNowDate } from '@/hooks/useNowDate';
+import { Locale } from '@/shared/config/localeConfig';
+import { useNowDate } from '@/shared/hooks/useNowDate';
 
 import styles from './Header.module.scss';
 
@@ -55,7 +56,11 @@ const Header: FC = () => {
 				/>
 				<Flex gap='16'>
 					<LocaleSelect locale={locale} />
-					<Button isRound size='medium'>
+					<Button
+						isRound
+						size='medium'
+						onClick={() => signIn('google')}
+					>
 						<LogOut />
 					</Button>
 				</Flex>

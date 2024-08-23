@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Button, Flex, Popover } from '@/components/ui';
-import { Locale } from '@/config/localeConfig';
+import { Locale } from '@/shared/config/localeConfig';
 import { formatLocaleNumber } from '@/utils/formatLocale';
 
 import styles from './PlatformOption.module.scss';

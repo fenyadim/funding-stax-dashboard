@@ -6,7 +6,8 @@ import { FC, useState } from 'react';
 
 import { PlatformDetailInfo, PlatformStatistic } from '@/components/Platform';
 import { Button, Card } from '@/components/ui';
-import { ChallengeItemProps } from '@/entities/Challenge/type';
+
+import { ChallengeItemProps } from '../type';
 
 import styles from './ChallengeItem.module.scss';
 
@@ -28,7 +29,9 @@ export const ChallengeItem: FC<ChallengeItemProps> = ({
 	return (
 		<>
 			<Card
-				className={cn(styles.cardWrapper, { [styles.open]: open })}
+				className={cn(styles.cardWrapper, {
+					[styles.open]: open,
+				})}
 				size='small'
 				justify='between'
 				max

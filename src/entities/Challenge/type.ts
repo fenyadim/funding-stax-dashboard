@@ -1,5 +1,5 @@
 import { CardProps } from '@/components/ui';
-import { Locale } from '@/config/localeConfig';
+import { Locale } from '@/shared/config/localeConfig';
 
 export interface ChallengeItemListProps {
 	locale: Locale;
