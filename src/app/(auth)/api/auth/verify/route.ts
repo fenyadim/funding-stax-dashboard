@@ -1,18 +1,17 @@
+'use server';
+
 import { NextRequest, NextResponse } from 'next/server';
 
 import { prisma } from '@/prisma/prisma-client';
 
 export async function GET(req: NextRequest) {
+	const code = req.nextUrl.searchParams.get('code');
+
+	if (!code) {
+		return NextResponse.json({ error: 'Неверный код' }, { status: 400 });
+	}
+
 	try {
-		const code = req.nextUrl.searchParams.get('code');
-
-		if (!code) {
-			return NextResponse.json(
-				{ error: 'Неверный код' },
-				{ status: 400 },
-			);
-		}
-
 		const verificationCode = await prisma.verificationCode.findFirst({
 			where: {
 				code,
@@ -41,7 +40,9 @@ export async function GET(req: NextRequest) {
 			},
 		});
 
-		return NextResponse.redirect(new URL('/?verified', req.url));
+		NextResponse.redirect(new URL('/?verified', req.url));
+
+		return NextResponse.json({});
 	} catch (e) {
 		console.error(e);
 		console.log('[VERIFY_GET] Server error', e);
