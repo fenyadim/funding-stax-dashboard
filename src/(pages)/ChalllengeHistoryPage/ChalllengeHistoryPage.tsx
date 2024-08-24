@@ -1,7 +1,5 @@
 import { getLocale, getTranslations } from 'next-intl/server';
 
-import { AuthForm } from '@/components/features/AuthForm/AuthForm';
-import { Flex } from '@/components/ui';
 import { ChallengeItemList, ChallengeItemProps } from '@/entities/Challenge';
 import { Locale } from '@/shared/config/localeConfig';
 
@@ -48,13 +46,10 @@ export const ChallengeHistoryPage = async () => {
 	];
 
 	return (
-		<Flex>
-			<ChallengeItemList
-				title={t('Challenge History')}
-				locale={locale}
-				challengeItems={items}
-			/>
-			<AuthForm />
-		</Flex>
+		<ChallengeItemList
+			title={t('Challenge History')}
+			locale={locale}
+			challengeItems={items}
+		/>
 	);
 };

@@ -1,11 +1,11 @@
 import { FC } from 'react';
 
-import { RegisterForm } from '@/components/features/RegisterForm/RegisterForm';
+import { AuthForm } from '@/components/features/AuthForm/AuthForm';
 
 interface SignInPageProps {
 	className?: string;
 }
 
 export const AuthPage: FC<SignInPageProps> = ({}) => {
-	return <RegisterForm />;
+	return <AuthForm />;
 };

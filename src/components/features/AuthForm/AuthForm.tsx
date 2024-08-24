@@ -1,13 +1,10 @@
 'use client';
 
-import { zodResolver } from '@hookform/resolvers/zod';
 import { signIn } from 'next-auth/react';
-import { FC } from 'react';
-import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
+import { FC, useState } from 'react';
 
-import { FormInput } from '@/components/features/FormInput/FormInput';
 import { Button, Card, Flex } from '@/components/ui';
-import { TFormLoginValues, loginSchema } from '@/shared/lib/zod';
+import { LoginForm, RegisterForm } from '@/entities/Auth';
 
 import styles from './AuthForm.module.scss';
 
@@ -16,53 +13,27 @@ interface AuthFormProps {
 }
 
 export const AuthForm: FC<AuthFormProps> = ({}) => {
-	const form = useForm<TFormLoginValues>({
-		resolver: zodResolver(loginSchema),
-		defaultValues: {
-			email: '',
-			password: '',
-		},
-	});
-
-	const onSubmit: SubmitHandler<TFormLoginValues> = async (data) => {
-		try {
-			await signIn('credentials', {
-				...data,
-				redirect: false,
-			});
-		} catch (e: any) {
-			throw Error('Что-то пошло не так', e);
-		}
-	};
+	const [mode, setMode] = useState<'login' | 'register'>('login');
 
 	return (
 		<Card direction='column' gap='32' className={styles.wrapper}>
-			<h1 className={styles.title}>Войти в личный кабинет</h1>
-			<FormProvider {...form}>
-				<form
-					style={{ width: '100%' }}
-					onSubmit={form.handleSubmit(onSubmit)}
-				>
-					<Flex max direction='column' gap='32' align='stretch'>
-						<FormInput
-							name='email'
-							theme='dark'
-							type='email'
-							placeholder='Email'
-						/>
-
-						<FormInput
-							name='password'
-							theme='dark'
-							type='password'
-							placeholder='Password'
-						/>
-						<Button theme='accent' type='submit'>
-							{form.formState.isSubmitting ? 'Вход...' : 'Войти'}
-						</Button>
-					</Flex>
-				</form>
-			</FormProvider>
+			<h1 className={styles.title}>
+				{mode === 'login' ? 'Войти' : 'Зарегистрироваться'}
+			</h1>
+			<Flex>
+				<Button onClick={() => setMode('login')}>Войти</Button>
+				<Button onClick={() => setMode('register')}>
+					Зарегистрироваться
+				</Button>
+			</Flex>
+			{mode === 'login' ? <LoginForm /> : <RegisterForm />}
+			<Button
+				onClick={() => {
+					signIn('google');
+				}}
+			>
+				Вход через Google
+			</Button>
 		</Card>
 	);
 };

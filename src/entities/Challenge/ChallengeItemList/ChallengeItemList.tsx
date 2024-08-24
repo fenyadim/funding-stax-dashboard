@@ -1,11 +1,9 @@
 import { FC } from 'react';
 
-import { Flex } from '@/components/ui';
+import { Block } from '@/components/ui';
 
 import { ChallengeItem } from '../ChallengeItem/ChallengeItem';
 import { ChallengeItemListProps } from '../type';
-
-import styles from './ChallengeItemList.module.scss';
 
 export const ChallengeItemList: FC<ChallengeItemListProps> = ({
 	locale,
@@ -13,14 +11,7 @@ export const ChallengeItemList: FC<ChallengeItemListProps> = ({
 	challengeItems,
 }) => {
 	return (
-		<Flex
-			direction='column'
-			align='start'
-			gap='8'
-			max
-			className={styles.wrapper}
-		>
-			<h2 className={styles.title}>{title}</h2>
+		<Block direction='column' gap='16' title={title}>
 			{challengeItems.map((item, index) => (
 				<ChallengeItem
 					key={`${item.accountId}-${index}`}
@@ -29,6 +20,6 @@ export const ChallengeItemList: FC<ChallengeItemListProps> = ({
 					{...item}
 				/>
 			))}
-		</Flex>
+		</Block>
 	);
 };

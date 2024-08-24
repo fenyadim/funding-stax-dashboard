@@ -4,7 +4,7 @@ interface PlatformStatisticPropsBase {
 	title: string;
 	before?: string;
 	after?: string;
-	size?: 'small' | 'large';
+	size?: 'small' | 'medium' | 'large';
 	className?: string;
 	/* Сумма челледжа, от которого посчитается процент */
 	percentOf?: number;

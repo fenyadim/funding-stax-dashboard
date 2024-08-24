@@ -1,10 +1,10 @@
 import cn from 'classnames';
-import React, { FC } from 'react';
+import { FC } from 'react';
 
 import { Flex, Popover } from '@/components/ui';
-import { calcPercentOf } from '@/utils/calcPercentOf';
-import { formatLocaleNumber } from '@/utils/formatLocale';
-import { minusOrPlusSign } from '@/utils/minusOrPlusSign';
+import { calcPercentOf } from '@/shared/utils/calcPercentOf';
+import { formatLocaleNumber } from '@/shared/utils/formatLocale';
+import { minusOrPlusSign } from '@/shared/utils/minusOrPlusSign';
 
 import styles from './PlatformStatistic.module.scss';
 import { PlatformStatisticProps } from './types';
@@ -36,18 +36,22 @@ export const PlatformStatistic: FC<PlatformStatisticProps> = ({
 				<h3
 					className={cn(styles.value, {
 						[styles.minus]:
-							minusOrPlusSign(value as number) === '-',
+							mode === 'pnl' ||
+							(mode === 'percent' &&
+								minusOrPlusSign(value as number) === '-'),
 					})}
 				>
 					{before}
-					{mode === 'pnl' && minusOrPlusSign(value as number)}
+					{mode === 'pnl' ||
+						(mode === 'percent' &&
+							minusOrPlusSign(value as number))}
 					{mode === 'currency' || (mode === 'pnl' && locale)
 						? '$'
 						: ''}{' '}
 					<span>
-						{mode === 'text' || !locale
+						{typeof value === 'string' || !locale
 							? value
-							: formatLocaleNumber(locale, value as number)}
+							: formatLocaleNumber(locale, value)}
 					</span>{' '}
 					{after}
 				</h3>

@@ -1,8 +1,8 @@
 import type { ChartData, ChartOptions } from 'chart.js';
 
 import { Locale } from '@/shared/config/localeConfig';
-import { formatLocaleNumber } from '@/utils/formatLocale';
-import { linearGradientChart } from '@/utils/linearGradientChart';
+import { formatLocaleNumber } from '@/shared/utils/formatLocale';
+import { linearGradientChart } from '@/shared/utils/linearGradientChart';
 
 import { manrope, roboto } from '../fonts/fonts';
 

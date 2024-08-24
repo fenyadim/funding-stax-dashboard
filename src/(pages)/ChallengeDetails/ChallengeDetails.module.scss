@@ -1,0 +1,5 @@
+.wrapper {
+  > div {
+    flex-basis: calc((100% - 32px) / 4);
+  }
+}

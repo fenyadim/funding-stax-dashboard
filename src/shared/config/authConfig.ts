@@ -38,14 +38,12 @@ export const authOption: NextAuthConfig = {
 
 				if (!findUser) return null;
 
-				console.log(await bcrypt.hash(password, 10));
+				const isPasswordValid = await bcrypt.compare(
+					password,
+					findUser.password as string,
+				);
 
-				// const isPasswordValid = await compare(
-				// 	credentials.password as string,
-				// 	findUser.password as string,
-				// );
-
-				// if (!isPasswordValid) return null;
+				if (!isPasswordValid) return null;
 
 				return {
 					id: findUser.id,
@@ -56,9 +54,20 @@ export const authOption: NextAuthConfig = {
 			},
 		}),
 	],
+	events: {
+		linkAccount: async ({ user }) => {
+			await prisma.user.update({
+				where: { id: user.id },
+				data: {
+					emailVerified: new Date(),
+					role: 'USER',
+				},
+			});
+		},
+	},
 	secret: process.env.AUTH_SECRET,
 	callbacks: {
-		jwt: ({ token, user }) => {
+		jwt: async ({ token, user }) => {
 			if (user) {
 				token.id = user.id;
 				token.name = user.name;
@@ -66,10 +75,6 @@ export const authOption: NextAuthConfig = {
 				token.role = user.role;
 			}
 			return token;
-		},
-		session: ({ session, user }) => {
-			session.user.id = user.id;
-			return session;
 		},
 	},
 	pages: {
