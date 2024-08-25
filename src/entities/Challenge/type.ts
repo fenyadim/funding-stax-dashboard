@@ -8,6 +8,7 @@ export interface ChallengeItemListProps {
 }
 
 export interface ChallengeItemProps {
+	id: string;
 	locale: Locale;
 	accountId: string;
 	challengeCount: number;

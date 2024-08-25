@@ -9,6 +9,7 @@ export const ChallengeHistoryPage = async () => {
 
 	const items: Omit<ChallengeItemProps, 'locale' | 'theme'>[] = [
 		{
+			id: '24',
 			accountId: '826464',
 			challengeCount: 6000,
 			result: 'Failed',

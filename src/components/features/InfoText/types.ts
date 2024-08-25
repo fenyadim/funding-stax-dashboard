@@ -1,5 +1,10 @@
 import { Locale } from '@/shared/config/localeConfig';
 
+export type Modes = 'currency' | 'percent' | 'pnl' | 'text';
+
+export type NumberModes = 'currency' | 'percent' | 'pnl';
+type StringModes = 'text';
+
 interface PlatformStatisticPropsBase {
 	title: string;
 	before?: string;
@@ -14,13 +19,13 @@ interface PlatformStatisticPropsBase {
 
 interface PlatformStatisticPropsWithoutLocale
 	extends PlatformStatisticPropsBase {
-	mode?: 'text';
+	mode?: StringModes;
 	value: string;
 	locale?: Locale;
 }
 
 interface PlatformStatisticPropsWithLocale extends PlatformStatisticPropsBase {
-	mode: 'currency' | 'percent' | 'pnl';
+	mode: NumberModes;
 	value: number;
 	locale: Locale;
 }

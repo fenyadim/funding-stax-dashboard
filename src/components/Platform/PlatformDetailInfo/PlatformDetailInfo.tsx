@@ -1,8 +1,7 @@
 import { useTranslations } from 'next-intl';
 import { FC } from 'react';
 
-import { PlatformStatistic } from '@/components/Platform';
-import { DoughnutChart, LinearChart } from '@/components/features';
+import { DoughnutChart, InfoText, LinearChart } from '@/components/features';
 import { Card, Flex } from '@/components/ui';
 import { Locale } from '@/shared/config/localeConfig';
 
@@ -27,7 +26,7 @@ export const PlatformDetailInfo: FC<PlatformDetailInfoProps> = ({
 				direction='column'
 				align='start'
 			>
-				<PlatformStatistic
+				<InfoText
 					className={styles.textWrapper}
 					value={5665.69}
 					title='Account Balance'
@@ -42,13 +41,13 @@ export const PlatformDetailInfo: FC<PlatformDetailInfoProps> = ({
 				gap='16'
 				align='start'
 			>
-				<PlatformStatistic
+				<InfoText
 					value={814.31}
 					title={t('Target Amount Left to Earn')}
 					locale={locale}
 					mode='currency'
 				/>
-				<PlatformStatistic
+				<InfoText
 					value={-334.31}
 					title={t('Total P/L')}
 					locale={locale}
@@ -62,14 +61,14 @@ export const PlatformDetailInfo: FC<PlatformDetailInfoProps> = ({
 				className={styles.pnlPercentWrapper}
 			>
 				<Flex direction='column' gap='16'>
-					<PlatformStatistic
+					<InfoText
 						value={20}
 						title={t('Winning Trades')}
 						locale={locale}
 						mode='percent'
 						after='%'
 					/>
-					<PlatformStatistic
+					<InfoText
 						value={-80}
 						title={t('Losing Trades')}
 						locale={locale}
@@ -80,14 +79,14 @@ export const PlatformDetailInfo: FC<PlatformDetailInfoProps> = ({
 				<DoughnutChart winValue={20} loseValue={80} />
 			</Card>
 			<Card size='small'>
-				<PlatformStatistic
+				<InfoText
 					className={styles.limitWrapper}
 					value='07/29/2024'
 					title={t('No limit')}
 				/>
 			</Card>
 			<Card theme='negative' size='small'>
-				<PlatformStatistic
+				<InfoText
 					value={300.67}
 					mode='currency'
 					locale={locale}
@@ -95,13 +94,10 @@ export const PlatformDetailInfo: FC<PlatformDetailInfoProps> = ({
 				/>
 			</Card>
 			<Card theme='negative' size='small'>
-				<PlatformStatistic
-					value='19'
-					title={t('Active Trading Days')}
-				/>
+				<InfoText value='19' title={t('Active Trading Days')} />
 			</Card>
 			<Card theme='positive' size='small'>
-				<PlatformStatistic
+				<InfoText
 					value={600}
 					mode='currency'
 					locale={locale}

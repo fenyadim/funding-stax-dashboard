@@ -2,7 +2,7 @@ import { useLocale } from 'next-intl';
 import Image from 'next/image';
 import { FC } from 'react';
 
-import { PlatformStatistic } from '@/components/Platform';
+import { InfoText } from '@/components/features';
 import { Block, Card, Flex } from '@/components/ui';
 import { Locale } from '@/shared/config/localeConfig';
 import { useFormatDate } from '@/shared/hooks/useFormatDate';
@@ -24,12 +24,12 @@ export const ChallengeDetails: FC<ChallengeDetailsProps> = ({ id }) => {
 		<Flex>
 			<Block className={styles.wrapper} gap='16' title='Performance' max>
 				<Card size='small' direction='column' align='start' gap='16'>
-					<PlatformStatistic
+					<InfoText
 						size='medium'
 						value='Trade Locker'
 						title='Platform'
 					/>
-					<PlatformStatistic
+					<InfoText
 						size='medium'
 						value={5665.69}
 						title='Balance'
@@ -38,13 +38,13 @@ export const ChallengeDetails: FC<ChallengeDetailsProps> = ({ id }) => {
 					/>
 				</Card>
 				<Card size='small' direction='column' align='start' gap='16'>
-					<PlatformStatistic
+					<InfoText
 						size='medium'
 						before={`${differenceDays(dateNow, dateRemaining)} days`}
 						value={dateRemaining}
 						title='Time Remaining'
 					/>
-					<PlatformStatistic
+					<InfoText
 						size='medium'
 						value={-11.24}
 						title='Ovreall Profit/Loss'
@@ -54,7 +54,7 @@ export const ChallengeDetails: FC<ChallengeDetailsProps> = ({ id }) => {
 					/>
 				</Card>
 				<Card size='small' direction='column' align='start' gap='16'>
-					<PlatformStatistic
+					<InfoText
 						size='medium'
 						value={-347.64}
 						mode={'pnl'}
@@ -62,7 +62,7 @@ export const ChallengeDetails: FC<ChallengeDetailsProps> = ({ id }) => {
 						title='24hr Profit/Loss'
 						info='Что-то пробует. Что-то пробует. Что-то пробует.'
 					/>
-					<PlatformStatistic
+					<InfoText
 						size='medium'
 						value={5665.69}
 						title='Daily Lowest Equity'
@@ -73,7 +73,7 @@ export const ChallengeDetails: FC<ChallengeDetailsProps> = ({ id }) => {
 				</Card>
 				<Card size='small' direction='column' align='start' gap='16'>
 					<Flex max justify='between'>
-						<PlatformStatistic
+						<InfoText
 							size='medium'
 							value={-11.24}
 							after='%'
@@ -90,7 +90,7 @@ export const ChallengeDetails: FC<ChallengeDetailsProps> = ({ id }) => {
 						/>
 					</Flex>
 					<Flex max justify='between'>
-						<PlatformStatistic
+						<InfoText
 							size='medium'
 							value={11.24}
 							after='%'

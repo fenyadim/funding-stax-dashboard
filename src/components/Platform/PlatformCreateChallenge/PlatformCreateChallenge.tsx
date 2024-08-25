@@ -3,11 +3,8 @@
 import { useTranslations } from 'next-intl';
 import { FC, useState } from 'react';
 
-import {
-	PlatformItemType,
-	PlatformOption,
-	PlatformStatistic,
-} from '@/components/Platform';
+import { PlatformItemType, PlatformOption } from '@/components/Platform';
+import { InfoText } from '@/components/features';
 import { Card, Checkbox, Flex } from '@/components/ui';
 import { Locale } from '@/shared/config/localeConfig';
 
@@ -77,40 +74,19 @@ export const PlatformCreateChallenge: FC<PlatformCreateChallengeProps> = ({
 				</Flex>
 			</Flex>
 			<div className={styles.statisticsWrapper}>
-				<PlatformStatistic
-					title={t('Platform')}
-					value={t('Trade Locker')}
-				/>
-				<PlatformStatistic
+				<InfoText title={t('Platform')} value={t('Trade Locker')} />
+				<InfoText
 					mode='currency'
 					title={t('Refundable Registration Fee')}
 					value={56}
 					locale={locale}
 				/>
-				<PlatformStatistic
-					title={t('Max Daily Loss')}
-					value='3'
-					after='%'
-				/>
-				<PlatformStatistic
-					title={t('Profit Target')}
-					value='10'
-					after='%'
-				/>
-				<PlatformStatistic
-					title={t('Minimum Trading Days')}
-					value='4'
-				/>
-				<PlatformStatistic
-					title={t('Duration')}
-					value={t('Unlimited')}
-				/>
-				<PlatformStatistic title={t('Leverage')} value='1:30' />
-				<PlatformStatistic
-					title={t('Max Overall Loss')}
-					value='6'
-					after='%'
-				/>
+				<InfoText title={t('Max Daily Loss')} value='3' after='%' />
+				<InfoText title={t('Profit Target')} value='10' after='%' />
+				<InfoText title={t('Minimum Trading Days')} value='4' />
+				<InfoText title={t('Duration')} value={t('Unlimited')} />
+				<InfoText title={t('Leverage')} value='1:30' />
+				<InfoText title={t('Max Overall Loss')} value='6' after='%' />
 			</div>
 		</Card>
 	);

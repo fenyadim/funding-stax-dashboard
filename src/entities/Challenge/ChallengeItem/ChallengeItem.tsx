@@ -2,9 +2,11 @@
 
 import cn from 'classnames';
 import { useTranslations } from 'next-intl';
-import { FC, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { FC, MouseEventHandler, useRef, useState } from 'react';
 
-import { PlatformDetailInfo, PlatformStatistic } from '@/components/Platform';
+import { PlatformDetailInfo } from '@/components/Platform';
+import { InfoText } from '@/components/features';
 import { Button, Card } from '@/components/ui';
 
 import { ChallengeItemProps } from '../type';
@@ -19,12 +21,17 @@ export const ChallengeItem: FC<ChallengeItemProps> = ({
 	todayPnl,
 	accountId,
 	theme,
+	id,
 }) => {
 	const t = useTranslations('PlatformPage');
 
 	const [open, setOpen] = useState(false);
+	const router = useRouter();
+	const buttonRef = useRef(null);
 
-	const handleOpen = () => setOpen(!open);
+	const handleOpen: MouseEventHandler<HTMLDivElement> = (e) => {
+		if (e.target !== buttonRef.current) setOpen(!open);
+	};
 
 	return (
 		<>
@@ -38,25 +45,25 @@ export const ChallengeItem: FC<ChallengeItemProps> = ({
 				theme={theme}
 				onClick={handleOpen}
 			>
-				<PlatformStatistic
+				<InfoText
 					size='small'
 					title={t('Platform')}
 					value={t('Trade Locker')}
 				/>
-				<PlatformStatistic
+				<InfoText
 					size='small'
 					title={t('Account')}
 					value={accountId}
 					before='#'
 				/>
-				<PlatformStatistic
+				<InfoText
 					mode='currency'
 					size='small'
 					title={t('Challenge')}
 					value={challengeCount}
 					locale={locale}
 				/>
-				<PlatformStatistic
+				<InfoText
 					mode='pnl'
 					size='small'
 					title={t("Today's P/L")}
@@ -66,17 +73,18 @@ export const ChallengeItem: FC<ChallengeItemProps> = ({
 					value={todayPnl}
 					locale={locale}
 				/>
-				<PlatformStatistic
-					size='small'
-					title={t('Stage')}
-					value={stageCount}
-				/>
-				<PlatformStatistic
+				<InfoText size='small' title={t('Stage')} value={stageCount} />
+				<InfoText
 					size='small'
 					title={t('Result')}
 					value={t(`${result}`)}
 				/>
-				<Button className={styles.button} theme='accent'>
+				<Button
+					ref={buttonRef}
+					className={styles.button}
+					theme='accent'
+					onClick={() => router.push(`/challenge/${id}`)}
+				>
 					{t('Details')}
 				</Button>
 			</Card>

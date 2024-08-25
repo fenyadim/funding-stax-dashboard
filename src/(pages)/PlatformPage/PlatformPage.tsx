@@ -12,6 +12,7 @@ export const PlatformPage = async () => {
 
 	const items: Omit<ChallengeItemProps, 'locale' | 'theme'>[] = [
 		{
+			id: '1',
 			accountId: '826464',
 			challengeCount: 6000,
 			result: 'Failed',
@@ -19,6 +20,7 @@ export const PlatformPage = async () => {
 			todayPnl: -347.64,
 		},
 		{
+			id: '3',
 			accountId: '826462',
 			challengeCount: 6000,
 			result: 'Success',
