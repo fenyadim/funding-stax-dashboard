@@ -1,9 +1,12 @@
+'use client';
+
 import { useLocale } from 'next-intl';
 import Image from 'next/image';
 import { FC } from 'react';
 
-import { InfoText } from '@/components/features';
+import { InfoText, LinearChart } from '@/components/features';
 import { Block, Card, Flex } from '@/components/ui';
+import { linearDataForChallengeDetails } from '@/shared/config/linearChartConfig';
 import { Locale } from '@/shared/config/localeConfig';
 import { useFormatDate } from '@/shared/hooks/useFormatDate';
 import { differenceDays } from '@/shared/utils/differenceDays';
@@ -22,91 +25,222 @@ export const ChallengeDetails: FC<ChallengeDetailsProps> = ({ id }) => {
 
 	return (
 		<Flex>
-			<Block className={styles.wrapper} gap='16' title='Performance' max>
-				<Card size='small' direction='column' align='start' gap='16'>
-					<InfoText
-						size='medium'
-						value='Trade Locker'
-						title='Platform'
-					/>
-					<InfoText
-						size='medium'
-						value={5665.69}
-						title='Balance'
-						mode='currency'
-						locale={locale}
-					/>
-				</Card>
-				<Card size='small' direction='column' align='start' gap='16'>
-					<InfoText
-						size='medium'
-						before={`${differenceDays(dateNow, dateRemaining)} days`}
-						value={dateRemaining}
-						title='Time Remaining'
-					/>
-					<InfoText
-						size='medium'
-						value={-11.24}
-						title='Ovreall Profit/Loss'
-						mode='pnl'
-						locale={locale}
-						info='Что-то пробует. Что-то пробует. Что-то пробует.'
-					/>
-				</Card>
-				<Card size='small' direction='column' align='start' gap='16'>
-					<InfoText
-						size='medium'
-						value={-347.64}
-						mode={'pnl'}
-						locale={locale}
-						title='24hr Profit/Loss'
-						info='Что-то пробует. Что-то пробует. Что-то пробует.'
-					/>
-					<InfoText
-						size='medium'
-						value={5665.69}
-						title='Daily Lowest Equity'
-						mode='currency'
-						locale={locale}
-						info='Что-то пробует. Что-то пробует. Что-то пробует.'
-					/>
-				</Card>
-				<Card size='small' direction='column' align='start' gap='16'>
-					<Flex max justify='between'>
+			<Block
+				direction='column'
+				align='start'
+				gap='16'
+				title='Performance'
+				max
+			>
+				<Flex gap='16' max className={styles.wrapper}>
+					<Card
+						size='small'
+						direction='column'
+						align='start'
+						gap='16'
+					>
+						<InfoText
+							size='medium'
+							value='Trade Locker'
+							title='Platform'
+						/>
+						<InfoText
+							size='medium'
+							value={5665.69}
+							title='Balance'
+							mode='currency'
+							locale={locale}
+						/>
+					</Card>
+					<Card
+						size='small'
+						direction='column'
+						align='start'
+						gap='16'
+					>
+						<InfoText
+							size='medium'
+							before={`${differenceDays(dateNow, dateRemaining)} days`}
+							value={dateRemaining}
+							title='Time Remaining'
+						/>
 						<InfoText
 							size='medium'
 							value={-11.24}
-							after='%'
-							mode='percent'
-							title='Average Loss'
+							title='Ovreall Profit/Loss'
+							mode='pnl'
 							locale={locale}
 							info='Что-то пробует. Что-то пробует. Что-то пробует.'
 						/>
-						<Image
-							src='/average-loss.svg'
-							alt='Average Loss'
-							width={70}
-							height={55}
-						/>
-					</Flex>
-					<Flex max justify='between'>
+					</Card>
+					<Card
+						size='small'
+						direction='column'
+						align='start'
+						gap='16'
+					>
 						<InfoText
 							size='medium'
-							value={11.24}
-							after='%'
-							title='Average Win'
-							mode='percent'
+							value={-347.64}
+							mode={'pnl'}
+							locale={locale}
+							title='24hr Profit/Loss'
+							info='Что-то пробует. Что-то пробует. Что-то пробует.'
+						/>
+						<InfoText
+							size='medium'
+							value={5665.69}
+							title='Daily Lowest Equity'
+							mode='currency'
 							locale={locale}
 							info='Что-то пробует. Что-то пробует. Что-то пробует.'
 						/>
-						<Image
-							src='/average-win.svg'
-							alt='Average Win'
-							width={70}
-							height={55}
-						/>
+					</Card>
+					<Card
+						size='small'
+						direction='column'
+						align='start'
+						gap='16'
+					>
+						<Flex max justify='between'>
+							<InfoText
+								size='medium'
+								value={-11.24}
+								after='%'
+								mode='percent'
+								title='Average Loss'
+								locale={locale}
+								info='Что-то пробует. Что-то пробует. Что-то пробует.'
+							/>
+							<Image
+								src='/average-loss.svg'
+								alt='Average Loss'
+								width={70}
+								height={55}
+							/>
+						</Flex>
+						<Flex max justify='between'>
+							<InfoText
+								size='medium'
+								value={11.24}
+								after='%'
+								title='Average Win'
+								mode='percent'
+								locale={locale}
+								info='Что-то пробует. Что-то пробует. Что-то пробует.'
+							/>
+							<Image
+								src='/average-win.svg'
+								alt='Average Win'
+								width={70}
+								height={55}
+							/>
+						</Flex>
+					</Card>
+				</Flex>
+				<Flex gap='16' max>
+					<Flex
+						className={styles.chartsLeftInfo}
+						gap='16'
+						direction='column'
+						align='stretch'
+					>
+						<Card
+							size='small'
+							direction='column'
+							align='start'
+							gap='16'
+						>
+							<Flex max justify='between'>
+								<InfoText
+									size='medium'
+									value={-11.24}
+									after='%'
+									mode='percent'
+									title='Average Loss'
+									locale={locale}
+									info='Что-то пробует. Что-то пробует. Что-то пробует.'
+								/>
+								<Image
+									src='/average-loss.svg'
+									alt='Average Loss'
+									width={70}
+									height={55}
+								/>
+							</Flex>
+							<Flex max justify='between'>
+								<InfoText
+									size='medium'
+									value={11.24}
+									after='%'
+									title='Average Win'
+									mode='percent'
+									locale={locale}
+									info='Что-то пробует. Что-то пробует. Что-то пробует.'
+								/>
+								<Image
+									src='/average-win.svg'
+									alt='Average Win'
+									width={70}
+									height={55}
+								/>
+							</Flex>
+						</Card>
+						<Card
+							size='small'
+							direction='column'
+							align='start'
+							gap='16'
+						>
+							<Flex max justify='between'>
+								<InfoText
+									size='medium'
+									value={-11.24}
+									after='%'
+									mode='percent'
+									title='Average Loss'
+									locale={locale}
+									info='Что-то пробует. Что-то пробует. Что-то пробует.'
+								/>
+								<Image
+									src='/average-loss.svg'
+									alt='Average Loss'
+									width={70}
+									height={55}
+								/>
+							</Flex>
+							<Flex max justify='between'>
+								<InfoText
+									size='medium'
+									value={11.24}
+									after='%'
+									title='Average Win'
+									mode='percent'
+									locale={locale}
+									info='Что-то пробует. Что-то пробует. Что-то пробует.'
+								/>
+								<Image
+									src='/average-win.svg'
+									alt='Average Win'
+									width={70}
+									height={55}
+								/>
+							</Flex>
+						</Card>
 					</Flex>
-				</Card>
+					<Card
+						className={styles.chartsWrapper}
+						size='small'
+						direction='column'
+						align='start'
+					>
+						<h3>Charts</h3>
+						<LinearChart
+							data={linearDataForChallengeDetails}
+							theme='full'
+						/>
+					</Card>
+				</Flex>
 			</Block>
 		</Flex>
 	);

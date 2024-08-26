@@ -10,7 +10,7 @@ export const linearGradientChart = <T extends keyof ChartTypeRegistry>(
 	endColor: string,
 ) => {
 	const ctx = context.chart.ctx;
-	const gradient = ctx.createLinearGradient(0, 0, 0, 200);
+	const gradient = ctx.createLinearGradient(0, 0, 0, 350);
 	gradient.addColorStop(0, startColor);
 	gradient.addColorStop(1, endColor);
 	return gradient;

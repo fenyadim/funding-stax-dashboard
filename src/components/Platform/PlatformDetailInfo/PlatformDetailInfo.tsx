@@ -3,6 +3,7 @@ import { FC } from 'react';
 
 import { DoughnutChart, InfoText, LinearChart } from '@/components/features';
 import { Card, Flex } from '@/components/ui';
+import { linearDataForDetailInfo } from '@/shared/config/linearChartConfig';
 import { Locale } from '@/shared/config/localeConfig';
 
 import styles from './PlatformDetailInfo.module.scss';
@@ -33,7 +34,7 @@ export const PlatformDetailInfo: FC<PlatformDetailInfoProps> = ({
 					mode='currency'
 					locale={locale}
 				/>
-				<LinearChart />
+				<LinearChart data={linearDataForDetailInfo} theme='mini' />
 			</Card>
 			<Card
 				className={styles.totalPnlWrapper}
