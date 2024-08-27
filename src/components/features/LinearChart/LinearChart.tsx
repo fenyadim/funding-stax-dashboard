@@ -1,3 +1,5 @@
+'use client';
+
 import type { ChartData, ChartOptions } from 'chart.js';
 import {
 	CategoryScale,
@@ -6,10 +8,13 @@ import {
 	LineElement,
 	LinearScale,
 	PointElement,
+	TimeScale,
+	Tooltip,
 } from 'chart.js';
+import 'chartjs-adapter-date-fns';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { useLocale } from 'next-intl';
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 
 import {
@@ -26,6 +31,8 @@ ChartJS.register(
 	LineElement,
 	ChartDataLabels,
 	Filler,
+	Tooltip,
+	TimeScale,
 );
 
 interface LinearChartProps {
@@ -35,11 +42,18 @@ interface LinearChartProps {
 
 export const LinearChart: FC<LinearChartProps> = ({ data, theme }) => {
 	const locale = useLocale() as Locale;
-
 	const themeMode: Record<LinearChartProps['theme'], ChartOptions<'line'>> = {
 		mini: linearOptionsMinimalism(locale),
 		full: linearOptionsFull(locale),
 	};
+
+	useEffect(() => {
+		if (typeof window !== 'undefined') {
+			import('chartjs-plugin-zoom').then((plugin) => {
+				ChartJS.register(plugin.default);
+			});
+		}
+	}, []);
 
 	return (
 		<Line data={data} options={themeMode[theme]} plugins={linearPlugin} />

@@ -1,10 +1,21 @@
 import type { ChartData, ChartOptions, Plugin } from 'chart.js';
+import { Locale as LocaleFormatter, enUS, ru } from 'date-fns/locale';
 
 import { Locale } from '@/shared/config/localeConfig';
 import { formatLocaleNumber } from '@/shared/utils/formatLocale';
 import { linearGradientChart } from '@/shared/utils/linearGradientChart';
 
 import { manrope, roboto } from '../fonts/fonts';
+
+const localeFormat: Record<Locale, LocaleFormatter> = {
+	en: enUS,
+	ru,
+};
+
+const format: Record<Locale, string> = {
+	en: 'MM/dd/yy @ hh:mm a',
+	ru: 'dd.MM.yy @ HH:mm',
+};
 
 export const linearOptionsMinimalism = (
 	locale: Locale,
@@ -101,34 +112,80 @@ export const linearOptionsFull = (locale: Locale): ChartOptions<'line'> => ({
 		weight: 500,
 	},
 	plugins: {
-		datalabels: {
-			font: {
-				size: 16,
-				weight: 500,
-				family: roboto.style.fontFamily,
+		tooltip: {
+			borderColor: '#BAFF66',
+			borderWidth: 1,
+			cornerRadius: 20,
+			backgroundColor: '#263147',
+			bodyColor: '#6fba64',
+			displayColors: false,
+			padding: {
+				top: 15,
+				bottom: 15,
+				left: 20,
+				right: 20,
 			},
-			color: '#FFFFFF',
-			align: 250,
-			anchor: 'end',
-			formatter: (value, context) => {
-				if (context.dataIndex === context.dataset.data.length - 1) {
-					return '$ ' + formatLocaleNumber(locale, value);
-				}
-				return '';
+			titleFont: {
+				family: manrope.style.fontFamily,
+				weight: 400,
+				size: 14,
+			},
+			bodyFont: {
+				family: manrope.style.fontFamily,
+				weight: 400,
+				size: 14,
+			},
+			callbacks: {
+				title: (tooltipItems) => `Date: ${tooltipItems[0].label}`,
+				labelColor: () => {},
+				label: (tooltipItem) =>
+					`Equity: $ ${formatLocaleNumber(locale, tooltipItem.raw as number)}`,
+			},
+		},
+		datalabels: {
+			display: false,
+		},
+		zoom: {
+			pan: {
+				enabled: true,
+			},
+			zoom: {
+				wheel: {
+					enabled: true,
+				},
+				pinch: {
+					enabled: true,
+				},
 			},
 		},
 	},
 	layout: {
 		autoPadding: true,
-		padding: {
-			top: 30,
-			right: 30,
-		},
 	},
 	scales: {
 		x: {
+			adapters: {
+				date: {
+					locale: localeFormat[locale],
+				},
+			},
+			type: 'time',
+			time: {
+				unit: 'day',
+				displayFormats: {
+					day: format[locale],
+				},
+				tooltipFormat: format[locale],
+			},
 			grid: {
 				color: '#263147',
+			},
+			ticks: {
+				font: {
+					family: manrope.style.fontFamily,
+					weight: 400,
+					size: 14,
+				},
 			},
 		},
 		y: {
@@ -140,16 +197,41 @@ export const linearOptionsFull = (locale: Locale): ChartOptions<'line'> => ({
 					return '#263147';
 				},
 			},
-			ticks: {},
+			adapters: {
+				date: locale,
+			},
+			ticks: {
+				display: true,
+				font: {
+					family: manrope.style.fontFamily,
+					weight: 400,
+					size: 14,
+				},
+				color: '#ECECEC',
+				callback: (tickValue) =>
+					`$ ${formatLocaleNumber(locale, tickValue as number)}`,
+			},
 		},
 	},
 });
 
 export const linearDataForChallengeDetails: ChartData<'line'> = {
-	labels: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+	labels: [
+		new Date('07/29/2024 21:36'),
+		new Date('07/30/2024 04:21'),
+		new Date('07/30/2024 11:06'),
+		new Date('07/30/2024 17:51'),
+		new Date('07/31/2024 00:36'),
+		new Date('07/31/2024 07:21'),
+		new Date('07/31/2024 14:06'),
+		new Date('07/31/2024 20:51'),
+		new Date('08/01/2024 03:36'),
+		new Date('08/01/2024 10:21'),
+		new Date('08/01/2024 17:06'),
+	],
 	datasets: [
 		{
-			data: [5, 8, 10, 12, 3000, 5500, 5665.69],
+			data: [5670, 5610, 5670, 5615, 5820, 5730, 6000, 5700],
 			fill: true,
 			pointBackgroundColor: '#182132',
 			hoverBorderWidth: 3,
