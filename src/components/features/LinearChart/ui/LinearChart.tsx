@@ -17,12 +17,13 @@ import { useLocale } from 'next-intl';
 import React, { FC, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 
+import { Locale } from '@/shared/config/localeConfig';
+
 import {
 	linearOptionsFull,
 	linearOptionsMinimalism,
 	linearPlugin,
-} from '@/shared/config/linearChartConfig';
-import { Locale } from '@/shared/config/localeConfig';
+} from '../config/optionConfig';
 
 ChartJS.register(
 	CategoryScale,

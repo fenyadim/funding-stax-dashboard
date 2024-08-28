@@ -1,21 +1,11 @@
 import type { ChartData, ChartOptions, Plugin } from 'chart.js';
-import { Locale as LocaleFormatter, enUS, ru } from 'date-fns/locale';
 
 import { Locale } from '@/shared/config/localeConfig';
-import { formatLocaleNumber } from '@/shared/utils/formatLocale';
+import { manrope } from '@/shared/fonts';
 import { linearGradientChart } from '@/shared/utils/linearGradientChart';
 
-import { manrope, roboto } from '../fonts/fonts';
-
-const localeFormat: Record<Locale, LocaleFormatter> = {
-	en: enUS,
-	ru,
-};
-
-const format: Record<Locale, string> = {
-	en: 'MM/dd/yy @ hh:mm a',
-	ru: 'dd.MM.yy @ HH:mm',
-};
+import { pluginFullMode, scaleFullMode } from './fullMode';
+import { pluginMiniMode, scaleMiniMode } from './mimiMode';
 
 export const linearOptionsMinimalism = (
 	locale: Locale,
@@ -29,24 +19,7 @@ export const linearOptionsMinimalism = (
 		family: manrope.style.fontFamily,
 		weight: 500,
 	},
-	plugins: {
-		datalabels: {
-			font: {
-				size: 16,
-				weight: 500,
-				family: roboto.style.fontFamily,
-			},
-			color: '#FFFFFF',
-			align: 250,
-			anchor: 'end',
-			formatter: (value, context) => {
-				if (context.dataIndex === context.dataset.data.length - 1) {
-					return '$ ' + formatLocaleNumber(locale, value);
-				}
-				return '';
-			},
-		},
-	},
+	plugins: pluginMiniMode(locale),
 	layout: {
 		autoPadding: true,
 		padding: {
@@ -54,27 +27,7 @@ export const linearOptionsMinimalism = (
 			right: 30,
 		},
 	},
-	scales: {
-		x: {
-			grid: {
-				color: (context) =>
-					linearGradientChart(context, '#BAFF66', 'rgba(0,0,0,0)'),
-				tickLength: 5,
-			},
-			border: {
-				display: false,
-				dash: [2, 2],
-			},
-		},
-		y: {
-			grid: {
-				display: false,
-			},
-			ticks: {
-				display: false,
-			},
-		},
-	},
+	scales: scaleMiniMode(locale),
 });
 
 export const linearDataForDetailInfo: ChartData<'line'> = {
@@ -111,108 +64,11 @@ export const linearOptionsFull = (locale: Locale): ChartOptions<'line'> => ({
 		family: manrope.style.fontFamily,
 		weight: 500,
 	},
-	plugins: {
-		tooltip: {
-			borderColor: '#BAFF66',
-			borderWidth: 1,
-			cornerRadius: 20,
-			backgroundColor: '#263147',
-			bodyColor: '#6fba64',
-			displayColors: false,
-			padding: {
-				top: 15,
-				bottom: 15,
-				left: 20,
-				right: 20,
-			},
-			titleFont: {
-				family: manrope.style.fontFamily,
-				weight: 400,
-				size: 14,
-			},
-			bodyFont: {
-				family: manrope.style.fontFamily,
-				weight: 400,
-				size: 14,
-			},
-			callbacks: {
-				title: (tooltipItems) => `Date: ${tooltipItems[0].label}`,
-				labelColor: () => {},
-				label: (tooltipItem) =>
-					`Equity: $ ${formatLocaleNumber(locale, tooltipItem.raw as number)}`,
-			},
-		},
-		datalabels: {
-			display: false,
-		},
-		zoom: {
-			pan: {
-				enabled: true,
-			},
-			zoom: {
-				wheel: {
-					enabled: true,
-				},
-				pinch: {
-					enabled: true,
-				},
-			},
-		},
-	},
+	plugins: pluginFullMode(locale),
 	layout: {
 		autoPadding: true,
 	},
-	scales: {
-		x: {
-			adapters: {
-				date: {
-					locale: localeFormat[locale],
-				},
-			},
-			type: 'time',
-			time: {
-				unit: 'day',
-				displayFormats: {
-					day: format[locale],
-				},
-				tooltipFormat: format[locale],
-			},
-			grid: {
-				color: '#263147',
-			},
-			ticks: {
-				font: {
-					family: manrope.style.fontFamily,
-					weight: 400,
-					size: 14,
-				},
-			},
-		},
-		y: {
-			grid: {
-				color: (ctx) => {
-					if (ctx.index === 0) {
-						return '#E83536';
-					}
-					return '#263147';
-				},
-			},
-			adapters: {
-				date: locale,
-			},
-			ticks: {
-				display: true,
-				font: {
-					family: manrope.style.fontFamily,
-					weight: 400,
-					size: 14,
-				},
-				color: '#ECECEC',
-				callback: (tickValue) =>
-					`$ ${formatLocaleNumber(locale, tickValue as number)}`,
-			},
-		},
-	},
+	scales: scaleFullMode(locale),
 });
 
 export const linearDataForChallengeDetails: ChartData<'line'> = {

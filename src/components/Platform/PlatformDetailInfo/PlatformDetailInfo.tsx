@@ -1,9 +1,12 @@
 import { useTranslations } from 'next-intl';
 import { FC } from 'react';
 
-import { DoughnutChart, InfoText, LinearChart } from '@/components/features';
+import { DoughnutChart, InfoText } from '@/components/features';
+import {
+	LinearChart,
+	linearDataForDetailInfo,
+} from '@/components/features/LinearChart';
 import { Card, Flex } from '@/components/ui';
-import { linearDataForDetailInfo } from '@/shared/config/linearChartConfig';
 import { Locale } from '@/shared/config/localeConfig';
 
 import styles from './PlatformDetailInfo.module.scss';

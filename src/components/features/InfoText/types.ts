@@ -15,6 +15,7 @@ interface PlatformStatisticPropsBase {
 	percentOf?: number;
 	/* Текст для подсказки */
 	info?: string;
+	align?: 'start' | 'center' | 'end';
 }
 
 interface PlatformStatisticPropsWithoutLocale

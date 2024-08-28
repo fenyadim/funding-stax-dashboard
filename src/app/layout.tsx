@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { getLocale } from 'next-intl/server';
 
-import { manrope, roboto } from '@/shared/fonts/fonts';
+import { manrope, roboto } from '@/shared/fonts';
 import { RootProviders } from '@/shared/providers/RootProviders/RootProviders';
 import '@/shared/styles/globals.css';
 

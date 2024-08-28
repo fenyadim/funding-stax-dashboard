@@ -11,3 +11,4 @@ export { ALink } from './ALink/ALink';
 export { Checkbox } from './Checkbox/Checkbox';
 export { Popover } from './Popover/Popover';
 export { Block } from './Block/Block';
+export { Table } from './Table/Table';

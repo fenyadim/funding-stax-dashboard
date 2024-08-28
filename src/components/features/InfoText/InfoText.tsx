@@ -15,6 +15,7 @@ export const InfoText: FC<PlatformStatisticProps> = ({
 	locale,
 	size = 'large',
 	mode = 'text',
+	align = 'start',
 	info,
 	percentOf,
 	className,
@@ -24,7 +25,7 @@ export const InfoText: FC<PlatformStatisticProps> = ({
 			className={cn(styles.wrapper, styles[size], className)}
 			direction='column'
 			gap='8'
-			align='start'
+			align={align}
 		>
 			<Flex gap='8'>
 				<p className={styles.title}>{title}</p>
