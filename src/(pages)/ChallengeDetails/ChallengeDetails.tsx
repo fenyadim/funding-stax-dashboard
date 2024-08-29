@@ -4,6 +4,7 @@ import { Flex } from '@/components/ui';
 import {
 	PerformanceBlock,
 	ResultBlock,
+	TitleBlock,
 	TradingLogBlock,
 } from '@/widgets/ChallengeDetailsBlocks';
 
@@ -13,7 +14,8 @@ interface ChallengeDetailsProps {
 
 export const ChallengeDetails: FC<ChallengeDetailsProps> = ({ id }) => {
 	return (
-		<Flex direction='column' gap='32'>
+		<Flex align='start' direction='column' gap='32'>
+			<TitleBlock challengeCount={6000} id={id} stageCount={1} />
 			<PerformanceBlock />
 			<ResultBlock />
 			<TradingLogBlock />

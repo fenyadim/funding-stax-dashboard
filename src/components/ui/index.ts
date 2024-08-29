@@ -12,3 +12,6 @@ export { Checkbox } from './Checkbox/Checkbox';
 export { Popover } from './Popover/Popover';
 export { Block } from './Block/Block';
 export { Table } from './Table/Table';
+export { Loading } from './Loading/Loading';
+export { Tabs } from './Tabs/Tabs';
+export type { TabItem } from './Tabs/Tabs';
