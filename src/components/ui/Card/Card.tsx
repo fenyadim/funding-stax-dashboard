@@ -20,8 +20,8 @@ export const Card: FC<CardProps> = ({
 	return (
 		<Flex
 			className={cn(
-				styles.cardWrapper,
 				className,
+				styles.cardWrapper,
 				styles[size],
 				styles[theme],
 			)}
