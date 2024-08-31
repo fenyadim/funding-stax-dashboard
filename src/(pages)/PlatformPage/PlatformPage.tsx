@@ -5,6 +5,7 @@ import { Flex } from '@/components/ui';
 import { ChallengeItemList } from '@/entities/Challenge';
 import { ChallengeItemProps } from '@/entities/Challenge/type';
 import { Locale } from '@/shared/config/localeConfig';
+import { Button } from '@/shared/ui/button';
 
 export const PlatformPage = async () => {
 	const locale = (await getLocale()) as Locale;
@@ -32,6 +33,7 @@ export const PlatformPage = async () => {
 	return (
 		<Flex max direction='column' gap='32' align='start'>
 			<PlatformCreateChallenge locale={locale} />
+			<Button>Test</Button>
 			<ChallengeItemList
 				title={t('Past Challenges')}
 				locale={locale}

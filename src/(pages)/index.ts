@@ -3,3 +3,4 @@ export { ChallengeHistoryPage } from './ChalllengeHistoryPage/ChalllengeHistoryP
 export { AuthPage } from './AuthPage/AuthPage';
 export { ChallengeDetails } from './ChallengeDetails/ChallengeDetails';
 export { ProfilePage } from './ProfilePage/ProfilePage';
+export { NewThemePage } from './NewThemePage/NewThemePage';

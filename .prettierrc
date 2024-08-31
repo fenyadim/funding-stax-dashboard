@@ -10,7 +10,7 @@
   ],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,
-  "tabWidth": 4,
+  "tabWidth": 2,
   "useTabs": true,
   "singleQuote": true,
   "jsxSingleQuote": true
