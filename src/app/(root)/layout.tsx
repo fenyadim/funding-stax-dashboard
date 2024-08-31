@@ -82,6 +82,7 @@ export default function Layout({ children }: { children: ReactNode }) {
 									<Button
 										className='w-full text-accent bg-secondary hover:bg-secondary/80 relative before:content-arrow before:absolute before:top-1/2 before:right-5 before:-translate-y-1/2 before:h-[18px] before:scale-75'
 										variant='ghost'
+										size='lg'
 									>
 										New Challenge
 									</Button>
@@ -92,6 +93,7 @@ export default function Layout({ children }: { children: ReactNode }) {
 									<Button
 										className='text-lg font-medium w-full'
 										variant='ghost'
+										size='lg'
 									>
 										Affiliates
 									</Button>
@@ -102,6 +104,7 @@ export default function Layout({ children }: { children: ReactNode }) {
 									<Button
 										className='text-lg font-medium w-full'
 										variant='ghost'
+										size='lg'
 									>
 										Leaderboards
 									</Button>
@@ -112,6 +115,7 @@ export default function Layout({ children }: { children: ReactNode }) {
 									<Button
 										className='text-lg font-medium w-full'
 										variant='ghost'
+										size='lg'
 									>
 										Profile
 									</Button>
@@ -122,6 +126,7 @@ export default function Layout({ children }: { children: ReactNode }) {
 									<Button
 										className='text-lg font-medium w-full'
 										variant='ghost'
+										size='lg'
 									>
 										FAQ
 									</Button>

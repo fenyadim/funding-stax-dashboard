@@ -20,23 +20,25 @@ export const NewThemePage: FC<NewThemePageProps> = ({}) => {
 			<div className='w-1/2'>
 				<h3 className='mb-3 text-xl'>Challenge type</h3>
 				<div className='grid grid-cols-3 gap-3'>
-					<Button variant='secondary'>One phase</Button>
-					<Button>Two phase</Button>
-					<Button>Swing</Button>
+					<Button size='lg' variant='secondary'>
+						One phase
+					</Button>
+					<Button size='lg'>Two phase</Button>
+					<Button size='lg'>Swing</Button>
 				</div>
 			</div>
 			<div className='flex gap-5 items-end'>
 				<div className='w-1/2'>
 					<h3 className='mb-3 text-xl'>Challenge value</h3>
 					<div className='grid grid-cols-3 gap-3'>
-						<Button variant='secondary'>
+						<Button size='lg' variant='secondary'>
 							$ {formatLocaleNumber(locale, 6000)}
 						</Button>
-						<Button>$ {formatLocaleNumber(locale, 15000)}</Button>
-						<Button>$ {formatLocaleNumber(locale, 25000)}</Button>
-						<Button>$ {formatLocaleNumber(locale, 50000)}</Button>
-						<Button>$ {formatLocaleNumber(locale, 100000)}</Button>
-						<Button>$ {formatLocaleNumber(locale, 200000)}</Button>
+						<Button size='lg'>$ {formatLocaleNumber(locale, 15000)}</Button>
+						<Button size='lg'>$ {formatLocaleNumber(locale, 25000)}</Button>
+						<Button size='lg'>$ {formatLocaleNumber(locale, 50000)}</Button>
+						<Button size='lg'>$ {formatLocaleNumber(locale, 100000)}</Button>
+						<Button size='lg'>$ {formatLocaleNumber(locale, 200000)}</Button>
 					</div>
 				</div>
 				<div className='h-min w-1/5'>
@@ -51,19 +53,15 @@ export const NewThemePage: FC<NewThemePageProps> = ({}) => {
 						</Label>
 					</div>
 					<p className='text-sm font-normal text-muted-foreground'>
-						Select to upgrade your challenge experience & unlock
-						exclusive features
+						Select to upgrade your challenge experience & unlock exclusive
+						features
 					</p>
 				</div>
 			</div>
 			<div className='grid grid-cols-4 gap-5'>
 				<div>
-					<p className='text-sm text-muted-foreground mb-1.5'>
-						Platform
-					</p>
-					<h2 className='text-3xl font-roboto font-medium'>
-						Trade Locker
-					</h2>
+					<p className='text-sm text-muted-foreground mb-1.5'>Platform</p>
+					<h2 className='text-3xl font-roboto font-medium'>Trade Locker</h2>
 				</div>
 				<div>
 					<p className='text-sm text-muted-foreground mb-1.5'>
@@ -75,17 +73,13 @@ export const NewThemePage: FC<NewThemePageProps> = ({}) => {
 					</h2>
 				</div>
 				<div>
-					<p className='text-sm text-muted-foreground mb-1.5'>
-						Max daily loss
-					</p>
+					<p className='text-sm text-muted-foreground mb-1.5'>Max daily loss</p>
 					<h2 className='text-3xl font-roboto font-medium'>
 						3<span className='text-xl text-accent ml-2'>%</span>
 					</h2>
 				</div>
 				<div>
-					<p className='text-sm text-muted-foreground mb-1.5'>
-						Profit target
-					</p>
+					<p className='text-sm text-muted-foreground mb-1.5'>Profit target</p>
 					<h2 className='text-3xl font-roboto font-medium'>
 						10<span className='text-xl text-accent ml-2'>%</span>
 					</h2>
@@ -97,23 +91,15 @@ export const NewThemePage: FC<NewThemePageProps> = ({}) => {
 					<h2 className='text-3xl font-roboto font-medium'>4</h2>
 				</div>
 				<div>
-					<p className='text-sm text-muted-foreground mb-1.5'>
-						Duration
-					</p>
-					<h2 className='text-3xl font-roboto font-medium'>
-						Unlimited
-					</h2>
+					<p className='text-sm text-muted-foreground mb-1.5'>Duration</p>
+					<h2 className='text-3xl font-roboto font-medium'>Unlimited</h2>
 				</div>
 				<div>
-					<p className='text-sm text-muted-foreground mb-1.5'>
-						Leverage
-					</p>
+					<p className='text-sm text-muted-foreground mb-1.5'>Leverage</p>
 					<h2 className='text-3xl font-roboto font-medium'>1:30</h2>
 				</div>
 				<div>
-					<p className='text-sm text-muted-foreground mb-1.5'>
-						Max overall
-					</p>
+					<p className='text-sm text-muted-foreground mb-1.5'>Max overall</p>
 					<h2 className='text-3xl font-roboto font-medium'>
 						6<span className='text-xl text-accent ml-2'>%</span>
 					</h2>
