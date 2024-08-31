@@ -1,33 +1,44 @@
-import cn from 'classnames';
-import React, { FC } from 'react';
+import { VariantProps, cva } from 'class-variance-authority';
+import { FC, HTMLAttributes, ReactNode } from 'react';
 
-import { Flex, FlexProps } from '@/components/ui';
+import { Card as CardWrapper } from '@/shared/ui/card';
+import { cn } from '@/shared/utils/utils';
 
-import styles from './Card.module.scss';
-
-export interface CardProps extends FlexProps {
-	size?: 'small' | 'medium';
-	theme?: 'negative' | 'positive' | 'neutral';
+export interface CardProps
+	extends HTMLAttributes<HTMLDivElement>,
+		VariantProps<typeof cardVariants> {
+	children: ReactNode;
 }
+
+const cardVariants = cva('flex', {
+	variants: {
+		size: {
+			small: 'p-4',
+			default: 'p-10',
+		},
+		variant: {
+			negative: 'bg-error/15 border border-error',
+			positive: 'bg-accent/15 border border-accent',
+		},
+	},
+	defaultVariants: {
+		size: 'default',
+	},
+});
 
 export const Card: FC<CardProps> = ({
 	children,
-	size = 'medium',
-	theme = 'neutral',
+	size,
+	variant,
 	className,
 	...props
 }) => {
 	return (
-		<Flex
-			className={cn(
-				className,
-				styles.cardWrapper,
-				styles[size],
-				styles[theme],
-			)}
+		<CardWrapper
+			className={cn(cardVariants({ size, variant, className }))}
 			{...props}
 		>
 			{children}
-		</Flex>
+		</CardWrapper>
 	);
 };

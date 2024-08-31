@@ -4,8 +4,9 @@ import { FC } from 'react';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 
 import { FormInput } from '@/components/features/FormInput/FormInput';
-import { Button, Flex } from '@/components/ui';
+import { Button } from '@/components/ui';
 import { TFormLoginValues, loginSchema } from '@/shared/lib/zod';
+import { Flex } from '@/shared/ui';
 
 interface LoginFormProps {
 	className?: string;
@@ -33,11 +34,8 @@ export const LoginForm: FC<LoginFormProps> = () => {
 
 	return (
 		<FormProvider {...form}>
-			<form
-				style={{ width: '100%' }}
-				onSubmit={form.handleSubmit(onSubmit)}
-			>
-				<Flex max direction='column' gap='32' align='stretch'>
+			<form style={{ width: '100%' }} onSubmit={form.handleSubmit(onSubmit)}>
+				<Flex max direction='column' gap={32} align='stretch'>
 					<FormInput
 						name='email'
 						theme='dark'

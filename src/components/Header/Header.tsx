@@ -9,9 +9,10 @@ import { FC } from 'react';
 
 import { Profile } from '@/components';
 import { LocaleSelect } from '@/components/features';
-import { Button, Flex, Input } from '@/components/ui';
+import { Button, Input } from '@/components/ui';
 import { Locale } from '@/shared/config/localeConfig';
 import { useNowDate } from '@/shared/hooks/useNowDate';
+import { Flex } from '@/shared/ui';
 
 import styles from './Header.module.scss';
 
@@ -23,12 +24,7 @@ const Header: FC = () => {
 		<header className={styles.headerWrapper}>
 			<div className={styles.logoWrapper}>
 				<Link href='/'>
-					<Image
-						src={'/logo.svg'}
-						alt='Funding Stax'
-						width={149}
-						height={63}
-					/>
+					<Image src={'/logo.svg'} alt='Funding Stax' width={149} height={63} />
 				</Link>
 			</div>
 			<Flex max justify='between'>
@@ -54,13 +50,9 @@ const Header: FC = () => {
 					name='John Doe'
 					email='johndoe@ex.com'
 				/>
-				<Flex gap='16'>
+				<Flex gap={16}>
 					<LocaleSelect locale={locale} />
-					<Button
-						isRound
-						size='medium'
-						onClick={() => signIn('google')}
-					>
+					<Button isRound size='medium' onClick={() => signIn('google')}>
 						<LogOut />
 					</Button>
 				</Flex>

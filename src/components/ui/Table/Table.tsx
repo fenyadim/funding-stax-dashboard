@@ -1,5 +1,5 @@
-import { Flex } from '@/components/ui';
 import { FixedLengthArray } from '@/shared/types/global';
+import { Flex } from '@/shared/ui';
 
 import styles from './Table.module.scss';
 
@@ -18,7 +18,7 @@ export const Table = <T extends number>({ data }: TableProps<T>) => {
 		<Flex
 			direction='column'
 			align='stretch'
-			gap='8'
+			gap={8}
 			className={styles.wrapper}
 			max
 		>
@@ -29,10 +29,7 @@ export const Table = <T extends number>({ data }: TableProps<T>) => {
 				}}
 			>
 				{data.labels.map((value, index) => (
-					<h3
-						className={styles.columnTitle}
-						key={`${value}-${index}}`}
-					>
+					<h3 className={styles.columnTitle} key={`${value}-${index}}`}>
 						{value}
 					</h3>
 				))}
@@ -54,8 +51,7 @@ export const Table = <T extends number>({ data }: TableProps<T>) => {
 					))
 				) : (
 					<p className={styles.nothingData}>
-						Your trading log will be shown here once you start
-						trading.
+						Your trading log will be shown here once you start trading.
 					</p>
 				)}
 			</div>

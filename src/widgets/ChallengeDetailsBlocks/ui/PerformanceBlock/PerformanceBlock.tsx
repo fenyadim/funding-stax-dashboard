@@ -9,9 +9,10 @@ import {
 	LinearChart,
 	linearDataForChallengeDetails,
 } from '@/components/features/LinearChart';
-import { Block, Card, Flex } from '@/components/ui';
+import { Block, Card } from '@/components/ui';
 import { Locale } from '@/shared/config/localeConfig';
 import { useFormatDate } from '@/shared/hooks/useFormatDate';
+import { Flex } from '@/shared/ui';
 import { differenceDays } from '@/shared/utils/differenceDays';
 
 import styles from './PerformanceBlock.module.scss';
@@ -28,37 +29,27 @@ export const PerformanceBlock: FC<PerformanceBlockProps> = ({}) => {
 	const dateFormating = useFormatDate(dateRemaining);
 
 	return (
-		<Block
-			direction='column'
-			align='start'
-			gap='16'
-			title='Performance'
-			max
-		>
-			<Flex gap='16' max className={styles.wrapper}>
-				<Card size='small' direction='column' align='start' gap='16'>
+		<Block direction='column' align='start' gap={16} title='Performance' max>
+			<Flex gap={16} max className={styles.wrapper}>
+				<Card size='small'>
+					<InfoText size='md' value='Trade Locker' title='Platform' />
 					<InfoText
-						size='medium'
-						value='Trade Locker'
-						title='Platform'
-					/>
-					<InfoText
-						size='medium'
+						size='md'
 						value={5665.69}
 						title='Balance'
 						mode='currency'
 						locale={locale}
 					/>
 				</Card>
-				<Card size='small' direction='column' align='start' gap='16'>
+				<Card size='small'>
 					<InfoText
-						size='medium'
+						size='md'
 						before={`${differenceDays(dateNow, dateRemaining)} days`}
 						value={dateFormating}
 						title='Time Remaining'
 					/>
 					<InfoText
-						size='medium'
+						size='md'
 						value={-11.24}
 						title='Ovreall Profit/Loss'
 						mode='pnl'
@@ -66,9 +57,9 @@ export const PerformanceBlock: FC<PerformanceBlockProps> = ({}) => {
 						info='Что-то пробует. Что-то пробует. Что-то пробует.'
 					/>
 				</Card>
-				<Card size='small' direction='column' align='start' gap='16'>
+				<Card size='small'>
 					<InfoText
-						size='medium'
+						size='md'
 						value={-347.64}
 						mode={'pnl'}
 						locale={locale}
@@ -76,7 +67,7 @@ export const PerformanceBlock: FC<PerformanceBlockProps> = ({}) => {
 						info='Что-то пробует. Что-то пробует. Что-то пробует.'
 					/>
 					<InfoText
-						size='medium'
+						size='md'
 						value={5665.69}
 						title='Daily Lowest Equity'
 						mode='currency'
@@ -84,10 +75,10 @@ export const PerformanceBlock: FC<PerformanceBlockProps> = ({}) => {
 						info='Что-то пробует. Что-то пробует. Что-то пробует.'
 					/>
 				</Card>
-				<Card size='small' direction='column' align='start' gap='16'>
+				<Card size='small'>
 					<Flex max justify='between'>
 						<InfoText
-							size='medium'
+							size='md'
 							value={-11.24}
 							after='%'
 							mode='percent'
@@ -104,7 +95,7 @@ export const PerformanceBlock: FC<PerformanceBlockProps> = ({}) => {
 					</Flex>
 					<Flex max justify='between'>
 						<InfoText
-							size='medium'
+							size='md'
 							value={11.24}
 							after='%'
 							title='Average Win'
@@ -121,22 +112,17 @@ export const PerformanceBlock: FC<PerformanceBlockProps> = ({}) => {
 					</Flex>
 				</Card>
 			</Flex>
-			<Flex gap='16' max>
+			<Flex gap={16} max>
 				<Flex
 					className={styles.chartsLeftInfo}
-					gap='16'
+					gap={16}
 					direction='column'
 					align='stretch'
 				>
-					<Card
-						size='small'
-						direction='column'
-						align='start'
-						gap='16'
-					>
+					<Card size='small'>
 						<Flex max justify='between'>
 							<InfoText
-								size='medium'
+								size='md'
 								value={0}
 								after='%'
 								mode='percent'
@@ -153,7 +139,7 @@ export const PerformanceBlock: FC<PerformanceBlockProps> = ({}) => {
 						</Flex>
 						<Flex max justify='between'>
 							<InfoText
-								size='medium'
+								size='md'
 								value={`${differenceDays(dateNow, dateRemaining)} days`}
 								title='Average Trade Duration'
 								info='Что-то пробует. Что-то пробует. Что-то пробует.'
@@ -166,15 +152,10 @@ export const PerformanceBlock: FC<PerformanceBlockProps> = ({}) => {
 							/>
 						</Flex>
 					</Card>
-					<Card
-						size='small'
-						direction='column'
-						align='start'
-						gap='16'
-					>
+					<Card size='small'>
 						<Flex max justify='between'>
 							<InfoText
-								size='medium'
+								size='md'
 								value='_ _'
 								title='Profit Factor'
 								info='Что-то пробует. Что-то пробует. Что-то пробует.'
@@ -188,32 +169,18 @@ export const PerformanceBlock: FC<PerformanceBlockProps> = ({}) => {
 						</Flex>
 						<Flex max justify='between'>
 							<InfoText
-								size='medium'
+								size='md'
 								value='_ _'
 								title='Lots'
 								info='Что-то пробует. Что-то пробует. Что-то пробует.'
 							/>
-							<Image
-								src='/lots.svg'
-								alt='Lots'
-								width={90}
-								height={55}
-							/>
+							<Image src='/lots.svg' alt='Lots' width={90} height={55} />
 						</Flex>
 					</Card>
 				</Flex>
-				<Card
-					className={styles.chartsWrapper}
-					gap='8'
-					size='small'
-					direction='column'
-					align='start'
-				>
+				<Card className={styles.chartsWrapper}>
 					<h3>Charts</h3>
-					<LinearChart
-						data={linearDataForChallengeDetails}
-						theme='full'
-					/>
+					<LinearChart data={linearDataForChallengeDetails} theme='full' />
 				</Card>
 			</Flex>
 		</Block>

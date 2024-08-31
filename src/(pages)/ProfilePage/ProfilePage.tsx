@@ -2,7 +2,8 @@
 
 import { FC, ReactNode, useState } from 'react';
 
-import { Block, Flex, TabItem, Tabs } from '@/components/ui';
+import { Block, TabItem, Tabs } from '@/components/ui';
+import { Flex } from '@/shared/ui';
 import { UserInfo } from '@/widgets/ProfileBlocks';
 
 interface ProfilePageProps {
@@ -34,12 +35,8 @@ export const ProfilePage: FC<ProfilePageProps> = ({}) => {
 	};
 
 	return (
-		<Flex align='start' direction='column' gap='32'>
-			<Tabs
-				tabs={tabs}
-				activeTab={activeTab}
-				setActiveTab={setActiveTab}
-			/>
+		<Flex align='start' direction='column' gap={32}>
+			<Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
 			{elements[activeTab]}
 		</Flex>
 	);

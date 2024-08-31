@@ -39,33 +39,21 @@ export const ChallengeItem: FC<ChallengeItemProps> = ({
 				className={cn(styles.cardWrapper, {
 					[styles.open]: open,
 				})}
-				size='small'
-				justify='between'
-				max
-				theme={theme}
+				variant={theme}
 				onClick={handleOpen}
 			>
-				<InfoText
-					size='small'
-					title={t('Platform')}
-					value={t('Trade Locker')}
-				/>
-				<InfoText
-					size='small'
-					title={t('Account')}
-					value={accountId}
-					before='#'
-				/>
+				<InfoText size='sm' title={t('Platform')} value={t('Trade Locker')} />
+				<InfoText size='sm' title={t('Account')} value={accountId} before='#' />
 				<InfoText
 					mode='currency'
-					size='small'
+					size='sm'
 					title={t('Challenge')}
 					value={challengeCount}
 					locale={locale}
 				/>
 				<InfoText
 					mode='pnl'
-					size='small'
+					size='sm'
 					title={t("Today's P/L")}
 					info={
 						'Пробная информация, чтоб что-то попробовать.Пробная информация, чтоб что-то попробовать.Пробная информация, чтоб что-то попробовать.'
@@ -73,12 +61,8 @@ export const ChallengeItem: FC<ChallengeItemProps> = ({
 					value={todayPnl}
 					locale={locale}
 				/>
-				<InfoText size='small' title={t('Stage')} value={stageCount} />
-				<InfoText
-					size='small'
-					title={t('Result')}
-					value={t(`${result}`)}
-				/>
+				<InfoText size='sm' title={t('Stage')} value={stageCount} />
+				<InfoText size='sm' title={t('Result')} value={t(`${result}`)} />
 				<Button
 					ref={buttonRef}
 					className={styles.button}
@@ -88,10 +72,7 @@ export const ChallengeItem: FC<ChallengeItemProps> = ({
 					{t('Details')}
 				</Button>
 			</Card>
-			<PlatformDetailInfo
-				className={styles.wrapperInfo}
-				locale={locale}
-			/>
+			<PlatformDetailInfo className={styles.wrapperInfo} locale={locale} />
 		</>
 	);
 };

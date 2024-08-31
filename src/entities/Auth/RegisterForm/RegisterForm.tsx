@@ -5,9 +5,10 @@ import { FC } from 'react';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 
 import { FormInput } from '@/components/features/FormInput/FormInput';
-import { Button, Flex } from '@/components/ui';
+import { Button } from '@/components/ui';
 import { registerUser } from '@/shared/actions/auth';
 import { TFormRegisterValues, registerSchema } from '@/shared/lib/zod';
+import { Flex } from '@/shared/ui';
 
 interface RegisterFormProps {
 	className?: string;
@@ -38,16 +39,9 @@ export const RegisterForm: FC<RegisterFormProps> = ({}) => {
 
 	return (
 		<FormProvider {...form}>
-			<form
-				style={{ width: '100%' }}
-				onSubmit={form.handleSubmit(onSubmit)}
-			>
-				<Flex max direction='column' gap='32' align='stretch'>
-					<FormInput
-						name='name'
-						theme='dark'
-						placeholder='Полное имя'
-					/>
+			<form style={{ width: '100%' }} onSubmit={form.handleSubmit(onSubmit)}>
+				<Flex max direction='column' gap={32} align='stretch'>
+					<FormInput name='name' theme='dark' placeholder='Полное имя' />
 					<FormInput
 						name='email'
 						theme='dark'
@@ -67,9 +61,7 @@ export const RegisterForm: FC<RegisterFormProps> = ({}) => {
 						placeholder='Повердить пароль'
 					/>
 					<Button theme='accent' type='submit'>
-						{form.formState.isSubmitting
-							? 'Регистрирую...'
-							: 'Регистрация'}
+						{form.formState.isSubmitting ? 'Регистрирую...' : 'Регистрация'}
 					</Button>
 				</Flex>
 			</form>

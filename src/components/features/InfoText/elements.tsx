@@ -7,30 +7,29 @@ import { calcPercentOf } from '@/shared/utils/calcPercentOf';
 import { formatLocaleNumber } from '@/shared/utils/formatLocale';
 import { minusOrPlusSign } from '@/shared/utils/minusOrPlusSign';
 
-import styles from './InfoText.module.scss';
-
 const pnlElement = (
 	valueElement: number,
 	localeElement: Locale,
 	percentOf?: number,
 ) => {
 	const minusStyle = {
-		[styles.minus]: minusOrPlusSign(valueElement) === '-',
+		'!text-error': minusOrPlusSign(valueElement) === '-',
 	};
 
 	return (
 		<>
-			<h3 className={cn(styles.value, minusStyle)}>
+			<h3 className={cn(minusStyle)}>
 				{minusOrPlusSign(valueElement)}
 				{localeElement ? '$ ' : ''}
-				<span>
-					{formatLocaleNumber(localeElement, valueElement)}
-				</span>{' '}
+				<span>{formatLocaleNumber(localeElement, valueElement)}</span>{' '}
 			</h3>
 			{percentOf && (
-				<p className={cn(styles.percent, minusStyle)}>
+				<p className={cn('text-xl px-4 self-end', minusStyle)}>
 					{minusOrPlusSign(valueElement)}
-					<span>{calcPercentOf(percentOf, valueElement)}</span>%
+					<span className='text-foreground'>
+						{calcPercentOf(percentOf, valueElement)}
+					</span>
+					%
 				</p>
 			)}
 		</>
@@ -40,11 +39,9 @@ const pnlElement = (
 const currencyElement = (valueElement: number, localeElement: Locale) => {
 	return (
 		<>
-			<h3 className={cn(styles.value)}>
+			<h3>
 				{'$ '}
-				<span>
-					{formatLocaleNumber(localeElement, valueElement)}
-				</span>{' '}
+				<span>{formatLocaleNumber(localeElement, valueElement)}</span>{' '}
 			</h3>
 		</>
 	);
@@ -52,17 +49,14 @@ const currencyElement = (valueElement: number, localeElement: Locale) => {
 
 const percentElement = (valueElement: number, localeElement: Locale) => {
 	const minusStyle = {
-		[styles.minus]: minusOrPlusSign(valueElement) === '-',
+		'!text-error': minusOrPlusSign(valueElement) === '-',
 	};
 
 	return (
 		<>
-			<h3 className={cn(styles.value, minusStyle)}>
+			<h3 className={cn(minusStyle)}>
 				{minusOrPlusSign(valueElement)}
-				<span>
-					{formatLocaleNumber(localeElement, valueElement)}
-				</span>{' '}
-				{'%'}
+				<span>{formatLocaleNumber(localeElement, valueElement)}</span> {'%'}
 			</h3>
 		</>
 	);
@@ -71,7 +65,7 @@ const percentElement = (valueElement: number, localeElement: Locale) => {
 const textElement = (valueElement: string, before?: string, after?: string) => {
 	return (
 		<>
-			<h3 className={cn(styles.value)}>
+			<h3>
 				{before} <span>{valueElement}</span> {after}
 			</h3>
 		</>

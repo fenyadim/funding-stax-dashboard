@@ -6,8 +6,9 @@ import {
 	LinearChart,
 	linearDataForDetailInfo,
 } from '@/components/features/LinearChart';
-import { Card, Flex } from '@/components/ui';
+import { Card } from '@/components/ui';
 import { Locale } from '@/shared/config/localeConfig';
+import { Flex } from '@/shared/ui';
 
 import styles from './PlatformDetailInfo.module.scss';
 
@@ -23,13 +24,8 @@ export const PlatformDetailInfo: FC<PlatformDetailInfoProps> = ({
 	const t = useTranslations('PlatformPage');
 
 	return (
-		<Flex className={className} wrap='wrap' align='stretch' gap='16'>
-			<Card
-				className={styles.balanceWrapper}
-				size='small'
-				direction='column'
-				align='start'
-			>
+		<Flex className={className} wrap='wrap' align='stretch' gap={16}>
+			<Card className={styles.balanceWrapper} size='small'>
 				<InfoText
 					className={styles.textWrapper}
 					value={5665.69}
@@ -39,12 +35,7 @@ export const PlatformDetailInfo: FC<PlatformDetailInfoProps> = ({
 				/>
 				<LinearChart data={linearDataForDetailInfo} theme='mini' />
 			</Card>
-			<Card
-				className={styles.totalPnlWrapper}
-				direction='column'
-				gap='16'
-				align='start'
-			>
+			<Card className={styles.totalPnlWrapper}>
 				<InfoText
 					value={814.31}
 					title={t('Target Amount Left to Earn')}
@@ -59,12 +50,8 @@ export const PlatformDetailInfo: FC<PlatformDetailInfoProps> = ({
 					percentOf={6000}
 				/>
 			</Card>
-			<Card
-				justify='center'
-				gap='32'
-				className={styles.pnlPercentWrapper}
-			>
-				<Flex direction='column' gap='16'>
+			<Card className={styles.pnlPercentWrapper}>
+				<Flex direction='column' gap={16}>
 					<InfoText
 						value={20}
 						title={t('Winning Trades')}
@@ -89,7 +76,7 @@ export const PlatformDetailInfo: FC<PlatformDetailInfoProps> = ({
 					title={t('No limit')}
 				/>
 			</Card>
-			<Card theme='negative' size='small'>
+			<Card variant='negative' size='small'>
 				<InfoText
 					value={300.67}
 					mode='currency'
@@ -97,10 +84,10 @@ export const PlatformDetailInfo: FC<PlatformDetailInfoProps> = ({
 					title={t('Today’s Permitted Loss')}
 				/>
 			</Card>
-			<Card theme='negative' size='small'>
+			<Card variant='negative' size='small'>
 				<InfoText value='19' title={t('Active Trading Days')} />
 			</Card>
-			<Card theme='positive' size='small'>
+			<Card variant='positive' size='small'>
 				<InfoText
 					value={600}
 					mode='currency'

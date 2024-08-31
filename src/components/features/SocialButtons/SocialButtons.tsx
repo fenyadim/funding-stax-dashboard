@@ -2,7 +2,8 @@ import { Instagram } from 'lucide-react';
 import Image from 'next/image';
 import { FC } from 'react';
 
-import { Button, ButtonProps, Flex, FlexProps } from '@/components/ui';
+import { Button, ButtonProps } from '@/components/ui';
+import { Flex, FlexProps } from '@/shared/ui';
 
 interface SocialButtonsProps {
 	size?: ButtonProps['size'];

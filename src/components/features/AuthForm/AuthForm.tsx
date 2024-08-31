@@ -3,8 +3,9 @@
 import { signIn } from 'next-auth/react';
 import { FC, useState } from 'react';
 
-import { Button, Card, Flex } from '@/components/ui';
+import { Button, Card } from '@/components/ui';
 import { LoginForm, RegisterForm } from '@/entities/Auth';
+import { Flex } from '@/shared/ui';
 
 import styles from './AuthForm.module.scss';
 
@@ -16,15 +17,13 @@ export const AuthForm: FC<AuthFormProps> = ({}) => {
 	const [mode, setMode] = useState<'login' | 'register'>('login');
 
 	return (
-		<Card direction='column' gap='32' className={styles.wrapper}>
+		<Card className={styles.wrapper}>
 			<h1 className={styles.title}>
 				{mode === 'login' ? 'Войти' : 'Зарегистрироваться'}
 			</h1>
 			<Flex>
 				<Button onClick={() => setMode('login')}>Войти</Button>
-				<Button onClick={() => setMode('register')}>
-					Зарегистрироваться
-				</Button>
+				<Button onClick={() => setMode('register')}>Зарегистрироваться</Button>
 			</Flex>
 			{mode === 'login' ? <LoginForm /> : <RegisterForm />}
 			<Button

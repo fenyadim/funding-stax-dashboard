@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Flex } from '@/components/ui';
+import { Flex } from '@/shared/ui';
 import {
 	PerformanceBlock,
 	ResultBlock,
@@ -14,7 +14,7 @@ interface ChallengeDetailsProps {
 
 export const ChallengeDetails: FC<ChallengeDetailsProps> = ({ id }) => {
 	return (
-		<Flex align='start' direction='column' gap='32'>
+		<Flex align='start' direction='column' gap={32}>
 			<TitleBlock challengeCount={6000} id={id} stageCount={1} />
 			<PerformanceBlock />
 			<ResultBlock />

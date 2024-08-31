@@ -1,10 +1,8 @@
-import React from 'react';
-
-import { Button, Flex, Popover } from '@/components/ui';
+import { TooltipButton } from '@/components/features';
 import { Locale } from '@/shared/config/localeConfig';
+import { Flex } from '@/shared/ui';
+import { Button } from '@/shared/ui/button';
 import { formatLocaleNumber } from '@/shared/utils/formatLocale';
-
-import styles from './PlatformOption.module.scss';
 
 export type PlatformItemType<T> = {
 	id: T;
@@ -16,7 +14,6 @@ interface PlatformOptionType<T> {
 	items: Array<PlatformItemType<T>>;
 	idActive: T;
 	setIdActive: (id: T) => void;
-	className?: string;
 	locale?: Locale;
 	info?: string;
 }
@@ -26,41 +23,35 @@ export function PlatformOption<T extends string | number>({
 	items,
 	idActive,
 	setIdActive,
-	className,
 	locale,
 	info,
 }: PlatformOptionType<T>) {
 	return (
-		<Flex
-			gap='16'
-			align='start'
-			direction='column'
-			className={styles.wrapper}
-		>
-			<Flex gap='8'>
-				<h3 className={styles.title}>{title}</h3>
-				{info && <Popover content={info} />}
+		<Flex className='w-1/2 h-min' gap={4} align='start' direction='column'>
+			<Flex className='mb-3' gap={16} max>
+				<h3 className='text-xl'>{title}</h3>
+				{info && <TooltipButton text={info} />}
 			</Flex>
-			<Flex wrap='wrap' gap='8'>
+			<div className='grid grid-cols-3 gap-3 w-full'>
 				{items.map((item) => (
 					<Button
-						className={styles.button}
 						id={String(item.id)}
 						key={item.id}
 						onClick={() => setIdActive(item.id)}
-						theme={item.id === idActive ? 'accent' : 'primary'}
+						size='lg'
+						variant={item.id === idActive ? 'secondary' : 'default'}
 					>
 						{typeof item.name === 'string' || !locale ? (
 							item.name
 						) : (
 							<>
-								<span>$</span>
+								<span className='mr-1'>$</span>
 								{formatLocaleNumber(locale, item.name)}
 							</>
 						)}
 					</Button>
 				))}
-			</Flex>
+			</div>
 		</Flex>
 	);
 }

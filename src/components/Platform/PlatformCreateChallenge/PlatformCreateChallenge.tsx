@@ -5,10 +5,11 @@ import { FC, useState } from 'react';
 
 import { PlatformItemType, PlatformOption } from '@/components/Platform';
 import { InfoText } from '@/components/features';
-import { Card, Checkbox, Flex } from '@/components/ui';
+import { Card } from '@/components/ui';
 import { Locale } from '@/shared/config/localeConfig';
-
-import styles from './PlatformCreateChallenge.module.scss';
+import { Flex } from '@/shared/ui';
+import { Checkbox } from '@/shared/ui/checkbox';
+import { Label } from '@/shared/ui/label';
 
 interface PlatformCreateChallengeProps {
 	locale: Locale;
@@ -38,13 +39,7 @@ export const PlatformCreateChallenge: FC<PlatformCreateChallengeProps> = ({
 	];
 
 	return (
-		<Card
-			gap='32'
-			direction='column'
-			align='start'
-			max
-			className={styles.wrapper}
-		>
+		<Card className='flex flex-col w-full gap-5'>
 			<PlatformOption
 				title={t('Challenge Type')}
 				items={challengeTypes}
@@ -54,7 +49,7 @@ export const PlatformCreateChallenge: FC<PlatformCreateChallengeProps> = ({
 					'Пробная информация, чтоб что-то попробовать.Пробная информация, чтоб что-то попробовать.Пробная информация, чтоб что-то попробовать.'
 				}
 			/>
-			<Flex align='end' gap='32'>
+			<Flex align='end' gap={32}>
 				<PlatformOption
 					title={t('Challenge Value')}
 					items={challengeValues}
@@ -65,15 +60,24 @@ export const PlatformCreateChallenge: FC<PlatformCreateChallengeProps> = ({
 						'Пробная информация, чтоб что-то попробовать.Пробная информация, чтоб что-то попробовать.Пробная информация, чтоб что-то попробовать.'
 					}
 				/>
-				<Flex gap='8' direction='column' align='start'>
-					<Checkbox label={`${t('News Trading')} (+15%)`} />
-					<p className={styles.textCheckbox}>
-						Select to upgrade your challenge experience & unlock
-						exclusive features
+				<div className='h-min w-1/5'>
+					<div className='flex items-center gap-3 mb-2'>
+						<Checkbox id='news' />
+						<Label
+							htmlFor='news'
+							className='text-lg font-semibold leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70'
+						>
+							New trading (+15
+							<span className='text-accent'>%</span>)
+						</Label>
+					</div>
+					<p className='text-sm font-normal text-muted-foreground'>
+						Select to upgrade your challenge experience & unlock exclusive
+						features
 					</p>
-				</Flex>
+				</div>
 			</Flex>
-			<div className={styles.statisticsWrapper}>
+			<div className='grid grid-cols-4 gap-4'>
 				<InfoText title={t('Platform')} value={t('Trade Locker')} />
 				<InfoText
 					mode='currency'

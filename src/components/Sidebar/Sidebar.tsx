@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React from 'react';
 
 import { Banner } from '@/components/Banner/Banner';
 import { SocialButtons } from '@/components/features';
@@ -15,7 +14,7 @@ const Sidebar = () => {
 	const pathname = usePathname();
 
 	return (
-		<Card direction='column' gap='16' className={styles.sidebar}>
+		<Card className={styles.sidebar}>
 			<h1 className={styles.sidebarTitle}>
 				5 665.69 <span>$</span>
 			</h1>
@@ -26,9 +25,7 @@ const Sidebar = () => {
 				<ul>
 					{routeConfig().map(({ path, name }) => (
 						<li
-							className={
-								pathname === path ? styles.activeTab : ''
-							}
+							className={pathname === path ? styles.activeTab : ''}
 							key={path}
 						>
 							<Link href={path}>{name}</Link>
@@ -36,7 +33,7 @@ const Sidebar = () => {
 					))}
 				</ul>
 			</nav>
-			<SocialButtons gap='32' />
+			<SocialButtons gap={32} />
 			<Banner />
 		</Card>
 	);

@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { FC } from 'react';
 
-import { Flex } from '../Flex/Flex';
+import { Flex } from '@/shared/ui/Flex/Flex';
 
 import styles from './Tabs.module.scss';
 
