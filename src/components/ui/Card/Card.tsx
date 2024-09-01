@@ -10,7 +10,7 @@ export interface CardProps
 	children: ReactNode;
 }
 
-const cardVariants = cva('flex', {
+const cardVariants = cva('flex flex-col gap-4', {
 	variants: {
 		size: {
 			small: 'p-6',

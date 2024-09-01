@@ -11,7 +11,7 @@ export const ChallengeItemList: FC<ChallengeItemListProps> = ({
 	challengeItems,
 }) => {
 	return (
-		<Block direction='column' gap={16} title={title} max>
+		<Block direction='column' gap={8} title={title} max>
 			{challengeItems.map((item, index) => (
 				<ChallengeItem
 					key={`${item.accountId}-${index}`}

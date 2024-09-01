@@ -6,7 +6,6 @@ import { usePathname } from 'next/navigation';
 import { FC } from 'react';
 
 import { Banner } from '@/components/Banner/Banner';
-import styles from '@/components/Sidebar/Sidebar.module.scss';
 import { SocialButtons } from '@/components/features';
 import { Locale } from '@/shared/config/localeConfig';
 import { routeConfig } from '@/shared/config/routeConfig';
@@ -32,10 +31,7 @@ export const Sidebar: FC<SidebarProps> = ({}) => {
 			<nav className='w-full'>
 				<ul className='flex flex-col gap-3'>
 					{routeConfig().map(({ path, name }) => (
-						<li
-							className={pathname === path ? styles.activeTab : ''}
-							key={path}
-						>
+						<li key={path}>
 							<Link href={path} className='block focus-visible:outline-none'>
 								<Button
 									className={cn('text-lg font-medium w-full', {

@@ -11,18 +11,18 @@ module.exports = {
 			keyframes: {
 				'accordion-down': {
 					from: {
-						height: '0',
+						maxHeight: '0',
 					},
 					to: {
-						height: '464px',
+						maxHeight: '100vh',
 					},
 				},
 				'accordion-up': {
 					from: {
-						height: '464px',
+						maxHeight: '100vh',
 					},
 					to: {
-						height: '0',
+						maxHeight: '0',
 					},
 				},
 			},

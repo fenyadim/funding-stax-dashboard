@@ -8,18 +8,22 @@ import {
 	TooltipTrigger,
 } from '@/shared/ui/tooltip';
 
+type SizesType = 'default' | 'sm' | 'md' | 'xl';
+
 interface TooltipButtonProps {
 	text: string;
-	size?: 'default' | 'sm';
+	size?: SizesType;
 }
 
 export const TooltipButton: FC<TooltipButtonProps> = ({
 	text,
 	size = 'default',
 }) => {
-	const sizeClass = {
+	const sizeClass: Record<SizesType, string> = {
 		default: 'size-8 text-xl',
 		sm: 'size-6 text-lg p-0',
+		md: 'size-6 text-xl p-0',
+		xl: 'size-9 text-2xl p-0',
 	};
 
 	return (

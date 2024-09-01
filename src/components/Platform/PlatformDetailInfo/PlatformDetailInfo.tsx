@@ -27,7 +27,7 @@ export const PlatformDetailInfo: FC<PlatformDetailInfoProps> = ({
 			className={cn('grid grid-cols-[1.5fr_1fr_1fr] gap-4 w-full', className)}
 			{...otherProps}
 		>
-			<Card className='flex flex-col' size='small'>
+			<Card size='small'>
 				<InfoText
 					size='xl'
 					value={5665.69}
@@ -38,7 +38,7 @@ export const PlatformDetailInfo: FC<PlatformDetailInfoProps> = ({
 				<LinearChart data={linearDataForDetailInfo} theme='mini' />
 			</Card>
 			<Flex direction='column' gap={16}>
-				<Card className='h-1/2 w-full justify-between'>
+				<Card size='small' className='flex-row h-1/2 w-full justify-between'>
 					<Flex justify='between' direction='column' gap={16}>
 						<InfoText
 							value={20}
@@ -57,7 +57,7 @@ export const PlatformDetailInfo: FC<PlatformDetailInfoProps> = ({
 					</Flex>
 					<DoughnutChart winValue={20} loseValue={80} />
 				</Card>
-				<Card className='flex flex-col gap-4 w-full'>
+				<Card size='small' className='gap-4 w-full'>
 					<InfoText
 						value={814.31}
 						title={t('Target Amount Left to Earn')}

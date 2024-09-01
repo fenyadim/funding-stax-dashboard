@@ -22,10 +22,10 @@ export const SocialButtons: FC<SocialButtonsProps> = ({ size = 'md', gap }) => {
 
 	return (
 		<Flex gap={gap}>
-			<Button size='icon'>
+			<Button className={size === 'sm' ? 'size-8' : ''} size='icon'>
 				<Instagram size={sizeIcon[size]} />
 			</Button>
-			<Button size='icon'>
+			<Button className={size === 'sm' ? 'size-8' : ''} size='icon'>
 				<Image
 					src='/telegram.svg'
 					alt='Telegram'

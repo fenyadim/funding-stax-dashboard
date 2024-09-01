@@ -6,8 +6,6 @@ import { FC } from 'react';
 import { Locale } from '@/shared/config/localeConfig';
 import { formatLocaleNumber } from '@/shared/utils/formatLocale';
 
-import styles from './TitleBlock.module.scss';
-
 interface TitleBlockProps {
 	className?: string;
 	id: string;
@@ -23,7 +21,7 @@ export const TitleBlock: FC<TitleBlockProps> = ({
 	const locale = useLocale() as Locale;
 
 	return (
-		<h1 className={styles.title}>
+		<h1 className='text-3xl ml-10 *:text-accent'>
 			Challenge - <span>$ </span>
 			{formatLocaleNumber(locale, challengeCount)} - <span>#</span>
 			{id} - Stage: <span>{stageCount}</span>

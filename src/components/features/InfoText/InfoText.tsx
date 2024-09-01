@@ -49,7 +49,7 @@ export const InfoText: FC<PlatformStatisticProps> = ({
 			<Flex gap={8}>
 				<p className='text-sm text-muted-foreground'>{title}</p>
 				{info && (
-					<TooltipButton size={size === 'sm' ? 'sm' : 'default'} text={info} />
+					<TooltipButton size={size as NonNullable<typeof size>} text={info} />
 				)}
 			</Flex>
 			<div

@@ -39,7 +39,7 @@ export const PlatformCreateChallenge: FC<PlatformCreateChallengeProps> = ({
 	];
 
 	return (
-		<Card className='flex flex-col w-full gap-5'>
+		<Card className='w-full gap-5'>
 			<PlatformOption
 				title={t('Challenge Type')}
 				items={challengeTypes}

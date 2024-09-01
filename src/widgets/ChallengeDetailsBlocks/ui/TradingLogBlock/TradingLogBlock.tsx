@@ -1,15 +1,21 @@
 import { FC } from 'react';
 
-import { Block, Table } from '@/components/ui';
-import { TableDataType } from '@/components/ui/Table/Table';
-
-import styles from './TradingLogBlock.module.scss';
+import { Block, Card } from '@/components/ui';
+import {
+	Table,
+	TableBody,
+	TableCaption,
+	TableCell,
+	TableHead,
+	TableHeader,
+	TableRow,
+} from '@/shared/ui/table';
 
 interface TradingLogBlockProps {
 	className?: string;
 }
 
-const tableDate: TableDataType<12> = {
+const tableDate = {
 	labels: [
 		'Open',
 		'Symbol',
@@ -58,8 +64,31 @@ const tableDate: TableDataType<12> = {
 
 export const TradingLogBlock: FC<TradingLogBlockProps> = ({}) => {
 	return (
-		<Block max title='Trading Log' className={styles.wrapper}>
-			<Table data={tableDate} />
+		<Block max title='Trading Log'>
+			<Card className='w-full' size='small'>
+				<Table>
+					<TableCaption>A list of your recent invoices.</TableCaption>
+					<TableHeader>
+						<TableRow className='border-accent hover:bg-transparent'>
+							{tableDate.labels.map((label) => (
+								<TableHead key={label}>{label}</TableHead>
+							))}
+						</TableRow>
+					</TableHeader>
+					<TableBody>
+						{tableDate.rows?.map((row, index) => (
+							<TableRow
+								className='border-accent/40 hover:bg-accent/10'
+								key={index}
+							>
+								{row.map((cell) => (
+									<TableCell key={cell}>{cell}</TableCell>
+								))}
+							</TableRow>
+						))}
+					</TableBody>
+				</Table>
+			</Card>
 		</Block>
 	);
 };

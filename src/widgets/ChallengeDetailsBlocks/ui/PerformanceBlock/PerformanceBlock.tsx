@@ -15,8 +15,6 @@ import { useFormatDate } from '@/shared/hooks/useFormatDate';
 import { Flex } from '@/shared/ui';
 import { differenceDays } from '@/shared/utils/differenceDays';
 
-import styles from './PerformanceBlock.module.scss';
-
 interface PerformanceBlockProps {
 	className?: string;
 }
@@ -30,8 +28,8 @@ export const PerformanceBlock: FC<PerformanceBlockProps> = ({}) => {
 
 	return (
 		<Block direction='column' align='start' gap={16} title='Performance' max>
-			<Flex gap={16} max className={styles.wrapper}>
-				<Card size='small'>
+			<div className='grid grid-cols-4 w-full gap-4'>
+				<Card className='gap-4' size='small'>
 					<InfoText size='md' value='Trade Locker' title='Platform' />
 					<InfoText
 						size='md'
@@ -111,14 +109,9 @@ export const PerformanceBlock: FC<PerformanceBlockProps> = ({}) => {
 						/>
 					</Flex>
 				</Card>
-			</Flex>
-			<Flex gap={16} max>
-				<Flex
-					className={styles.chartsLeftInfo}
-					gap={16}
-					direction='column'
-					align='stretch'
-				>
+			</div>
+			<div className='grid grid-cols-[0.25fr_0.75fr] w-full gap-4'>
+				<Flex gap={16} direction='column' align='stretch'>
 					<Card size='small'>
 						<Flex max justify='between'>
 							<InfoText
@@ -133,8 +126,8 @@ export const PerformanceBlock: FC<PerformanceBlockProps> = ({}) => {
 							<Image
 								src='/win-rate.svg'
 								alt='Win Rate'
-								width={70}
-								height={55}
+								width={60}
+								height={60}
 							/>
 						</Flex>
 						<Flex max justify='between'>
@@ -147,8 +140,8 @@ export const PerformanceBlock: FC<PerformanceBlockProps> = ({}) => {
 							<Image
 								src='/clock.svg'
 								alt='Average Trade Duration'
-								width={70}
-								height={55}
+								width={60}
+								height={60}
 							/>
 						</Flex>
 					</Card>
@@ -178,11 +171,11 @@ export const PerformanceBlock: FC<PerformanceBlockProps> = ({}) => {
 						</Flex>
 					</Card>
 				</Flex>
-				<Card className={styles.chartsWrapper}>
+				<Card className='w-full h-full' size='small'>
 					<h3>Charts</h3>
 					<LinearChart data={linearDataForChallengeDetails} theme='full' />
 				</Card>
-			</Flex>
+			</div>
 		</Block>
 	);
 };

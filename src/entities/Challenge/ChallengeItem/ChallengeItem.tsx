@@ -36,7 +36,7 @@ export const ChallengeItem: FC<ChallengeItemProps> = ({
 	return (
 		<>
 			<Card
-				className='relative w-full grid grid-cols-7 items-center rounded-full px-10 cursor-pointer before:content-arrowWhite before:absolute before:right-10'
+				className='relative w-full grid grid-cols-7 items-center rounded-full px-10 py-4 cursor-pointer before:content-arrowWhite before:absolute before:right-10'
 				variant={theme}
 				size='small'
 				onClick={handleOpen}
@@ -64,7 +64,7 @@ export const ChallengeItem: FC<ChallengeItemProps> = ({
 				<InfoText size='sm' title={t('Result')} value={t(`${result}`)} />
 				<Button
 					ref={buttonRef}
-					className='w-[140px]'
+					className='w-[140px] justify-self-center'
 					variant='secondary'
 					size='lg'
 					onClick={() => router.push(`/challenge/${id}`)}
@@ -75,9 +75,9 @@ export const ChallengeItem: FC<ChallengeItemProps> = ({
 			<PlatformDetailInfo
 				data-state={open ? 'open' : open === undefined ? '' : 'closed'}
 				className={cn(
-					'h-0 overflow-hidden transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down',
+					'max-h-0 overflow-hidden transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down',
 					{
-						'h-full': open,
+						'max-h-screen': open,
 					},
 				)}
 				locale={locale}

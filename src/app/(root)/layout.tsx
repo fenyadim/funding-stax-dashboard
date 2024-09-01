@@ -1,13 +1,10 @@
-import { useLocale } from 'next-intl';
 import { ReactNode } from 'react';
 
-import { Locale } from '@/shared/config/localeConfig';
+import { Footer } from '@/widgets/Footer';
 import { Header } from '@/widgets/Header';
 import { Sidebar } from '@/widgets/Sidebar';
 
 export default function Layout({ children }: { children: ReactNode }) {
-	const locale = useLocale() as Locale;
-
 	return (
 		<>
 			<Header />
@@ -15,7 +12,7 @@ export default function Layout({ children }: { children: ReactNode }) {
 				<Sidebar />
 				<main className=''>
 					{children}
-					{/*<Footer />*/}
+					<Footer />
 				</main>
 			</div>
 		</>
