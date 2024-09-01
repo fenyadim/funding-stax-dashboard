@@ -24,7 +24,7 @@ export const Tabs: FC<TabsProps> = ({
 	tabs,
 }) => {
 	return (
-		<Flex gap='32' className={cn(styles.wrapper, className)}>
+		<Flex gap={32} className={cn(styles.wrapper, className)}>
 			{tabs.map((tab) => (
 				<button
 					key={tab.value}

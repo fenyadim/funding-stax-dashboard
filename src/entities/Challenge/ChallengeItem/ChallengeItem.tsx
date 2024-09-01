@@ -1,17 +1,16 @@
 'use client';
 
-import cn from 'classnames';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { FC, MouseEventHandler, useRef, useState } from 'react';
 
 import { PlatformDetailInfo } from '@/components/Platform';
 import { InfoText } from '@/components/features';
-import { Button, Card } from '@/components/ui';
+import { Card } from '@/components/ui';
+import { Button } from '@/shared/ui/button';
+import { cn } from '@/shared/utils/utils';
 
 import { ChallengeItemProps } from '../type';
-
-import styles from './ChallengeItem.module.scss';
 
 export const ChallengeItem: FC<ChallengeItemProps> = ({
 	locale,
@@ -25,21 +24,21 @@ export const ChallengeItem: FC<ChallengeItemProps> = ({
 }) => {
 	const t = useTranslations('PlatformPage');
 
-	const [open, setOpen] = useState(false);
+	const [open, setOpen] = useState<boolean | undefined>(undefined);
 	const router = useRouter();
 	const buttonRef = useRef(null);
 
 	const handleOpen: MouseEventHandler<HTMLDivElement> = (e) => {
-		if (e.target !== buttonRef.current) setOpen(!open);
+		if (e.target !== buttonRef.current)
+			setOpen(open === undefined ? true : !open);
 	};
 
 	return (
 		<>
 			<Card
-				className={cn(styles.cardWrapper, {
-					[styles.open]: open,
-				})}
+				className='relative w-full grid grid-cols-7 items-center rounded-full px-10 cursor-pointer before:content-arrowWhite before:absolute before:right-10'
 				variant={theme}
+				size='small'
 				onClick={handleOpen}
 			>
 				<InfoText size='sm' title={t('Platform')} value={t('Trade Locker')} />
@@ -65,14 +64,24 @@ export const ChallengeItem: FC<ChallengeItemProps> = ({
 				<InfoText size='sm' title={t('Result')} value={t(`${result}`)} />
 				<Button
 					ref={buttonRef}
-					className={styles.button}
-					theme='accent'
+					className='w-[140px]'
+					variant='secondary'
+					size='lg'
 					onClick={() => router.push(`/challenge/${id}`)}
 				>
 					{t('Details')}
 				</Button>
 			</Card>
-			<PlatformDetailInfo className={styles.wrapperInfo} locale={locale} />
+			<PlatformDetailInfo
+				data-state={open ? 'open' : open === undefined ? '' : 'closed'}
+				className={cn(
+					'h-0 overflow-hidden transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down',
+					{
+						'h-full': open,
+					},
+				)}
+				locale={locale}
+			/>
 		</>
 	);
 };

@@ -13,7 +13,7 @@ export interface CardProps
 const cardVariants = cva('flex', {
 	variants: {
 		size: {
-			small: 'p-4',
+			small: 'p-6',
 			default: 'p-10',
 		},
 		variant: {

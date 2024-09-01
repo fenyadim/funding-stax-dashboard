@@ -10,14 +10,23 @@ import {
 
 interface TooltipButtonProps {
 	text: string;
+	size: 'default' | 'sm';
 }
 
-export const TooltipButton: FC<TooltipButtonProps> = ({ text }) => {
+export const TooltipButton: FC<TooltipButtonProps> = ({
+	text,
+	size = 'default',
+}) => {
+	const sizeClass = {
+		default: 'size-8 text-xl',
+		sm: 'size-6 text-lg p-0',
+	};
+
 	return (
-		<TooltipProvider>
+		<TooltipProvider delayDuration={300}>
 			<Tooltip>
 				<TooltipTrigger asChild>
-					<Button className='size-8 text-xl'>!</Button>
+					<Button className={sizeClass[size]}>!</Button>
 				</TooltipTrigger>
 				<TooltipContent>
 					<p>{text}</p>

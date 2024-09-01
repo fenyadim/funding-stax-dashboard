@@ -4,7 +4,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ReactNode } from 'react';
 
-import { Footer } from '@/components';
 import { Locale } from '@/shared/config/localeConfig';
 import { Avatar, AvatarFallback, AvatarImage } from '@/shared/ui/avatar';
 import { Button } from '@/shared/ui/button';
@@ -148,7 +147,7 @@ export default function Layout({ children }: { children: ReactNode }) {
 				</Card>
 				<main className=''>
 					{children}
-					<Footer />
+					{/*<Footer />*/}
 				</main>
 			</div>
 		</>

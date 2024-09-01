@@ -24,7 +24,7 @@ const pnlElement = (
 				<span>{formatLocaleNumber(localeElement, valueElement)}</span>{' '}
 			</h3>
 			{percentOf && (
-				<p className={cn('text-xl px-4 self-end', minusStyle)}>
+				<p className={cn('text-xl self-end', minusStyle)}>
 					{minusOrPlusSign(valueElement)}
 					<span className='text-foreground'>
 						{calcPercentOf(percentOf, valueElement)}

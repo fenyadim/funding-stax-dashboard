@@ -6,6 +6,9 @@ export const doughnutOptions: ChartOptions<'doughnut'> = {
 		datalabels: {
 			display: false,
 		},
+		tooltip: {
+			enabled: false,
+		},
 	},
 	offset: 20,
 };
