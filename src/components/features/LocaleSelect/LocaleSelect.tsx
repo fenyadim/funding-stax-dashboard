@@ -1,34 +1,37 @@
 'use client';
 
-import { FC, useState } from 'react';
+import { FC } from 'react';
 
-import { Select, SelectItemProps } from '@/components/ui';
 import { Locale } from '@/shared/config/localeConfig';
 import { setUserLocale } from '@/shared/service/locale';
+import {
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
+} from '@/shared/ui/select';
 
 interface LocaleSelectProps {
 	locale: Locale;
 }
 
-const optionsLocales: SelectItemProps<Locale>[] = [
-	{ value: 'en', content: 'EN' },
-	{ value: 'ru', content: 'RU' },
-];
-
 export const LocaleSelect: FC<LocaleSelectProps> = ({ locale }) => {
-	const [selectValue, setSelectValue] = useState(locale);
-
 	const handleChange = (value: Locale) => {
-		setSelectValue(value);
 		setUserLocale(value);
 	};
 
 	return (
-		<Select
-			options={optionsLocales}
-			value={selectValue}
-			name='localeSelect'
-			onChange={handleChange}
-		/>
+		<div>
+			<Select onValueChange={handleChange}>
+				<SelectTrigger>
+					<SelectValue placeholder='EN' />
+				</SelectTrigger>
+				<SelectContent>
+					<SelectItem value='en'>EN</SelectItem>
+					<SelectItem value='ru'>RU</SelectItem>
+				</SelectContent>
+			</Select>
+		</div>
 	);
 };

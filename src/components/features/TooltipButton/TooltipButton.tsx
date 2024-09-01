@@ -10,7 +10,7 @@ import {
 
 interface TooltipButtonProps {
 	text: string;
-	size: 'default' | 'sm';
+	size?: 'default' | 'sm';
 }
 
 export const TooltipButton: FC<TooltipButtonProps> = ({

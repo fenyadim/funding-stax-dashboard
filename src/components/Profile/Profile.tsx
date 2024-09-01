@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { FC } from 'react';
 
-import styles from './Profile.module.scss';
+import { Avatar, AvatarFallback, AvatarImage } from '@/shared/ui/avatar';
 
 interface ProfileProps {
 	avatarUrl: string;
@@ -10,18 +10,20 @@ interface ProfileProps {
 }
 
 const Profile: FC<ProfileProps> = ({ avatarUrl, name, email }) => {
+	const firstLetters = name
+		.split(' ')
+		.map((n) => n[0])
+		.join('');
+
 	return (
-		<Link className={styles.profileWrapper} href='#'>
-			<img
-				className={styles.profileAvatar}
-				src={avatarUrl}
-				alt={name}
-				width={44}
-				height={44}
-			/>
-			<div className={styles.profileInfo}>
-				<h2 className={styles.profileName}>{name}</h2>
-				<p className={styles.profileEmail}>{email}</p>
+		<Link href='#' className='flex gap-3 items-center'>
+			<Avatar>
+				<AvatarImage src={avatarUrl} />
+				<AvatarFallback>{firstLetters}</AvatarFallback>
+			</Avatar>
+			<div>
+				<h2 className='text-lg'>{name}</h2>
+				<p className='text-sm text-muted-foreground'>{email}</p>
 			</div>
 		</Link>
 	);
