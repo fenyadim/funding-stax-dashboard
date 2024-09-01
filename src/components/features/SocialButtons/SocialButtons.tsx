@@ -2,31 +2,30 @@ import { Instagram } from 'lucide-react';
 import Image from 'next/image';
 import { FC } from 'react';
 
-import { Button, ButtonProps } from '@/components/ui';
 import { Flex, FlexProps } from '@/shared/ui';
+import { Button } from '@/shared/ui/button';
+
+type SizeType = 'xs' | 'sm' | 'md' | 'lg';
 
 interface SocialButtonsProps {
-	size?: ButtonProps['size'];
+	size?: SizeType;
 	gap?: FlexProps['gap'];
 }
 
-export const SocialButtons: FC<SocialButtonsProps> = ({
-	size = 'medium',
-	gap,
-}) => {
-	const sizeIcon: Record<Required<ButtonProps>['size'], number> = {
-		extraSmall: 16,
-		small: 20,
-		medium: 24,
-		large: 32,
+export const SocialButtons: FC<SocialButtonsProps> = ({ size = 'md', gap }) => {
+	const sizeIcon: Record<SizeType, number> = {
+		xs: 16,
+		sm: 20,
+		md: 24,
+		lg: 32,
 	};
 
 	return (
 		<Flex gap={gap}>
-			<Button isRound size={size}>
+			<Button size='icon'>
 				<Instagram size={sizeIcon[size]} />
 			</Button>
-			<Button isRound size={size}>
+			<Button size='icon'>
 				<Image
 					src='/telegram.svg'
 					alt='Telegram'

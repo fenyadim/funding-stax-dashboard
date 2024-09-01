@@ -15,5 +15,5 @@ export interface ChallengeItemProps {
 	todayPnl: number;
 	stageCount: string;
 	result: 'Failed' | 'Success';
-	theme: CardProps['theme'];
+	theme: CardProps['variant'];
 }

@@ -15,8 +15,8 @@ export const ResultBlock: FC<ResultBlockProps> = ({}) => {
 	const locale = useLocale() as Locale;
 
 	return (
-		<Block max className={styles.wrapper} gap='32' title='Current Results'>
-			<Card direction='column' size='small' theme='negative' gap='16'>
+		<Block max className={styles.wrapper} gap={32} title='Current Results'>
+			<Card size='small' variant='negative'>
 				<h3 className={styles.title}>Max Daily Drawdown</h3>
 				<InfoText
 					align='center'
@@ -33,7 +33,7 @@ export const ResultBlock: FC<ResultBlockProps> = ({}) => {
 					locale={locale}
 				/>
 			</Card>
-			<Card direction='column' size='small' theme='positive' gap='16'>
+			<Card size='small' variant='positive'>
 				<h3 className={styles.title}>Max Permitted Losses</h3>
 				<InfoText
 					align='center'
@@ -50,12 +50,12 @@ export const ResultBlock: FC<ResultBlockProps> = ({}) => {
 					locale={locale}
 				/>
 			</Card>
-			<Card direction='column' size='small' theme='negative' gap='16'>
+			<Card size='small' variant='negative'>
 				<h3 className={styles.title}>Minimum Trading Days</h3>
 				<InfoText align='center' title='Objective' value='8' />
 				<InfoText align='center' title='Current' value='1' />
 			</Card>
-			<Card direction='column' size='small' theme='negative' gap='16'>
+			<Card size='small' variant='negative'>
 				<h3 className={styles.title}>Profit Target</h3>
 				<InfoText
 					align='center'

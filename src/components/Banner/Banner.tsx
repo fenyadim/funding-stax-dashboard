@@ -1,16 +1,25 @@
-import React from 'react';
+import Link from 'next/link';
+import { FC } from 'react';
 
-import { ALink, Button } from '@/components/ui';
 import { Flex } from '@/shared/ui';
+import { Button } from '@/shared/ui/button';
 
-import styles from './Banner.module.scss';
-
-export const Banner = () => {
+export const Banner: FC = () => {
 	return (
-		<Flex gap={16} direction='column' className={styles.wrapper}>
-			<h3>Get a Market Head Start with up to $200K!</h3>
-			<Button theme='accent'>New Challenge</Button>
-			<ALink href='#'>Learn more</ALink>
+		<Flex
+			className='p-6 bg-[url("/bannerBack.jpg")] rounded-3xl'
+			gap={8}
+			direction='column'
+		>
+			<h3 className='text-center'>Get a Market Head Start with up to $200K!</h3>
+			<Button size='lg' variant='secondary'>
+				New Challenge
+			</Button>
+			<Link href='#'>
+				<Button className='uppercase' variant='link'>
+					Learn more
+				</Button>
+			</Link>
 		</Flex>
 	);
 };
