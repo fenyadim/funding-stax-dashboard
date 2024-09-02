@@ -1,18 +1,18 @@
 'use client';
 
 import { useLocale } from 'next-intl';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { FC } from 'react';
 
 import { Banner } from '@/components/Banner/Banner';
 import { SocialButtons } from '@/components/features';
 import { Locale } from '@/shared/config/localeConfig';
-import { routeConfig } from '@/shared/config/routeConfig';
-import { Button } from '@/shared/ui/button';
 import { Card } from '@/shared/ui/card';
 import { formatLocaleNumber } from '@/shared/utils/formatLocale';
-import { cn } from '@/shared/utils/utils';
+
+import { menuConfig } from '../../config';
+import { SidebarCollapse } from '../SidebarCollapse/SidebarCollapse';
+import { SidebarLink } from '../SidebarLink/SidebarLink';
 
 interface SidebarProps {
 	className?: string;
@@ -30,22 +30,28 @@ export const Sidebar: FC<SidebarProps> = ({}) => {
 			</h2>
 			<nav className='w-full'>
 				<ul className='flex flex-col gap-3'>
-					{routeConfig().map(({ path, name }) => (
-						<li key={path}>
-							<Link href={path} className='block focus-visible:outline-none'>
-								<Button
-									className={cn('text-lg font-medium w-full', {
-										'text-accent bg-secondary hover:bg-secondary/80 relative before:content-arrow before:absolute before:top-1/2 before:right-5 before:-translate-y-1/2 before:h-[18px] before:scale-75':
-											pathname === path,
-									})}
-									variant='ghost'
-									size='lg'
-								>
-									{name}
-								</Button>
-							</Link>
-						</li>
-					))}
+					{menuConfig.map(({ path, name, submenu }) =>
+						path ? (
+							<li key={path}>
+								<SidebarLink
+									key={path}
+									path={path}
+									name={name}
+									isActive={pathname === path}
+								/>
+							</li>
+						) : submenu ? (
+							<li key={name}>
+								<SidebarCollapse
+									pathname={pathname}
+									name={name}
+									submenu={submenu}
+								/>
+							</li>
+						) : (
+							''
+						),
+					)}
 				</ul>
 			</nav>
 			<SocialButtons gap={32} />
