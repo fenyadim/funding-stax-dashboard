@@ -1,3 +1,5 @@
+import { BillingPage } from '@/(pages)';
+
 export default function BillingRoute() {
-	return <div>Billing</div>;
+	return <BillingPage />;
 }

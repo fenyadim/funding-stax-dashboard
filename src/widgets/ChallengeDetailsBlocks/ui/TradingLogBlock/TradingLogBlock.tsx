@@ -69,7 +69,7 @@ export const TradingLogBlock: FC<TradingLogBlockProps> = ({}) => {
 				<Table>
 					<TableCaption>A list of your recent invoices.</TableCaption>
 					<TableHeader>
-						<TableRow className='border-accent hover:bg-transparent'>
+						<TableRow>
 							{tableDate.labels.map((label) => (
 								<TableHead key={label}>{label}</TableHead>
 							))}

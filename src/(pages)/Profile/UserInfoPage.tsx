@@ -2,13 +2,47 @@ import { FC } from 'react';
 
 import { ChangeForm, UpdateInfoForm } from '@/components/features/UserInfoForm';
 import { Block, Card } from '@/components/ui';
-import { Button, Flex, Separator } from '@/shared/ui';
+import {
+	Button,
+	Flex,
+	Separator,
+	Table,
+	TableBody,
+	TableCaption,
+	TableCell,
+	TableHead,
+	TableHeader,
+	TableRow,
+} from '@/shared/ui';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shared/ui/tabs';
+
+const tableHead = ['ID', 'Name'];
+
+const tableData: { name: string; id: string }[] = [
+	{
+		id: '1232',
+		name: 'Vadim',
+	},
+	{
+		id: '12345',
+		name: 'Jorik',
+	},
+	{
+		id: '123456',
+		name: 'John',
+	},
+];
 
 export const UserInfoPage: FC = () => {
 	return (
-		<Block align='start' gap={32} max title='User Info'>
-			<Card size='small' className='w-1/3'>
+		<Block
+			className='grid grid-cols-3'
+			align='start'
+			gap={32}
+			max
+			title='User Info'
+		>
+			<Card size='small'>
 				<Flex justify='between' gap={32}>
 					<Flex gap={32}>
 						{/*TODO: Поменять на Image*/}
@@ -54,7 +88,7 @@ export const UserInfoPage: FC = () => {
 					</Tabs>
 				</div>
 			</Card>
-			<Card className='w-1/4 p-0'>
+			<Card className='p-0'>
 				<Flex className='flex-row items-center justify-between w-full p-6 pb-0'>
 					<Flex direction='column' align='start' gap={4}>
 						<p className='text-base font-medium'>KYC</p>
@@ -80,6 +114,38 @@ export const UserInfoPage: FC = () => {
 						<li>Платежный адрес (адрес фактического проживания)</li>
 						<li>Номер телефона</li>
 					</ul>
+				</div>
+			</Card>
+			<Card className='gap-0' size='small'>
+				<Flex className='mb-4' justify='between'>
+					<h3 className='text-2xl font-medium'>Referrals</h3>
+					<Button variant='secondary'>Invite</Button>
+				</Flex>
+				<Separator className='bg-muted-foreground' />
+				<div className='px-5'>
+					<Table>
+						{tableData ? (
+							<>
+								<TableHeader>
+									<TableRow className='border-muted-foreground hover:bg-transparent'>
+										{tableHead.map((label) => (
+											<TableHead key={label}>{label}</TableHead>
+										))}
+									</TableRow>
+								</TableHeader>
+								<TableBody>
+									{tableData.map(({ id, name }) => (
+										<TableRow className='hover:bg-accent/10' key={id}>
+											<TableCell>{id}</TableCell>
+											<TableCell>{name}</TableCell>
+										</TableRow>
+									))}
+								</TableBody>
+							</>
+						) : (
+							<TableCaption>A list of your recent invites.</TableCaption>
+						)}
+					</Table>
 				</div>
 			</Card>
 		</Block>

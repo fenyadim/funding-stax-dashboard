@@ -5,3 +5,7 @@ export * from './button';
 export * from './separator';
 export * from './form';
 export * from './input';
+export * from './table';
+export * from './popover';
+export * from './calendar';
+export * from './date-picker';

@@ -1,7 +1,9 @@
-import { FC } from 'react';
+'use client';
+
+import { useEffect, useState } from 'react';
 
 import { Locale } from '@/shared/config/localeConfig';
-import { setUserLocale } from '@/shared/service/locale';
+import { getUserLocale, setUserLocale } from '@/shared/service/locale';
 import {
 	Select,
 	SelectContent,
@@ -10,16 +12,21 @@ import {
 	SelectValue,
 } from '@/shared/ui/select';
 
-interface LocaleSelectProps {}
+export const LocaleSelect = () => {
+	const [value, setValue] = useState<string>('EN');
 
-export const LocaleSelect: FC<LocaleSelectProps> = () => {
-	const handleChange = async (value: Locale) => {
-		await setUserLocale(value);
+	useEffect(() => {
+		getUserLocale().then((value) => setValue(value));
+	}, []);
+
+	const handleChange = (value: Locale) => {
+		setValue(value);
+		setUserLocale(value);
 	};
 
 	return (
 		<div>
-			<Select onValueChange={handleChange}>
+			<Select value={value} onValueChange={handleChange}>
 				<SelectTrigger>
 					<SelectValue placeholder='EN' />
 				</SelectTrigger>
