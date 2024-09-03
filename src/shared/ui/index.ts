@@ -4,3 +4,4 @@ export * from './collapsible';
 export * from './button';
 export * from './separator';
 export * from './form';
+export * from './input';

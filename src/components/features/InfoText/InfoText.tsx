@@ -1,5 +1,5 @@
 import { cva } from 'class-variance-authority';
-import { FC } from 'react';
+import { FC, memo } from 'react';
 
 import { TooltipButton } from '@/components/features';
 import { Flex } from '@/shared/ui';
@@ -31,7 +31,7 @@ export const infoTextVariants = cva(
 	},
 );
 
-export const InfoText: FC<PlatformStatisticProps> = ({
+const InfoTextMemo: FC<PlatformStatisticProps> = ({
 	title,
 	value,
 	before,
@@ -63,3 +63,5 @@ export const InfoText: FC<PlatformStatisticProps> = ({
 		</Flex>
 	);
 };
+
+export const InfoText = memo(InfoTextMemo);

@@ -25,8 +25,8 @@ export const Sidebar: FC<SidebarProps> = ({}) => {
 	return (
 		<Card className='flex flex-col items-center gap-5 p-8 h-min'>
 			<h2 className='text-3xl font-roboto'>
+				<span className='text-accent mr-1'>$</span>
 				{formatLocaleNumber(locale, 5665.67)}
-				<span className='text-accent ml-1'>$</span>
 			</h2>
 			<nav className='w-full'>
 				<ul className='flex flex-col gap-3'>

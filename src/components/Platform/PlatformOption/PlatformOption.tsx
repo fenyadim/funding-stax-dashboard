@@ -18,14 +18,18 @@ interface PlatformOptionType<T> {
 	info?: string;
 }
 
-export function PlatformOption<T extends string | number>({
+export const PlatformOption = <T extends string | number>({
 	title,
 	items,
 	idActive,
 	setIdActive,
 	locale,
 	info,
-}: PlatformOptionType<T>) {
+}: PlatformOptionType<T>) => {
+	const onChangeHandler = (id: T) => () => {
+		setIdActive(id);
+	};
+
 	return (
 		<Flex className='w-1/2 h-min' gap={4} align='start' direction='column'>
 			<Flex className='mb-3' gap={16} max>
@@ -37,7 +41,7 @@ export function PlatformOption<T extends string | number>({
 					<Button
 						id={String(item.id)}
 						key={item.id}
-						onClick={() => setIdActive(item.id)}
+						onClick={onChangeHandler(item.id)}
 						size='lg'
 						variant={item.id === idActive ? 'secondary' : 'default'}
 					>
@@ -54,4 +58,4 @@ export function PlatformOption<T extends string | number>({
 			</div>
 		</Flex>
 	);
-}
+};

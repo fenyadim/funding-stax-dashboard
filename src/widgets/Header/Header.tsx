@@ -1,26 +1,17 @@
 'use client';
 
 import { Bell, LogOut } from 'lucide-react';
-import { useLocale } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
 
 import { Profile } from '@/components';
 import { LocaleSelect } from '@/components/features';
-import { Locale } from '@/shared/config/localeConfig';
 import { useNowDate } from '@/shared/hooks/useNowDate';
-import { Flex } from '@/shared/ui';
-import { Button } from '@/shared/ui/button';
-import { Input } from '@/shared/ui/input';
+import { Button, Flex, Input } from '@/shared/ui';
 
-interface HeaderProps {
-	className?: string;
-}
-
-export const Header: FC<HeaderProps> = ({}) => {
-	const locale = useLocale() as Locale;
-	const [time, date] = useNowDate(locale);
+export const Header: FC = () => {
+	const [time, date] = useNowDate();
 
 	return (
 		<header className='grid grid-cols-[350px_1fr] gap-4 items-center mb-4 pt-4 px-6'>
@@ -44,7 +35,7 @@ export const Header: FC<HeaderProps> = ({}) => {
 					email='johndoe@gmail.com'
 				/>
 				<div className='flex gap-6'>
-					<LocaleSelect locale={locale} />
+					<LocaleSelect />
 					<Button size='icon'>
 						<LogOut />
 					</Button>

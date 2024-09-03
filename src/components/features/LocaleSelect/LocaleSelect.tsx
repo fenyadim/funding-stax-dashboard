@@ -1,5 +1,3 @@
-'use client';
-
 import { FC } from 'react';
 
 import { Locale } from '@/shared/config/localeConfig';
@@ -12,13 +10,11 @@ import {
 	SelectValue,
 } from '@/shared/ui/select';
 
-interface LocaleSelectProps {
-	locale: Locale;
-}
+interface LocaleSelectProps {}
 
-export const LocaleSelect: FC<LocaleSelectProps> = ({ locale }) => {
-	const handleChange = (value: Locale) => {
-		setUserLocale(value);
+export const LocaleSelect: FC<LocaleSelectProps> = () => {
+	const handleChange = async (value: Locale) => {
+		await setUserLocale(value);
 	};
 
 	return (

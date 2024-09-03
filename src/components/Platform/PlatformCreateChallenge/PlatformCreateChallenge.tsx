@@ -27,8 +27,8 @@ const challengeValues: PlatformItemType<number>[] = [
 export const PlatformCreateChallenge: FC<PlatformCreateChallengeProps> = ({
 	locale,
 }) => {
-	const [type, setType] = useState('one-phase');
-	const [value, setValue] = useState(6000);
+	const [type, setType] = useState<string>('one-phase');
+	const [value, setValue] = useState<number>(6000);
 
 	const t = useTranslations('PlatformPage');
 
@@ -38,13 +38,21 @@ export const PlatformCreateChallenge: FC<PlatformCreateChallengeProps> = ({
 		{ id: 'swing', name: t('Swing') },
 	];
 
+	const setActiveHandler = (id: string) => {
+		setType(id);
+	};
+
+	const setValueHandler = (id: number) => {
+		setValue(id);
+	};
+
 	return (
 		<Card className='w-full gap-5'>
 			<PlatformOption
 				title={t('Challenge Type')}
 				items={challengeTypes}
 				idActive={type}
-				setIdActive={setType}
+				setIdActive={setActiveHandler}
 				info={
 					'Пробная информация, чтоб что-то попробовать.Пробная информация, чтоб что-то попробовать.Пробная информация, чтоб что-то попробовать.'
 				}
@@ -54,7 +62,7 @@ export const PlatformCreateChallenge: FC<PlatformCreateChallengeProps> = ({
 					title={t('Challenge Value')}
 					items={challengeValues}
 					idActive={value}
-					setIdActive={setValue}
+					setIdActive={setValueHandler}
 					locale={locale}
 					info={
 						'Пробная информация, чтоб что-то попробовать.Пробная информация, чтоб что-то попробовать.Пробная информация, чтоб что-то попробовать.'

@@ -1,9 +1,7 @@
 import { useFormatter } from 'next-intl';
 import { useEffect, useState } from 'react';
 
-import { Locale } from '@/shared/config/localeConfig';
-
-export const useNowDate = (locale: Locale): [time: string, date: string] => {
+export const useNowDate = (): [time: string, date: string] => {
 	const format = useFormatter();
 	const [date, setDate] = useState<string>('');
 	const [time, setTime] = useState<string>('');
@@ -29,7 +27,7 @@ export const useNowDate = (locale: Locale): [time: string, date: string] => {
 		return () => {
 			clearInterval(interval);
 		};
-	}, [locale]);
+	}, [format]);
 
 	return [time, date];
 };

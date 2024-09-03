@@ -2,9 +2,8 @@ import type { Metadata } from 'next';
 import { getLocale } from 'next-intl/server';
 
 import { manrope, roboto } from '@/shared/fonts';
-import { RootProviders } from '@/shared/providers/RootProviders/RootProviders';
 
-// import '@/shared/styles/globals.css';
+import { RootProviders } from './providers/RootProviders';
 import './styles/global.css';
 
 export const metadata: Metadata = {
@@ -18,6 +17,7 @@ export default async function RootLayout({
 	children: React.ReactNode;
 }>) {
 	const locale = await getLocale();
+
 	return (
 		<html lang={locale}>
 			<body className={`${manrope.variable} ${roboto.variable}`}>
