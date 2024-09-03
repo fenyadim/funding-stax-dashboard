@@ -1,8 +1,7 @@
 'use client';
 
+import type { ColumnDef, SortingState } from '@tanstack/react-table';
 import {
-	ColumnDef,
-	SortingState,
 	flexRender,
 	getCoreRowModel,
 	getSortedRowModel,

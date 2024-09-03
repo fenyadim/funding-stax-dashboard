@@ -3,7 +3,7 @@
 import { Calendar as CalendarIcon } from 'lucide-react';
 import { useFormatter } from 'next-intl';
 import * as React from 'react';
-import { DateRange } from 'react-day-picker';
+import type { DateRange } from 'react-day-picker';
 
 import { cn } from '../utils/utils';
 
