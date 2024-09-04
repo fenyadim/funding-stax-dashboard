@@ -4,18 +4,25 @@ import type { ColumnDef } from '@tanstack/react-table';
 import { ArrowUpDown } from 'lucide-react';
 
 import { Button } from '@/shared/ui';
+import { cn } from '@/shared/utils/utils';
 
-export type Payment = {
+export type IBilling = {
 	id: string;
 	status: 'expired' | 'completed' | 'incomplete';
-	date: string;
+	date: Date;
 	order: string;
 	product: string;
 	payment: string;
 	amount: number;
 };
 
-export const columns: ColumnDef<Payment>[] = [
+const statusStyle: Record<IBilling['status'], string> = {
+	completed: 'bg-accent',
+	incomplete: 'bg-error',
+	expired: 'bg-muted',
+};
+
+export const columns: ColumnDef<IBilling>[] = [
 	{
 		accessorKey: 'status',
 		header: ({ column }) => (
@@ -26,6 +33,16 @@ export const columns: ColumnDef<Payment>[] = [
 				Status
 				<ArrowUpDown className='ml-2 h-4 w-4' />
 			</Button>
+		),
+		cell: ({ row }) => (
+			<div
+				className={cn(
+					'font-semibold text-accent-foreground p-2 rounded-full capitalize',
+					statusStyle[row.original.status],
+				)}
+			>
+				{row.original.status}
+			</div>
 		),
 	},
 	{
@@ -39,6 +56,33 @@ export const columns: ColumnDef<Payment>[] = [
 				<ArrowUpDown className='ml-2 h-4 w-4' />
 			</Button>
 		),
+		filterFn: (row, _, filterValue) => {
+			const filterFromDate = filterValue.from;
+			const filterToDate = filterValue.to;
+
+			if (filterFromDate || filterToDate) {
+				if (filterFromDate && filterToDate) {
+					return (
+						row.original.date >= filterValue.from &&
+						row.original.date <= filterValue.to
+					);
+				} else if (filterFromDate) {
+					return row.original.date >= filterValue.from;
+				} else {
+					return row.original.date <= filterValue.to;
+				}
+			} else {
+				return true;
+			}
+		},
+		cell: ({ row }) =>
+			Intl.DateTimeFormat('en', {
+				day: 'numeric',
+				month: 'short',
+				year: 'numeric',
+				hour: 'numeric',
+				minute: 'numeric',
+			}).format(row.original.date),
 	},
 	{
 		accessorKey: 'order',
@@ -82,8 +126,7 @@ export const columns: ColumnDef<Payment>[] = [
 	},
 	{
 		accessorKey: 'View',
-		cell: ({ row }) => {
-			console.log(row.original);
+		cell: () => {
 			return <Button variant='secondary'>View</Button>;
 		},
 	},

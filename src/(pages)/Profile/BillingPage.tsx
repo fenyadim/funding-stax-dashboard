@@ -1,14 +1,13 @@
-import { BillingSort, BillingTable } from '@/components/features/Billing';
-import { Payment, columns } from '@/components/features/Billing/model/columns';
+import { BillingTable, IBilling, columns } from '@/components/features/Billing';
 import { Block } from '@/components/ui';
 
-async function getData(): Promise<Payment[]> {
+async function getData(): Promise<IBilling[]> {
 	// Fetch data from your API here.
 	return [
 		{
 			id: '728ed52f',
 			status: 'expired',
-			date: '17/08/2024 17:36',
+			date: new Date('08/17/2024 17:36'),
 			order: 'bee15494-cb4a-457',
 			product: 'Purchase - 200K Swing Challenge - TL Challenge',
 			payment: 'Crypto Currency',
@@ -17,11 +16,29 @@ async function getData(): Promise<Payment[]> {
 		{
 			id: '728ed',
 			status: 'completed',
-			date: '29/07/2024 19:39',
+			date: new Date('07/29/2024 19:39'),
 			order: 'bee15494-cb4a-457',
 			product: 'Purchase - 200K Swing Challenge - TL Challenge',
 			payment: 'Crypto Currency',
 			amount: 45,
+		},
+		{
+			id: '728ed23',
+			status: 'incomplete',
+			date: new Date('07/25/2024 19:39'),
+			order: 'bee15494-cb4a-457',
+			product: 'Purchase - 200K Swing Challenge - TL Challenge',
+			payment: 'Crypto Currency',
+			amount: 45,
+		},
+		{
+			id: '7283',
+			status: 'completed',
+			date: new Date('07/30/2024 19:39'),
+			order: 'biba',
+			product: 'Test - 200K Swing Challenge - TL Challenge',
+			payment: 'Crypto Currency',
+			amount: 45245,
 		},
 	];
 }
@@ -37,7 +54,6 @@ export const BillingPage = async () => {
 			gap={16}
 			max
 		>
-			<BillingSort />
 			<BillingTable data={data} columns={columns} />
 		</Block>
 	);
