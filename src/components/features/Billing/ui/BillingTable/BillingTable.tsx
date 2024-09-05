@@ -52,8 +52,6 @@ export function BillingTable<TData, TValue>({
 		setColumnFilters([]);
 	};
 
-	// console.log(columnFilters.length > 0 && columnFilters[0].value.from);
-
 	return (
 		<>
 			<BillingSort options={optionSort(table)} clearFilters={clearFilters} />

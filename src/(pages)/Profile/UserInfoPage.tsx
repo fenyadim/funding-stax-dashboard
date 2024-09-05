@@ -45,7 +45,7 @@ export const UserInfoPage: FC = () => {
 			<Card size='small'>
 				<Flex justify='between' gap={32}>
 					<Flex gap={32}>
-						{/*TODO: Поменять на Image*/}
+						{/*TODO: Поменять на Image и сделать редактируемым*/}
 						<img
 							src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwq7veP7WNzW-9UA4KJLXesrdwyp1GVURweg&sF'
 							alt='John Doe'

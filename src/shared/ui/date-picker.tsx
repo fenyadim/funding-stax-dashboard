@@ -42,8 +42,8 @@ export function DatePickerWithRange({
 						id='date'
 						variant={'outline'}
 						className={cn(
-							'w-[300px] justify-start text-left text-sm font-medium',
-							!(value ?? date) && 'text-muted-foreground',
+							'w-[250px] justify-start text-left text-sm font-medium text-muted-foreground',
+							date && 'bg-secondary border-none text-secondary-foreground',
 						)}
 					>
 						<CalendarIcon className='mr-2 h-4 w-4' />

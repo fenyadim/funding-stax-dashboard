@@ -4,6 +4,7 @@ import type { ColumnDef } from '@tanstack/react-table';
 import { ArrowUpDown } from 'lucide-react';
 
 import { Button } from '@/shared/ui';
+import { formatLocaleNumber } from '@/shared/utils/formatLocale';
 import { cn } from '@/shared/utils/utils';
 
 export type IBilling = {
@@ -123,6 +124,7 @@ export const columns: ColumnDef<IBilling>[] = [
 				<ArrowUpDown className='ml-2 h-4 w-4' />
 			</Button>
 		),
+		cell: ({ row }) => `$ ${formatLocaleNumber('en', row.original.amount)}`,
 	},
 	{
 		accessorKey: 'View',
