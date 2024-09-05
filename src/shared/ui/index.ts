@@ -9,3 +9,4 @@ export * from './table';
 export * from './popover';
 export * from './calendar';
 export * from './date-picker';
+export * from './scroll-area';

@@ -11,13 +11,13 @@ import {
 	CollapsibleTrigger,
 } from '@/shared/ui';
 
-import { MenuConfig } from '../../config';
+import { SubMenuType } from '../../config';
 import { SidebarLink } from '../SidebarLink/SidebarLink';
 
 interface SidebarCollapseProps {
 	name: string;
 	pathname: string;
-	submenu: Omit<MenuConfig, 'submenu'>[];
+	submenu: Omit<SubMenuType, 'submenu'>[];
 }
 
 export const SidebarCollapse: FC<SidebarCollapseProps> = ({
@@ -25,13 +25,13 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
 	submenu,
 	pathname,
 }) => {
-	const { open, setOpen } = useCollapseByUrl('profile');
+	const { open, setOpen } = useCollapseByUrl(submenu[0].parentPath);
 
 	return (
 		<Collapsible open={open} onOpenChange={setOpen}>
 			<CollapsibleTrigger asChild>
 				<Button
-					className='group relative w-full text-lg font-medium data-[state=open]:bg-secondary/80 data-[state=open]:text-accent'
+					className='group relative w-full text-lg font-medium data-[state=open]:bg-secondary/80 data-[state=open]:text-accent rounded-3xl data-[state=open]:rounded-b-none '
 					size='lg'
 					variant='ghost'
 				>
@@ -39,10 +39,9 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
 					<ChevronDown className='absolute right-5 transition-opacity opacity-0 group-hover:opacity-100 group-data-[state=open]:opacity-100 group-data-[state=open]:rotate-180' />
 				</Button>
 			</CollapsibleTrigger>
-			<CollapsibleContent className='overflow-hidden data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down p-2 pb-0 *:mb-2'>
+			<CollapsibleContent className='bg-background/50 rounded-b-3xl overflow-hidden data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down p-2 pb-0 *:mb-2'>
 				{submenu.map(({ name, path }) => (
 					<SidebarLink
-						className='last:mb-0'
 						key={path}
 						path={path as string}
 						name={name}

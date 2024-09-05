@@ -20,7 +20,9 @@ export default async function RootLayout({
 
 	return (
 		<html lang={locale}>
-			<body className={`${manrope.variable} ${roboto.variable}`}>
+			<body
+				className={`${manrope.variable} ${roboto.variable} overflow-hidden`}
+			>
 				<RootProviders>{children}</RootProviders>
 			</body>
 		</html>

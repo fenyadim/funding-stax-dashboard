@@ -1,7 +1,11 @@
+export interface SubMenuType extends MenuConfig {
+	parentPath: string;
+}
+
 export interface MenuConfig {
 	path?: string;
 	name: string;
-	submenu?: MenuConfig[];
+	submenu?: SubMenuType[];
 }
 
 export const menuConfig: MenuConfig[] = [
@@ -10,8 +14,24 @@ export const menuConfig: MenuConfig[] = [
 		name: 'New Challenge',
 	},
 	{
-		path: '/affiliates',
 		name: 'Affiliates',
+		submenu: [
+			{
+				path: '/affiliates/referrals',
+				name: 'Referrals',
+				parentPath: 'affiliates',
+			},
+			{
+				path: '/affiliates/referrals-list',
+				name: 'Referrals List',
+				parentPath: 'affiliates',
+			},
+			{
+				path: '/affiliates/payouts',
+				name: 'Payouts',
+				parentPath: 'affiliates',
+			},
+		],
 	},
 	{
 		path: '/leaderboard',
@@ -27,10 +47,12 @@ export const menuConfig: MenuConfig[] = [
 			{
 				path: '/profile/user-info',
 				name: 'User Info',
+				parentPath: 'profile',
 			},
 			{
 				path: '/profile/billing',
 				name: 'Billing',
+				parentPath: 'profile',
 			},
 		],
 	},
