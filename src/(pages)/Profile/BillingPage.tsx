@@ -6,7 +6,7 @@ async function getData(): Promise<IBilling[]> {
 	return [
 		{
 			id: '728ed52f',
-			status: 'expired',
+			status: 'waiting',
 			date: new Date('08/17/2024 17:36'),
 			order: 'bee15494-cb4a-457',
 			product: 'Purchase - 200K Swing Challenge - TL Challenge',
@@ -34,6 +34,15 @@ async function getData(): Promise<IBilling[]> {
 		{
 			id: '7283',
 			status: 'completed',
+			date: new Date('07/30/2024 19:39'),
+			order: 'biba',
+			product: 'Test - 200K Swing Challenge - TL Challenge',
+			payment: 'Crypto Currency',
+			amount: 45245,
+		},
+		{
+			id: '7283',
+			status: 'processing',
 			date: new Date('07/30/2024 19:39'),
 			order: 'biba',
 			product: 'Test - 200K Swing Challenge - TL Challenge',

@@ -9,7 +9,7 @@ import { cn } from '@/shared/utils/utils';
 
 export type IBilling = {
 	id: string;
-	status: 'expired' | 'completed' | 'incomplete';
+	status: 'waiting' | 'processing' | 'completed' | 'incomplete';
 	date: Date;
 	order: string;
 	product: string;
@@ -20,7 +20,8 @@ export type IBilling = {
 const statusStyle: Record<IBilling['status'], string> = {
 	completed: 'bg-accent',
 	incomplete: 'bg-error',
-	expired: 'bg-muted',
+	waiting: 'bg-muted',
+	processing: 'bg-amber-300',
 };
 
 export const columns: ColumnDef<IBilling>[] = [
@@ -128,8 +129,14 @@ export const columns: ColumnDef<IBilling>[] = [
 	},
 	{
 		accessorKey: 'View',
-		cell: () => {
-			return <Button variant='secondary'>View</Button>;
+		header: '',
+		cell: ({ row }) => {
+			const status = row.original.status;
+			return (
+				<Button variant='secondary' disabled={status !== 'waiting'}>
+					Claim
+				</Button>
+			);
 		},
 	},
 ];
