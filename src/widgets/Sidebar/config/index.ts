@@ -34,10 +34,6 @@ export const menuConfig: MenuConfig[] = [
 		],
 	},
 	{
-		path: '/leaderboard',
-		name: 'Leaderboard',
-	},
-	{
 		path: '/challenge-history',
 		name: 'Challenge History',
 	},

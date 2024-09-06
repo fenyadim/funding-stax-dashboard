@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { getLocale } from 'next-intl/server';
 
 import { manrope, roboto } from '@/shared/fonts';
+import { Toaster } from '@/shared/ui/toaster';
 
 import { RootProviders } from './providers/RootProviders';
 import './styles/global.css';
@@ -24,6 +25,7 @@ export default async function RootLayout({
 				className={`${manrope.variable} ${roboto.variable} overflow-hidden`}
 			>
 				<RootProviders>{children}</RootProviders>
+				<Toaster />
 			</body>
 		</html>
 	);

@@ -70,10 +70,11 @@ export const ReferralsPage: FC<ReferralsPageProps> = async ({}) => {
 					text='https://prop.covefunded.com/buy-challenge/?referral=c2435371'
 				/>
 			</Block>
-			<Block title='Manage your BTC payout address'>
+			<Block direction='column' title='Manage your BTC payout address'>
 				<CopyLink
 					text='bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh'
 					label='BTC address'
+					isEditable
 				/>
 			</Block>
 		</Flex>
