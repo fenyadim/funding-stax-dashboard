@@ -1,6 +1,5 @@
 export { Flex } from './Flex/Flex';
 export type { FlexProps } from './Flex/Flex';
-export { AppTable } from './AppTable/AppTable';
 export * from './collapsible';
 export * from './button';
 export * from './separator';
@@ -11,3 +10,4 @@ export * from './popover';
 export * from './calendar';
 export * from './date-picker';
 export * from './scroll-area';
+export * from './select';
