@@ -11,12 +11,10 @@ export default async function Layout({ children }: { children: ReactNode }) {
 			<Header />
 			<div className='grid grid-cols-[350px_1fr] gap-4 pl-6'>
 				<Sidebar />
-				<main className=''>
-					<ScrollArea className='h-[calc(100vh-(32px+63px))] pr-6'>
-						{children}
-						<Footer />
-					</ScrollArea>
-				</main>
+				<ScrollArea className='relative h-mainWithoutFooter pr-6'>
+					<main className='h-mainWithoutFooter'>{children}</main>
+					<Footer />
+				</ScrollArea>
 			</div>
 		</>
 	);

@@ -44,6 +44,11 @@ module.exports = {
 				arrow: 'url("/arrow.svg")',
 				arrowWhite: 'url("/arrow-white.svg")',
 			},
+			spacing: {
+				sidebar: 'calc(350px + 1rem + 24px)',
+				mainFullScreen: 'calc(100vh - (32px + 63px))',
+				mainWithoutFooter: 'calc(100vh - (32px + 63px + 60px))',
+			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',

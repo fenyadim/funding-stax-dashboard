@@ -1,7 +1,9 @@
-import { BillingTable, IBilling, columns } from '@/components/features/Billing';
-import { Block } from '@/components/ui';
+import { AppTable } from '@/entities/AppTable';
 
-async function getData(): Promise<IBilling[]> {
+import { IChallengePayouts, columnsChallenge } from '../model/columnsChallenge';
+import { optionTableChallenge } from '../model/optionTableChallenge';
+
+async function getData(): Promise<IChallengePayouts[]> {
 	// Fetch data from your API here.
 	return [
 		{
@@ -52,18 +54,14 @@ async function getData(): Promise<IBilling[]> {
 	];
 }
 
-export const BillingPage = async () => {
+export async function ChallengeTable() {
 	const data = await getData();
 
 	return (
-		<Block
-			title='Billing history'
-			direction='column'
-			align='stretch'
-			gap={16}
-			max
-		>
-			<BillingTable data={data} columns={columns} />
-		</Block>
+		<AppTable
+			columns={columnsChallenge}
+			data={data}
+			optionsFilter={optionTableChallenge}
+		/>
 	);
-};
+}

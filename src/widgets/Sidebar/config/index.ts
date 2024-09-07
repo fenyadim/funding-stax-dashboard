@@ -26,11 +26,6 @@ export const menuConfig: MenuConfig[] = [
 				name: 'Referrals List',
 				parentPath: 'affiliates',
 			},
-			{
-				path: '/affiliates/payouts',
-				name: 'Payouts',
-				parentPath: 'affiliates',
-			},
 		],
 	},
 	{
@@ -38,19 +33,23 @@ export const menuConfig: MenuConfig[] = [
 		name: 'Challenge History',
 	},
 	{
-		name: 'My Profile',
+		name: 'Payouts',
 		submenu: [
 			{
-				path: '/profile/user-info',
-				name: 'User Info',
-				parentPath: 'profile',
+				path: '/payouts/challenge',
+				name: 'Challenge Payouts',
+				parentPath: 'payouts',
 			},
 			{
-				path: '/profile/billing',
-				name: 'Billing',
-				parentPath: 'profile',
+				path: '/payouts/referral',
+				name: 'Referral Payouts',
+				parentPath: 'payouts',
 			},
 		],
+	},
+	{
+		name: 'My Profile',
+		path: '/profile',
 	},
 	{
 		path: '/faq',

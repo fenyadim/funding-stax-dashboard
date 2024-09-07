@@ -33,7 +33,7 @@ const tableData: { name: string; id: string }[] = [
 	},
 ];
 
-export const UserInfoPage: FC = () => {
+export const ProfilePage: FC = () => {
 	return (
 		<Block
 			className='grid grid-cols-3'

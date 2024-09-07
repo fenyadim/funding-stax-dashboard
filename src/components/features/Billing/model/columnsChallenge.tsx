@@ -7,7 +7,7 @@ import { Button } from '@/shared/ui';
 import { formatLocaleNumber } from '@/shared/utils/formatLocale';
 import { cn } from '@/shared/utils/utils';
 
-export type IBilling = {
+export type IChallengePayouts = {
 	id: string;
 	status: 'waiting' | 'processing' | 'completed' | 'incomplete';
 	date: Date;
@@ -17,14 +17,14 @@ export type IBilling = {
 	amount: number;
 };
 
-const statusStyle: Record<IBilling['status'], string> = {
+const statusStyle: Record<IChallengePayouts['status'], string> = {
 	completed: 'bg-accent',
 	incomplete: 'bg-error',
 	waiting: 'bg-muted',
 	processing: 'bg-amber-300',
 };
 
-export const columns: ColumnDef<IBilling>[] = [
+export const columnsChallenge: ColumnDef<IChallengePayouts>[] = [
 	{
 		accessorKey: 'status',
 		header: ({ column }) => (
