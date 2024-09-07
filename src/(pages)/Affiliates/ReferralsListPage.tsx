@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import { ReferralsListTable } from '@/components/features/Affiliates';
-import { Block } from '@/components/ui';
+import { Block } from '@/shared/ui';
 
 interface ReferralsListPageProps {}
 

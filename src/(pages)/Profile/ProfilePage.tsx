@@ -1,9 +1,10 @@
 import { FC } from 'react';
 
 import { ChangeForm, UpdateInfoForm } from '@/components/features/UserInfoForm';
-import { Block, Card } from '@/components/ui';
 import {
+	Block,
 	Button,
+	Card,
 	Flex,
 	Separator,
 	Table,
@@ -13,8 +14,11 @@ import {
 	TableHead,
 	TableHeader,
 	TableRow,
+	Tabs,
+	TabsContent,
+	TabsList,
+	TabsTrigger,
 } from '@/shared/ui';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shared/ui/tabs';
 
 const tableHead = ['ID', 'Name'];
 

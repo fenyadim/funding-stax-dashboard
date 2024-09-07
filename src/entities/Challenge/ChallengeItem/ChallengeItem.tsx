@@ -6,7 +6,7 @@ import { FC, MouseEventHandler, useRef, useState } from 'react';
 
 import { PlatformDetailInfo } from '@/components/Platform';
 import { InfoText } from '@/components/features';
-import { Card } from '@/components/ui';
+import { Card } from '@/shared/ui';
 import { Button } from '@/shared/ui/button';
 import { cn } from '@/shared/utils/utils';
 

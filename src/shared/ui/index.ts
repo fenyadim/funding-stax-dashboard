@@ -1,5 +1,7 @@
 export { Flex } from './Flex/Flex';
 export type { FlexProps } from './Flex/Flex';
+export { Card } from './Card/Card';
+export { Block } from './Block/Block';
 export * from './collapsible';
 export * from './button';
 export * from './separator';

@@ -1,5 +1,5 @@
 import { ChallengeTable } from '@/components/features/Billing';
-import { Block } from '@/components/ui';
+import { Block } from '@/shared/ui';
 
 export const ChallengePayoutsPage = () => {
 	return (

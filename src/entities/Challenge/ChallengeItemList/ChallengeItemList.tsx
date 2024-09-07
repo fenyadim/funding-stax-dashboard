@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Block } from '@/components/ui';
+import { Block } from '@/shared/ui';
 
 import { ChallengeItem } from '../ChallengeItem/ChallengeItem';
 import { ChallengeItemListProps } from '../type';

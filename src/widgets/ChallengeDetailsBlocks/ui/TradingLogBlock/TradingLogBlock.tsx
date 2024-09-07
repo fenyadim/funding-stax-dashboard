@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Block, Card } from '@/components/ui';
+import { Block, Card } from '@/shared/ui';
 import {
 	Table,
 	TableBody,

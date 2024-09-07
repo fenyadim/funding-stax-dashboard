@@ -5,9 +5,8 @@ import { FC, useState } from 'react';
 
 import { PlatformItemType, PlatformOption } from '@/components/Platform';
 import { InfoText } from '@/components/features';
-import { Card } from '@/components/ui';
 import { Locale } from '@/shared/config/localeConfig';
-import { Flex } from '@/shared/ui';
+import { Card, Flex } from '@/shared/ui';
 import { Checkbox } from '@/shared/ui/checkbox';
 import { Label } from '@/shared/ui/label';
 

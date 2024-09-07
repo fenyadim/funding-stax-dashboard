@@ -3,10 +3,9 @@ import Image from 'next/image';
 import { FC } from 'react';
 
 import { InfoText } from '@/components/features';
-import { Block, Card } from '@/components/ui';
 import { CopyLink } from '@/entities/Referrals';
 import { Locale } from '@/shared/config/localeConfig';
-import { Flex } from '@/shared/ui';
+import { Block, Card, Flex } from '@/shared/ui';
 
 interface ReferralsPageProps {}
 

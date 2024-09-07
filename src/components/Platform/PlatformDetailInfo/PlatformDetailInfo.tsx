@@ -6,9 +6,8 @@ import {
 	LinearChart,
 	linearDataForDetailInfo,
 } from '@/components/features/LinearChart';
-import { Card } from '@/components/ui';
 import { Locale } from '@/shared/config/localeConfig';
-import { Flex } from '@/shared/ui';
+import { Card, Flex } from '@/shared/ui';
 import { cn } from '@/shared/utils/utils';
 
 interface PlatformDetailInfoProps extends HTMLAttributes<HTMLDivElement> {

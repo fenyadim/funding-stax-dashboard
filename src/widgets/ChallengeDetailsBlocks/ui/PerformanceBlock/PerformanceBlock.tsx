@@ -9,10 +9,9 @@ import {
 	LinearChart,
 	linearDataForChallengeDetails,
 } from '@/components/features/LinearChart';
-import { Block, Card } from '@/components/ui';
 import { Locale } from '@/shared/config/localeConfig';
 import { useFormatDate } from '@/shared/hooks/useFormatDate';
-import { Flex } from '@/shared/ui';
+import { Block, Card, Flex } from '@/shared/ui';
 import { differenceDays } from '@/shared/utils/differenceDays';
 
 interface PerformanceBlockProps {

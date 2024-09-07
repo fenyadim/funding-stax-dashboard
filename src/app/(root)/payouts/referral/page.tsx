@@ -1,16 +1,5 @@
-import { ReferralTable } from '@/components/features/Billing';
-import { Block } from '@/components/ui';
+import { ReferralPayoutsPage } from '@/(pages)';
 
 export default function ReferralsPayoutsRoute() {
-	return (
-		<Block
-			title='Referral payouts'
-			direction='column'
-			align='stretch'
-			gap={16}
-			max
-		>
-			<ReferralTable />
-		</Block>
-	);
+	return <ReferralPayoutsPage />;
 }
