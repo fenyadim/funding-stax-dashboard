@@ -1,94 +1,50 @@
-import { FC } from 'react';
+import { AppTable } from '@/entities/AppTable';
+import { Block } from '@/shared/ui';
 
-import { Block, Card } from '@/shared/ui';
-import {
-	Table,
-	TableBody,
-	TableCaption,
-	TableCell,
-	TableHead,
-	TableHeader,
-	TableRow,
-} from '@/shared/ui/table';
+import { ILogColumns, columnsLog } from '../../model/columnsLog';
 
-interface TradingLogBlockProps {
-	className?: string;
+async function getData(): Promise<ILogColumns[]> {
+	// Fetch data from your API here.
+	return [
+		{
+			id: '728ed52f',
+			open: '10:00',
+			symbol: 'BTC',
+			positionId: '123456',
+			type: 'Long',
+			volume: '1.0000',
+			price: '0.0000',
+			sl: '0.0000',
+			tp: '0.0000',
+			close: '10:00',
+			closePrice: '0.0000',
+			pl: '0.0000',
+			change: '0.0000',
+		},
+		{
+			id: '242',
+			open: '10:00',
+			symbol: 'BTC',
+			positionId: '123456',
+			type: 'Long',
+			volume: '1.0000',
+			price: '0.0000',
+			sl: '0.0000',
+			tp: '0.0000',
+			close: '10:00',
+			closePrice: '0.0000',
+			pl: '0.0000',
+			change: '0.0000',
+		},
+	];
 }
 
-const tableDate = {
-	labels: [
-		'Open',
-		'Symbol',
-		'Position ID',
-		'Type',
-		'Volume',
-		'Price',
-		'S/L',
-		'T/P',
-		'Close',
-		'Close Price',
-		'P/L',
-		'Change',
-	],
-	rows: [
-		[
-			'10:00',
-			'BTC',
-			'123456',
-			'Long',
-			'1.0000',
-			'0.0000',
-			'0.0000',
-			'0.0000',
-			'10:00',
-			'0.0000',
-			'0.0000',
-			'0.0000',
-		],
-		[
-			'10:00',
-			'BTC',
-			'123456',
-			'Long',
-			'1.0000',
-			'0.0000',
-			'0.0000',
-			'0.0000',
-			'10:00',
-			'0.0000',
-			'0.0000',
-			'0.0000',
-		],
-	],
-};
+export const TradingLogBlock = async () => {
+	const data = await getData();
 
-export const TradingLogBlock: FC<TradingLogBlockProps> = ({}) => {
 	return (
 		<Block max title='Trading Log'>
-			<Card className='w-full' size='small'>
-				<Table>
-					<TableCaption>A list of your recent invoices.</TableCaption>
-					<TableHeader>
-						<TableRow>
-							{tableDate.labels.map((label) => (
-								<TableHead key={label}>{label}</TableHead>
-							))}
-						</TableRow>
-					</TableHeader>
-					<TableBody>
-						{tableDate.rows?.map((row, index) => (
-							<TableRow
-								className='border-accent/40 hover:bg-accent/10'
-								key={index}
-							>
-								{row.map((cell) => (
-									<TableCell key={cell}>{cell}</TableCell>
-								))}
-							</TableRow>
-						))}
-					</TableBody>
-				</Table>
-			</Card>
+			<AppTable columns={columnsLog} data={data} />
 		</Block>
 	);
 };

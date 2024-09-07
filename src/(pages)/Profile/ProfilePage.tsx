@@ -1,5 +1,6 @@
 import { FC } from 'react';
 
+import { UserTable } from '@/components/features/Profile';
 import { ChangeForm, UpdateInfoForm } from '@/components/features/UserInfoForm';
 import {
 	Block,
@@ -7,35 +8,11 @@ import {
 	Card,
 	Flex,
 	Separator,
-	Table,
-	TableBody,
-	TableCaption,
-	TableCell,
-	TableHead,
-	TableHeader,
-	TableRow,
 	Tabs,
 	TabsContent,
 	TabsList,
 	TabsTrigger,
 } from '@/shared/ui';
-
-const tableHead = ['ID', 'Name'];
-
-const tableData: { name: string; id: string }[] = [
-	{
-		id: '1232',
-		name: 'Vadim',
-	},
-	{
-		id: '12345',
-		name: 'Jorik',
-	},
-	{
-		id: '123456',
-		name: 'John',
-	},
-];
 
 export const ProfilePage: FC = () => {
 	return (
@@ -120,38 +97,13 @@ export const ProfilePage: FC = () => {
 					</ul>
 				</div>
 			</Card>
-			<Card className='gap-0' size='small'>
-				<Flex className='mb-4' justify='between'>
+			<Flex direction='column' align='stretch' gap={8}>
+				<Card className='flex-row items-center justify-between' size='small'>
 					<h3 className='text-2xl font-medium'>Referrals</h3>
 					<Button variant='secondary'>Invite</Button>
-				</Flex>
-				<Separator className='bg-muted-foreground' />
-				<div className='px-5'>
-					<Table>
-						{tableData ? (
-							<>
-								<TableHeader>
-									<TableRow className='border-muted-foreground hover:bg-transparent'>
-										{tableHead.map((label) => (
-											<TableHead key={label}>{label}</TableHead>
-										))}
-									</TableRow>
-								</TableHeader>
-								<TableBody>
-									{tableData.map(({ id, name }) => (
-										<TableRow className='hover:bg-accent/10' key={id}>
-											<TableCell>{id}</TableCell>
-											<TableCell>{name}</TableCell>
-										</TableRow>
-									))}
-								</TableBody>
-							</>
-						) : (
-							<TableCaption>A list of your recent invites.</TableCaption>
-						)}
-					</Table>
-				</div>
-			</Card>
+				</Card>
+				<UserTable />
+			</Flex>
 		</Block>
 	);
 };
