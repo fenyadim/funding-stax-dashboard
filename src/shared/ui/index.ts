@@ -11,3 +11,4 @@ export * from './calendar';
 export * from './date-picker';
 export * from './scroll-area';
 export * from './select';
+export * from './tabs';

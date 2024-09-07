@@ -1,3 +1,7 @@
-export { BillingSort } from './ui/BillingSort/BillingSort';
-export { BillingTable } from './ui/BillingTable/BillingTable';
-export { columnsBilling, type IBilling } from './model/columnsBilling';
+export { ChallengeTable } from './ui/ChallengeTable';
+export {
+	columnsChallenge,
+	type IChallengePayouts,
+} from './model/columnsChallenge';
+
+export { ReferralTable } from './ui/ReferralTable';
