@@ -8,7 +8,7 @@ import { Button } from '@/shared/ui/button';
 export const Footer: FC = () => {
 	return (
 		<Flex
-			className='pt-5 [&>p]:text-sm font-normal text-muted-foreground'
+			className='fixed bottom-0 left-sidebar right-0 bg-background pt-5 [&>p]:text-sm font-normal text-muted-foreground'
 			gap={32}
 		>
 			<p>© 2022. All rights reserved.</p>

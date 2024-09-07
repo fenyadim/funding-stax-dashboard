@@ -24,7 +24,7 @@ const statusStyle: Record<IBilling['status'], string> = {
 	processing: 'bg-amber-300',
 };
 
-export const columns: ColumnDef<IBilling>[] = [
+export const columnsBilling: ColumnDef<IBilling>[] = [
 	{
 		accessorKey: 'status',
 		header: ({ column }) => (

@@ -1,3 +1,5 @@
+import { ReferralsListPage } from '@/(pages)';
+
 export default function ReferralsListRoute() {
-	return <div>ReferralsList</div>;
+	return <ReferralsListPage />;
 }

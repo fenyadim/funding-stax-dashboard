@@ -1,115 +1,63 @@
-'use client';
+import { AppTable } from '@/shared/ui';
 
-import {
-	type ColumnDef,
-	type ColumnFiltersState,
-	type SortingState,
-	flexRender,
-	getCoreRowModel,
-	getFilteredRowModel,
-	getSortedRowModel,
-	useReactTable,
-} from '@tanstack/react-table';
-import { useState } from 'react';
-
-import { Card } from '@/components/ui';
-import {
-	Table,
-	TableBody,
-	TableCell,
-	TableHead,
-	TableHeader,
-	TableRow,
-} from '@/shared/ui';
-
+import { IBilling, columnsBilling } from '../../model/columnsBilling';
 import { optionSort } from '../../model/optionSort';
-import { BillingSort } from '../BillingSort/BillingSort';
 
-interface DataTableProps<TData, TValue> {
-	columns: ColumnDef<TData, TValue>[];
-	data: TData[];
+async function getData(): Promise<IBilling[]> {
+	// Fetch data from your API here.
+	return [
+		{
+			id: '728ed52f',
+			status: 'waiting',
+			date: new Date('08/17/2024 17:36'),
+			order: 'bee15494-cb4a-457',
+			product: 'Purchase - 200K Swing Challenge - TL Challenge',
+			payment: 'Crypto Currency',
+			amount: 1176,
+		},
+		{
+			id: '728ed',
+			status: 'completed',
+			date: new Date('07/29/2024 19:39'),
+			order: 'bee15494-cb4a-457',
+			product: 'Purchase - 200K Swing Challenge - TL Challenge',
+			payment: 'Crypto Currency',
+			amount: 45,
+		},
+		{
+			id: '728ed23',
+			status: 'incomplete',
+			date: new Date('07/25/2024 19:39'),
+			order: 'bee15494-cb4a-457',
+			product: 'Purchase - 200K Swing Challenge - TL Challenge',
+			payment: 'Crypto Currency',
+			amount: 45,
+		},
+		{
+			id: '7283',
+			status: 'completed',
+			date: new Date('07/30/2024 19:39'),
+			order: 'biba',
+			product: 'Test - 200K Swing Challenge - TL Challenge',
+			payment: 'Crypto Currency',
+			amount: 45245,
+		},
+		{
+			id: '7283',
+			status: 'processing',
+			date: new Date('07/30/2024 19:39'),
+			order: 'biba',
+			product: 'Test - 200K Swing Challenge - TL Challenge',
+			payment: 'Crypto Currency',
+			amount: 45245,
+		},
+	];
 }
 
-export function BillingTable<TData, TValue>({
-	columns,
-	data,
-}: DataTableProps<TData, TValue>) {
-	const [sorting, setSorting] = useState<SortingState>([]);
-	const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
-
-	const table = useReactTable<TData>({
-		data,
-		columns,
-		getCoreRowModel: getCoreRowModel(),
-		onSortingChange: setSorting,
-		getSortedRowModel: getSortedRowModel(),
-		onColumnFiltersChange: setColumnFilters,
-		getFilteredRowModel: getFilteredRowModel(),
-		state: { sorting, columnFilters },
-	});
-
-	const clearFilters = () => {
-		setColumnFilters([]);
-	};
+export async function BillingTable() {
+	const data = await getData();
 
 	return (
-		<>
-			<BillingSort options={optionSort(table)} clearFilters={clearFilters} />
-			<Card className='p-0' size='small'>
-				<Table className='overflow-hidden rounded-3xl'>
-					<TableHeader>
-						{table.getHeaderGroups().map((headerGroup) => (
-							<TableRow
-								className='bg-secondary border-muted-foreground hover:bg-secondary overflow-hidden'
-								key={headerGroup.id}
-							>
-								{headerGroup.headers.map((header) => (
-									<TableHead
-										className='text-base font-semibold text-center'
-										key={header.id}
-									>
-										{header.isPlaceholder
-											? null
-											: flexRender(
-													header.column.columnDef.header,
-													header.getContext(),
-												)}
-									</TableHead>
-								))}
-							</TableRow>
-						))}
-					</TableHeader>
-					<TableBody>
-						{table.getRowModel().rows?.length ? (
-							table.getRowModel().rows.map((row) => (
-								<TableRow
-									key={row.id}
-									data-state={row.getIsSelected() && 'selected'}
-									className='hover:bg-accent/20 border-b-muted-foreground'
-								>
-									{row.getVisibleCells().map((cell) => (
-										<TableCell className='text-center' key={cell.id}>
-											{flexRender(
-												cell.column.columnDef.cell,
-												cell.getContext(),
-											)}
-										</TableCell>
-									))}
-								</TableRow>
-							))
-						) : (
-							<TableRow>
-								<TableCell
-									colSpan={columns.length}
-									className='h-24 text-center'
-								>
-									No results.
-								</TableCell>
-							</TableRow>
-						)}
-					</TableBody>
-				</Table>
-			</Card>
-		</>
+		<AppTable columns={columnsBilling} data={data} optionsFilter={optionSort} />
 	);
 }

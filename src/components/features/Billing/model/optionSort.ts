@@ -2,8 +2,6 @@ import { type Table } from '@tanstack/table-core';
 import { ChangeEvent } from 'react';
 import type { DateRange, SelectRangeEventHandler } from 'react-day-picker';
 
-import { IBilling } from './columns';
-
 type SearchOptionType = {
 	value: string;
 	onChange: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -26,35 +24,49 @@ export interface IOptionSort {
 	calendarRange: DateOptionType;
 }
 
-const getValueOnColumn = <T>(
-	table: Table<T>,
-	column: keyof Omit<IBilling, 'id'>,
-): string => (table.getColumn(column)?.getFilterValue() as string) ?? '';
+const getValueOnColumn = <T>(table: Table<T>, column: keyof T): string =>
+	(table.getColumn(column as string)?.getFilterValue() as string) ?? '';
 
-const onFilterColumn = <T>(
-	table: Table<T>,
-	column: keyof Omit<IBilling, 'id'>,
-	value: string,
-) => {
-	table.getColumn(column)?.setFilterValue(value === '' ? undefined : value);
+const onFilterColumn = <T>(table: Table<T>, column: keyof T, value: string) => {
+	table
+		.getColumn(column as string)
+		?.setFilterValue(value === '' ? undefined : value);
 };
 
-export const optionSort = <T>(table: Table<T>): IOptionSort => ({
-	search: {
-		value: getValueOnColumn(table, 'order'),
-		onChange: (e: ChangeEvent<HTMLInputElement>) =>
-			onFilterColumn(table, 'order', e.target.value),
-	},
-	statusSort: {
-		value: getValueOnColumn(table, 'status'),
-		onChange: (value) => onFilterColumn(table, 'status', value),
-	},
-	paymentSort: {
-		value: getValueOnColumn(table, 'payment'),
-		onChange: (value) => onFilterColumn(table, 'payment', value),
-	},
-	calendarRange: {
-		value: (table.getColumn('date')?.getFilterValue() as DateRange) ?? '',
-		onChange: (range) => table.getColumn('date')?.setFilterValue(range),
-	},
+export const searchSettings = <T>(
+	table: Table<T>,
+	column: keyof T,
+): SearchOptionType => ({
+	value: getValueOnColumn(table, column),
+	onChange: (e: ChangeEvent<HTMLInputElement>) =>
+		onFilterColumn(table, column, e.target.value),
 });
+
+export const calendarRangeSettings = <T>(
+	table: Table<T>,
+	column: keyof T,
+): DateOptionType => ({
+	value:
+		(table.getColumn(column as string)?.getFilterValue() as DateRange) ?? '',
+	onChange: (range) => table.getColumn(column as string)?.setFilterValue(range),
+});
+
+// export const optionSort = <T>(table: Table<T>): IOptionSort => ({
+// 	search: {
+// 		value: getValueOnColumn(table, 'order'),
+// 		onChange: (e: ChangeEvent<HTMLInputElement>) =>
+// 			onFilterColumn(table, 'order', e.target.value),
+// 	},
+// 	statusSort: {
+// 		value: getValueOnColumn(table, 'status'),
+// 		onChange: (value) => onFilterColumn(table, 'status', value),
+// 	},
+// 	paymentSort: {
+// 		value: getValueOnColumn(table, 'payment'),
+// 		onChange: (value) => onFilterColumn(table, 'payment', value),
+// 	},
+// 	calendarRange: {
+// 		value: (table.getColumn('date')?.getFilterValue() as DateRange) ?? '',
+// 		onChange: (range) => table.getColumn('date')?.setFilterValue(range),
+// 	},
+// });
