@@ -23,31 +23,6 @@ export const ReferralsListTable: FC = () => {
         <AppTable
             columns={columnsReferralsList}
             data={data}
-            optionsFilter={{
-                search: {
-                    column: 'id',
-                    label: 'ID',
-                },
-                calendarRange: {
-                    column: 'joiningDate',
-                },
-                selectSort: [
-                    {
-                        column: 'name',
-                        label: 'Full name',
-                        variants: [
-                            {
-                                key: 'john',
-                                value: 'John'
-                            },
-                            {
-                                key: 'jeka',
-                                value: 'Jeka'
-                            },
-                        ]
-                    }
-                ]
-            }}
         />
     );
 };

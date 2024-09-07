@@ -1,7 +1,6 @@
-import { AppTable } from '@/shared/ui';
-
+import { AppTable } from '@/entities/AppTable';
 import { IBilling, columnsBilling } from '../../model/columnsBilling';
-import { optionSort } from '../../../../../entities/AppTable/model/optionSort';
+import { optionTable } from '../../model/optionTable';
 
 async function getData(): Promise<IBilling[]> {
     // Fetch data from your API here.
@@ -58,6 +57,6 @@ export async function BillingTable() {
     const data = await getData();
 
     return (
-        <AppTable columns={columnsBilling} data={data} optionsFilter={optionSort} />
+        <AppTable columns={columnsBilling} data={data} optionsFilter={optionTable} />
     );
 }
