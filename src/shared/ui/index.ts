@@ -15,3 +15,4 @@ export * from './date-picker';
 export * from './scroll-area';
 export * from './select';
 export * from './tabs';
+export * from './accordion';
