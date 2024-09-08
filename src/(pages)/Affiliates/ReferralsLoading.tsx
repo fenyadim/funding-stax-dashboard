@@ -1,34 +1,23 @@
-import { getLocale } from 'next-intl/server';
 import Image from 'next/image';
 import { FC } from 'react';
 
-import { InfoText } from '@/components/features';
 import { CopyLink } from '@/entities/Referrals';
-import { Locale } from '@/shared/config/localeConfig';
-import { Block, Card, Flex } from '@/shared/ui';
+import { Block, Card, Flex, Skeleton } from '@/shared/ui';
 
 interface ReferralsPageProps {}
 
-export const ReferralsPage: FC<ReferralsPageProps> = async ({}) => {
-	const locale = (await getLocale()) as Locale;
-
+export const ReferralsLoading: FC<ReferralsPageProps> = async () => {
 	return (
 		<Flex className='gap-12' direction='column' align='start'>
-			<Flex align='stretch' className='pl-10 gap-12'>
-				<InfoText
-					mode='currency'
-					locale={locale}
-					value={0}
-					title='Total payouts'
-					size='xl'
-				/>
-				<InfoText
-					mode='currency'
-					locale={locale}
-					value={0}
-					title='Payouts pending'
-					size='xl'
-				/>
+			<Flex className='pl-10 gap-12'>
+				<Flex direction='column' justify='start' className='h-full gap-1'>
+					<Skeleton className='w-[90px] h-[20px]' />
+					<Skeleton className='w-[90px] h-[40px]' />
+				</Flex>
+				<Flex direction='column' justify='start' className='h-full gap-1'>
+					<Skeleton className='w-[90px] h-[20px]' />
+					<Skeleton className='w-[90px] h-[40px]' />
+				</Flex>
 			</Flex>
 			<Block
 				className='grid grid-cols-3 w-2/3'
@@ -37,12 +26,10 @@ export const ReferralsPage: FC<ReferralsPageProps> = async ({}) => {
 				title='Affiliates performance'
 			>
 				<Card className='flex-row items-center justify-between' size='small'>
-					<InfoText
-						mode='currency'
-						locale={locale}
-						value={0}
-						title='Commissions'
-					/>
+					<Flex direction='column' justify='start' className='h-full gap-1'>
+						<Skeleton className='w-[90px] h-[20px]' />
+						<Skeleton className='w-[90px] h-[40px]' />
+					</Flex>
 					<Image
 						src='/comissions.svg'
 						alt='Commissions'
@@ -51,11 +38,17 @@ export const ReferralsPage: FC<ReferralsPageProps> = async ({}) => {
 					/>
 				</Card>
 				<Card className='flex-row items-center justify-between' size='small'>
-					<InfoText value='0' title='Referrals' />
+					<Flex direction='column' justify='start' className='h-full gap-1'>
+						<Skeleton className='w-[90px] h-[20px]' />
+						<Skeleton className='w-[90px] h-[40px]' />
+					</Flex>
 					<Image src='/referrals.svg' alt='Referrals' width={72} height={72} />
 				</Card>
 				<Card className='flex-row items-center justify-between' size='small'>
-					<InfoText mode='currency' locale={locale} value={0} title='Payouts' />
+					<Flex direction='column' justify='start' className='h-full gap-1'>
+						<Skeleton className='w-[90px] h-[20px]' />
+						<Skeleton className='w-[90px] h-[40px]' />
+					</Flex>
 					<Image src='/payouts.svg' alt='Payouts' width={72} height={72} />
 				</Card>
 			</Block>

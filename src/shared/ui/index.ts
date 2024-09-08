@@ -16,3 +16,5 @@ export * from './scroll-area';
 export * from './select';
 export * from './tabs';
 export * from './accordion';
+export * from './skeleton';
+export * from './textarea';

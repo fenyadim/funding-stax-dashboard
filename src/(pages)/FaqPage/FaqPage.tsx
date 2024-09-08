@@ -1,5 +1,6 @@
 import { Mail, MapPin } from 'lucide-react';
 
+import { SupportForm } from '@/components/features/SupportForm';
 import { GoogleMap } from '@/entities/GoogleMap';
 import {
 	Accordion,
@@ -67,7 +68,7 @@ export const FaqPage = () => {
 	return (
 		<Flex direction='column' align='start' gap={32}>
 			<Flex max justify='between' gap={32}>
-				<Flex className='w-1/3 pl-10' direction='column' align='start' gap={16}>
+				<Flex direction='column' align='start' gap={16}>
 					<Flex gap={16} className='text-accent'>
 						<Mail />
 						<h3 className='text-foreground'>fundingstax@gmail.com</h3>
@@ -76,6 +77,7 @@ export const FaqPage = () => {
 						<MapPin />
 						<h3 className='text-foreground'>Moscow, Lenina 100</h3>
 					</Flex>
+					<SupportForm />
 				</Flex>
 				<GoogleMap />
 			</Flex>

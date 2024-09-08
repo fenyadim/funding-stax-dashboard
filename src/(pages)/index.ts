@@ -4,6 +4,7 @@ export { ChallengeHistoryPage } from './ChalllengeHistoryPage/ChalllengeHistoryP
 export { ChallengeDetails } from './ChallengeDetails/ChallengeDetails';
 export { ReferralsPage } from './Affiliates/ReferralsPage';
 export { ReferralsListPage } from './Affiliates/ReferralsListPage';
+export { ReferralsLoading } from './Affiliates/ReferralsLoading';
 export { ReferralPayoutsPage } from './Payouts/ReferralPayoutsPage';
 export { ChallengePayoutsPage } from './Payouts/ChallengePayoutsPage';
 export { ProfilePage } from './Profile/ProfilePage';
