@@ -1,7 +1,7 @@
 import { Mail, MapPin } from 'lucide-react';
 
 import { SupportForm } from '@/components/features/SupportForm';
-import { GoogleMap } from '@/entities/GoogleMap';
+import { YMap } from '@/entities/YMap';
 import {
 	Accordion,
 	AccordionContent,
@@ -79,7 +79,7 @@ export const FaqPage = () => {
 					</Flex>
 					<SupportForm />
 				</Flex>
-				<GoogleMap />
+				<YMap />
 			</Flex>
 			<Block title='FAQ' max gap={16}>
 				<Accordion className='flex gap-4 w-full' type='single' collapsible>

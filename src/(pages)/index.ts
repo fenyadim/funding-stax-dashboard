@@ -9,3 +9,4 @@ export { ReferralPayoutsPage } from './Payouts/ReferralPayoutsPage';
 export { ChallengePayoutsPage } from './Payouts/ChallengePayoutsPage';
 export { ProfilePage } from './Profile/ProfilePage';
 export { FaqPage } from './FaqPage/FaqPage';
+export { BuyChallengePage } from './BuyChallengePage/BuyChallengePage';

@@ -2,7 +2,7 @@
 
 import { Map, YMaps } from '@pbe/react-yandex-maps';
 
-export const GoogleMap = () => {
+export const YMap = () => {
 	return (
 		<YMaps>
 			<div className='w-full rounded-3xl overflow-hidden'>
