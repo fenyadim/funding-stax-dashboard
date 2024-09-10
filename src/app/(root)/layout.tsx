@@ -5,7 +5,7 @@ import { Footer } from '@/widgets/Footer';
 import { Header } from '@/widgets/Header';
 import { Sidebar } from '@/widgets/Sidebar';
 
-export default async function Layout({ children }: { children: ReactNode }) {
+export default function Layout({ children }: { children: ReactNode }) {
 	return (
 		<>
 			<Header />

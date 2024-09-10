@@ -4,8 +4,6 @@ import { Prisma } from '@prisma/client';
 import bcrypt from 'bcrypt';
 
 import { prisma } from '@/prisma/prisma-client';
-import { sendEmail } from '@/shared/lib/sendEmail';
-import { VerificationUserTemplate } from '@/shared/ui/EmailTemplates/VerificationUserTemplate';
 
 export async function registerUser(body: Prisma.UserCreateInput) {
 	try {
@@ -39,13 +37,13 @@ export async function registerUser(body: Prisma.UserCreateInput) {
 			},
 		});
 
-		await sendEmail(
-			createUser.email,
-			'Подтверждение почты',
-			VerificationUserTemplate({
-				code,
-			}),
-		);
+		// await sendEmail(
+		// 	createUser.email,
+		// 	'Подтверждение почты',
+		// 	VerificationUserTemplate({
+		// 		code,
+		// 	}),
+		// );
 	} catch (e) {
 		console.log('Error [CREATE_USER]', e);
 		throw e;

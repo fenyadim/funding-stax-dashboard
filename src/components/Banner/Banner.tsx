@@ -12,14 +12,25 @@ export const Banner: FC = () => {
 			direction='column'
 		>
 			<h3 className='text-center'>Get a Market Head Start with up to $200K!</h3>
-			<Button size='lg' variant='secondary'>
-				New Challenge
+			<Button size='lg' variant='secondary' asChild>
+				<Link href='/buy-challenge'>New Challenge</Link>
 			</Button>
-			<Link href='#'>
-				<Button className='uppercase' variant='link'>
-					Learn more
-				</Button>
-			</Link>
+			{/*<Link href='#'>*/}
+			<Button
+				className='uppercase'
+				variant='link'
+				onClick={() => {
+					fetch('/api/auth/emails', {
+						method: 'POST',
+					})
+						.then((res) => res.json())
+						.then((data) => console.log(data))
+						.catch((e) => console.log(e));
+				}}
+			>
+				Learn more
+			</Button>
+			{/*</Link>*/}
 		</Flex>
 	);
 };

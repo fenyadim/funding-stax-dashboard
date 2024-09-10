@@ -9,19 +9,43 @@ generator client {
 }
 
 model User {
-  id            String            @id @default(cuid())
+  id            String    @id @default(cuid())
   name          String?
-  email         String            @unique
+  email         String    @unique
   emailVerified DateTime?
   password      String?
   image         String?
-  role          Role              @default(USER)
-  accounts      Account[]
-  sessions      Session[]
-  verification  VerificationCode?
+  role          Role      @default(USER)
+
+  payouts      Payouts[]
+  accounts     Account[]
+  sessions     Session[]
+  verification VerificationCode?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Payouts {
+  id        String     @id @default(cuid())
+  userId    String
+  amount    Float
+  status    Status
+  challenge Challenge?
+
+  User User @relation(fields: [userId], references: [id])
+}
+
+model Challenge {
+  id            String        @id @default(cuid())
+  userId        String
+  type          String
+  value         Float
+  paymentMethod PaymentMethod
+  newTrading    Boolean
+  payout        Payouts       @relation(fields: [payoutId], references: [id])
+  payoutId      String        @unique
+  createdAt     DateTime      @default(now())
 }
 
 model Account {
@@ -72,10 +96,21 @@ enum Role {
   ADMIN
 }
 
+enum Status {
+  WAITING
+  COMPLETED
+  INCOMPLETE
+  PROCESSING
+}
+
+enum PaymentMethod {
+  CREDIT_CARD
+  CRYPTO
+}
+
 model Promocode {
   id        String   @id @default(cuid())
   code      String
   discount  Float
   createdAt DateTime @default(now())
-  updatedAt DateTime
 }

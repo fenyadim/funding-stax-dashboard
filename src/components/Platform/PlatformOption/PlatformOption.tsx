@@ -3,6 +3,7 @@ import { Locale } from '@/shared/config/localeConfig';
 import { Flex } from '@/shared/ui';
 import { Button } from '@/shared/ui/button';
 import { formatLocaleNumber } from '@/shared/utils/formatLocale';
+import { cn } from '@/shared/utils/utils';
 
 export type PlatformItemType<T> = {
 	id: T;
@@ -16,6 +17,7 @@ interface PlatformOptionType<T> {
 	setIdActive: (id: T) => void;
 	locale?: Locale;
 	info?: string;
+	className?: string;
 }
 
 export const PlatformOption = <T extends string | number>({
@@ -25,13 +27,19 @@ export const PlatformOption = <T extends string | number>({
 	setIdActive,
 	locale,
 	info,
+	className,
 }: PlatformOptionType<T>) => {
 	const onChangeHandler = (id: T) => () => {
 		setIdActive(id);
 	};
 
 	return (
-		<Flex className='w-1/2 h-min' gap={4} align='start' direction='column'>
+		<Flex
+			className={cn('w-1/2 h-min', className)}
+			gap={4}
+			align='start'
+			direction='column'
+		>
 			<Flex className='mb-3' gap={16} max>
 				<h3 className='text-xl'>{title}</h3>
 				{info && <TooltipButton text={info} />}

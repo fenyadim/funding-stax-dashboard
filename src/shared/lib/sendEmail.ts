@@ -1,23 +1,24 @@
-import { ReactNode } from 'react';
-import { Resend } from 'resend';
+import { createTransport } from 'nodemailer';
 
-export const sendEmail = async (
-	to: string,
-	subject: string,
-	template: ReactNode,
-) => {
-	const resend = new Resend(process.env.MAIL_KEY);
+const transport = createTransport({
+	service: 'Yandex',
+	auth: {
+		user: process.env.EMAIL_USER,
+		pass: process.env.EMAIL_PASS,
+	},
+});
 
-	const { data, error } = await resend.emails.send({
-		from: 'onboarding@fundingstax.com',
+export const sendEmail = async ({
+	to,
+	subject,
+}: {
+	to: string;
+	subject: string;
+}) => {
+	return await transport.sendMail({
+		from: process.env.EMAIL_FROM,
 		to: to,
 		subject: subject,
-		react: template,
+		text: 'SEX',
 	});
-
-	if (error) {
-		throw error;
-	}
-
-	return data;
 };

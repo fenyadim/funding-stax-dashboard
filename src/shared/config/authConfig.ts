@@ -1,5 +1,4 @@
 import Credentials from '@auth/core/providers/credentials';
-import Google from '@auth/core/providers/google';
 import { PrismaAdapter } from '@auth/prisma-adapter';
 import bcrypt from 'bcrypt';
 import type { NextAuthConfig } from 'next-auth';
@@ -11,10 +10,6 @@ import { loginSchema } from '@/shared/lib/zod';
 export const authOption: NextAuthConfig = {
 	adapter: PrismaAdapter(prisma),
 	providers: [
-		Google({
-			clientId: process.env.GOOGLE_CLIENT_ID,
-			clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-		}),
 		Credentials({
 			credentials: {
 				email: {
@@ -29,8 +24,7 @@ export const authOption: NextAuthConfig = {
 			authorize: async (credentials) => {
 				if (!credentials) return null;
 
-				const { email, password } =
-					await loginSchema.parseAsync(credentials);
+				const { email, password } = await loginSchema.parseAsync(credentials);
 
 				const findUser = await prisma.user.findFirst({
 					where: { email },
