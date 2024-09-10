@@ -1,2 +1,3 @@
 export { FormInput } from './ui/FormInput';
-export { FormRadio, type RadioOption } from './ui/FormRadio';
+export { FormRadio, type IRadioOption } from './ui/FormRadio';
+export { FormSelect, type ISelectOption } from './ui/FormSelect'

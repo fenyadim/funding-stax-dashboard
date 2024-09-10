@@ -71,3 +71,11 @@ enum Role {
   USER
   ADMIN
 }
+
+model Promocode {
+  id        String   @id @default(cuid())
+  code      String
+  discount  Float
+  createdAt DateTime @default(now())
+  updatedAt DateTime
+}
