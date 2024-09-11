@@ -1,7 +1,6 @@
 datasource db {
-  provider  = "postgresql"
-  url       = env("POSTGRES_URL")
-  directUrl = env("POSTGRES_URL_NON_POOLING")
+  provider = "postgresql"
+  url      = env("POSTGRES_URL")
 }
 
 generator client {
@@ -9,21 +8,34 @@ generator client {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String     @id @default(cuid())
   name          String?
-  email         String    @unique
+  email         String     @unique
   emailVerified DateTime?
-  password      String?
   image         String?
-  role          Role      @default(USER)
+  role          Role       @default(USER)
+  parentRef     Referral[] @relation("parent")
+  childRef      Referral[] @relation("child")
 
-  payouts      Payouts[]
-  accounts     Account[]
-  sessions     Session[]
-  verification VerificationCode?
+  payouts    Payouts[]
+  challenges Challenge[]
+  sessions   Session[]
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  Referral  Referral[]
+}
+
+model Referral {
+  userId  String @id
+  procent Float
+
+  userParent   User?   @relation(fields: [userParentId], references: [id], name: "parent")
+  userParentId String?
+  userChild    User?   @relation(fields: [userChildId], references: [id], name: "child")
+  userChildId  String?
+
+  User User @relation(fields: [userId], references: [id])
 }
 
 model Payouts {
@@ -43,30 +55,11 @@ model Challenge {
   value         Float
   paymentMethod PaymentMethod
   newTrading    Boolean
-  payout        Payouts       @relation(fields: [payoutId], references: [id])
   payoutId      String        @unique
   createdAt     DateTime      @default(now())
-}
 
-model Account {
-  userId            String
-  type              String
-  provider          String
-  providerAccountId String
-  refresh_token     String?
-  access_token      String?
-  expires_at        Int?
-  token_type        String?
-  scope             String?
-  id_token          String?
-  session_state     String?
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@id([provider, providerAccountId])
+  payout Payouts @relation(fields: [payoutId], references: [id])
+  User   User    @relation(fields: [userId], references: [id])
 }
 
 model Session {
@@ -79,16 +72,19 @@ model Session {
   updatedAt DateTime @updatedAt
 }
 
-model VerificationCode {
-  id String @id @default(cuid())
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
 
-  user   User   @relation(fields: [userId], references: [id])
-  userId String @unique
+  @@id([identifier, token])
+}
 
+model Promocode {
+  id        String   @id @default(cuid())
   code      String
+  discount  Float
   createdAt DateTime @default(now())
-
-  @@unique([userId, code])
 }
 
 enum Role {
@@ -106,11 +102,4 @@ enum Status {
 enum PaymentMethod {
   CREDIT_CARD
   CRYPTO
-}
-
-model Promocode {
-  id        String   @id @default(cuid())
-  code      String
-  discount  Float
-  createdAt DateTime @default(now())
 }
