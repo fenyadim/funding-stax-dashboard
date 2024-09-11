@@ -10,3 +10,4 @@ export { ChallengePayoutsPage } from './Payouts/ChallengePayoutsPage';
 export { ProfilePage } from './Profile/ProfilePage';
 export { FaqPage } from './FaqPage/FaqPage';
 export { BuyChallengePage } from './BuyChallengePage/BuyChallengePage';
+export { LoginPage } from './LoginPage/LoginPage';

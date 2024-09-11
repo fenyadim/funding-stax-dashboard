@@ -1,59 +1,76 @@
 'use server';
 
-import { Prisma } from '@prisma/client';
+import { isRedirectError } from 'next/dist/client/components/redirect';
 
-import { prisma } from '@/prisma/prisma-client';
+import { auth } from '@/shared/config/authConfig';
 
-// export async function registerUser(body: Prisma.UserCreateInput) {
-// 	try {
-// 		const user = await prisma.user.findFirst({
-// 			where: {
-// 				email: body.email,
-// 			},
-// 		});
+interface CreateUserBody {
+	email: string;
+	refId: string | null;
+}
 
-// 		if (user) {
-// 			if (!user.emailVerified) {
-// 				throw new Error('Почта не подтверждена');
-// 			}
-// 			throw new Error('Такой пользователь уже существует');
-// 		}
+export async function createUser({ email, refId }: CreateUserBody) {
+	try {
+		// const test = await signIn(
+		// 	'nodemailer',
+		// 	{
+		// 		email: email,
+		// 		callbackUrl: '/',
+		// 	},
+		// 	{},
+		// );
 
-// 		const createUser = await prisma.user.create({
-// 			data: {
-// 				email: body.email,
-// 				name: body.name,
-// 				password: bcrypt.hashSync(body.password as string, 10),
-// 			},
-// 		});
+		const session = await auth();
 
-// 		const code = Math.floor(1000000 + Math.random() * 9000000).toString();
+		console.log(session);
 
-// 		await prisma.verificationCode.create({
-// 			data: {
-// 				code,
-// 				userId: createUser.id,
-// 			},
-// 		});
+		// promise.then((res) =>
+		// 	console.log(prisma.user.findFirst({ where: { email } })),
+		// );
+		// console.log(await prisma.user.findFirst({ where: { email } }));
 
-// 		// await sendEmail(
-// 		// 	createUser.email,
-// 		// 	'Подтверждение почты',
-// 		// 	VerificationUserTemplate({
-// 		// 		code,
-// 		// 	}),
-// 		// );
-// 	} catch (e) {
-// 		console.log('Error [CREATE_USER]', e);
-// 		throw e;
-// 	}
-// }
+		// if (refId) {
+		// 	const refUser = await prisma.user.findFirst({
+		// 		where: {
+		// 			id: refId,
+		// 		},
+		// 	});
+		// }
 
+		// if (user) {
+		// 	if (!user.emailVerified) {
+		// 		throw new Error('Почта не подтверждена');
+		// 	}
+		// 	throw new Error('Такой пользователь уже существует');
+		// }
+		//
+		// const createUser = await prisma.user.create({
+		// 	data: {
+		// 		email: body.email,
+		// 		name: body.name,
+		// 		password: bcrypt.hashSync(body.password as string, 10),
+		// 	},
+		// });
+		//
+		// const code = Math.floor(1000000 + Math.random() * 9000000).toString();
+		//
+		// await prisma.verificationCode.create({
+		// 	data: {
+		// 		code,
+		// 		userId: createUser.id,
+		// 	},
+		// });
 
-export async function test(body: Prisma.UserCreateInput) {
-  const user = await prisma.user.findFirst({
-    where: {
-      email: body.email
-    }
-  })
+		// await sendEmail(
+		// 	createUser.email,
+		// 	'Подтверждение почты',
+		// 	VerificationUserTemplate({
+		// 		code,
+		// 	}),
+		// );
+	} catch (e) {
+		if (isRedirectError(e)) {
+			throw e;
+		}
+	}
 }
